@@ -43,6 +43,8 @@ public class AdminController {
         session.setMaxInactiveInterval(3600);
         session.setAttribute("adminid", acc.getId());
         session.setAttribute("adminpicture", acc.getImage());
+        session.setAttribute("adminusername", acc.getUsername());
+        session.setAttribute("emailadmin", acc.getEmail());
         session.setAttribute("adminfullname", acc.getFirstName() + " " + acc.getLastName());
         return "redirect:/admin";
     }

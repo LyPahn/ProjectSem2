@@ -1,41 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
-<fmt:setLocale value="vi_VN" scope="session"/>
-<!doctype html>
-<html lang="en" dir="ltr" data-scompiler-id="0">
-
-
-<!-- Mirrored from new.axilthemes.com/demo/template/etrade/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Mar 2024 09:25:33 GMT -->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Trang Sức Cao Cấp PNJ</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="${contextPath}/resources/home/assets/images/pnj-icon.png">
-
-    <!-- CSS
-    ============================================ -->
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/font-awesome.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/flaticon/flaticon.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/slick.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/slick-theme.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/jquery-ui.min.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/sal.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/magnific-popup.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/base.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/style.min.css">
-
-</head>
-
-
 <body>
 <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -579,7 +544,3 @@
 <script type="text/javascript" src="${contextPath}/resources/home/assets//js/home.js"></script>
 
 </body>
-
-
-<!-- Mirrored from new.axilthemes.com/demo/template/etrade/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Mar 2024 09:26:16 GMT -->
-</html>

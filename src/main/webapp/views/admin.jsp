@@ -112,7 +112,7 @@
                                                 </path>
                                             </svg></span></a>
                                 <ul class="sa-nav__menu sa-nav__menu--sub" data-sa-collapse-content="">
-                                    <li class="sa-nav__menu-item"><a href="app-customers-list.html"
+                                    <li class="sa-nav__menu-item"><a href="${contextPath}/admin/user"
                                                                      class="sa-nav__link"><span
                                             class="sa-nav__menu-item-padding"></span><span
                                             class="sa-nav__title">Customers List</span></a></li>
@@ -447,10 +447,10 @@
                                                                id="dropdownMenuButton" data-bs-toggle="dropdown" data-bs-offset="0,1"
                                                                aria-expanded="false"><span
                         class="sa-toolbar-user__avatar sa-symbol sa-symbol--shape--rounded"><img
-                        src="${contextPath}/resources/admin/images/customers/customer-4-64x64.jpg" width="64" height="64"
+                        src="${contextPath}/resources/images/${sessionScope.adminpicture}" width="64" height="64"
                         alt="" /></span><span class="sa-toolbar-user__info"><span
-                        class="sa-toolbar-user__title">Konstantin Veselovsky</span><span
-                        class="sa-toolbar-user__subtitle">stroyka@example.com</span></span></button>
+                        class="sa-toolbar-user__title">${sessionScope.adminfullname}</span><span
+                        class="sa-toolbar-user__subtitle">${sessionScope.emailadmin}</span></span></button>
                     <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><a class="dropdown-item" href="app-inbox-list.html">Inbox</a></li>
@@ -458,7 +458,7 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="auth-sign-in.html">Sign Out</a></li>
+                        <li><a class="dropdown-item" href="${contextPath}/admin/logout">Sign Out</a></li>
                     </ul>
                 </div>
             </div>

@@ -2,6 +2,7 @@ package com.bkap.controllers.admin;
 
 import com.bkap.entities.User;
 import com.bkap.services.UserService;
+import com.bkap.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -46,6 +47,8 @@ public class UserController {
                 model.addAttribute("page" , "user/add");
             }
             user.setImage(file.getOriginalFilename());
+            String password = Cipher.GenerateMD5(user.getPassword());
+            user.setPassword(password);
             userService.save(user);
         }
         return "redirect:/admin/user";
@@ -55,6 +58,13 @@ public class UserController {
     public String editUser(@PathVariable int id, Model model) {
         model.addAttribute("user", userService.getById(id));
         model.addAttribute("page", "user/edit");
+        return "admin";
+    }
+
+    @GetMapping("detail-user/{id}")
+    public String detailUser(@PathVariable int id, Model model) {
+        model.addAttribute("user", userService.getById(id));
+        model.addAttribute("page", "user/detail");
         return "admin";
     }
 
@@ -87,6 +97,13 @@ public class UserController {
         userService.update(user);
 
         return "redirect:/admin/user";
+    }
+
+    @GetMapping( "delete/{id}")
+    public String delete(@PathVariable int id, Model model) {
+        userService.delete(userService.getById(id));
+        model.addAttribute("page" , "user/index");
+        return "redirect:/admin";
     }
 
 }

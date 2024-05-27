@@ -33,9 +33,9 @@
                                 <input type="checkbox" class="form-check-input m-0 fs-exact-16 d-block" aria-label="..." />
                             </th>
                             <th class="min-w-20x">User</th>
-                            <th>Email</th>
-                            <th>Status</th>
                             <th>Phone</th>
+                            <th>Registered</th>
+                            <th>Role</th>
                             <th class="w-min" data-orderable="false"></th>
                         </tr>
                         </thead>
@@ -46,41 +46,27 @@
                                            aria-label="..." /></td>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <a href=""class="me-4">
+                                        <a href="" class="me-4">
                                             <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg">
-                                                <img src=${contextPath}/resources/images/${u.image}" width="40" height="40" alt="" />
+                                                <img src="${contextPath}/resources/images/${u.image}" width="40" height="40" alt="" />
                                             </div>
                                         </a>
-                                        <div>
-                                            <a href="app-product.html" class="text-reset">${u.firstName} ${u.lastName}<a>
-                                                <div class="sa-meta mt-0">
-                                                    <ul class="sa-meta__list">
-                                                        <li class="sa-meta__item">ID: <span
-                                                                title="Click to copy product ID"
-                                                                class="st-copy">${u.id}</span></li>
-                                                        <li class="sa-meta__item">USERNAME: <span
-                                                                title="Click to copy product SKU"
-                                                                class="st-copy">${u.username}</span></li>
-                                                    </ul>
-                                                </div>
+                                        <div><a href="app-customer.html" class="text-reset">${u.firstName} ${u.lastName}</a>
+                                            <div class="text-muted mt-n1">${u.email}</div>
                                         </div>
                                     </div>
                                 </td>
-                                <td><a href="" class="text-reset">${u.email}</a></td>
+                                <td><a href="" class="text-reset">${u.phone}</a></td>
+                                <td>${u.created_at}</td>
                                 <td>
                                     <c:choose>
-                                        <c:when test="${u.status}">
-                                            <div class="badge badge-sa-success">Show</div>
+                                        <c:when test="${u.role}">
+                                            <div class="badge badge-sa-success">Admin</div>
                                         </c:when>
                                         <c:otherwise>
-                                            <div class="badge badge-sa-danger">Hidden</div
+                                            <div class="badge badge-sa-danger">User</div
                                         </c:otherwise>
                                     </c:choose>
-                                </td>
-                                <td>
-                                    <div class="sa-price">
-                                        <span class="sa-price__symbol">${u.phone}</span>
-                                    </div>
                                 </td>
                                 <td>
                                     <div class="dropdown"><button class="btn btn-sa-muted btn-sm"
@@ -94,14 +80,12 @@
                                     </svg></button>
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="product-context-menu-0">
-                                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                                            <li><a class="dropdown-item" href="#">Duplicate</a></li>
-                                            <li><a class="dropdown-item" href="#">Add tag</a></li>
-                                            <li><a class="dropdown-item" href="#">Remove tag</a></li>
+                                            <li><a class="dropdown-item" href="">Detail</a></li>
+                                            <li><a class="dropdown-item" href="">Reset Password</a></li>
                                             <li>
                                                 <hr class="dropdown-divider" />
                                             </li>
-                                            <li><a class="dropdown-item text-danger" href="#">Delete</a>
+                                            <li><a class="dropdown-item text-danger" href="${contextPath}/admin/user/delete/${u.id}" onclick="return confirm('Bạn có muốn xóa không?')">Delete</a></li>
                                             </li>
                                         </ul>
                                     </div>
