@@ -2,26 +2,23 @@ package com.bkap.controllers.admin;
 
 import com.bkap.entities.Images;
 import com.bkap.entities.Product;
+
 import com.bkap.services.BrandService;
 import com.bkap.services.CategoryService;
 import com.bkap.services.FileService;
 import com.bkap.services.ProductService;
-import com.bkap.services.impl.FIleUploadUtil;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
 @Controller
 @RequestMapping("/admin/product")
@@ -125,9 +122,8 @@ public class ProductController {
 
     @GetMapping("delete/{id}")
     public String delete(@PathVariable String id , Model model) {
-//        fileService.deleteAll(id);
+        fileService.deleteAll(id);
         productService.delete(productService.getById(id));
-
         return "redirect:/admin/product";
     }
 

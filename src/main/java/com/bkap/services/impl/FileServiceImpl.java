@@ -24,6 +24,10 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void deleteAll(String proId) {
-        imagesRepository.deleteAllByProductId(proId);
+       List<Images> images = imagesRepository.findAll();
+       for (Images image : images) {
+           imagesRepository.delete(image);
+       }
+//        imagesRepository.deleteAllByProductId(proId);
     }
 }

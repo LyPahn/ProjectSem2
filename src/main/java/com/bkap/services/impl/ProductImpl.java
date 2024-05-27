@@ -36,7 +36,6 @@ public class ProductImpl implements ProductService {
 
     @Override
     public void delete(Product product) {
-        imagesRepository.deleteAllByProductId(product.getId());
         productRepository.delete(product);
     }
 }

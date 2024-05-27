@@ -42,4 +42,6 @@ public class User {
     private Date created_at;
     @Column(name = "image")
     private String image;
+    @Column(name = "role")
+    private boolean role;
 }
