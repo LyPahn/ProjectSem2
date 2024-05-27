@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-check">
-                                            <form:radiobutton class="form-check-input" path="status" checked="" value="true" />
+                                            <form:radiobutton class="form-check-input" path="status" value="true" />
                                             <span class="form-check-label">Show</span>
                                         </label>
                                         <label class="form-check">

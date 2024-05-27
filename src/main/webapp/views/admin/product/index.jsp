@@ -142,12 +142,13 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <a href=""class="me-4">
-                                            <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg">
+                                            <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg" data-bs-toggle="offcanvas" href="#fileManagerDetails"
+                                                 role="button" aria-controls="fileManagerDetails">
                                                 <img src="${contextPath}/resources/images/${p.image}" width="40" height="40" alt="" />
                                             </div>
                                         </a>
                                         <div>
-                                            <a href="app-product.html" class="text-reset">${p.productName}<a>
+                                            <a class="text-reset">${p.productName}</a>
                                                 <div class="sa-meta mt-0">
                                                     <ul class="sa-meta__list">
                                                         <li class="sa-meta__item">ID: <span
@@ -189,7 +190,7 @@
                                     </svg></button>
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="product-context-menu-0">
-                                            <li><a class="dropdown-item" href="${contextPath}/admin/product/edit/${c.id}">Edit</a></li>
+                                            <li><a class="dropdown-item" href="${contextPath}/admin/product/edit/${p.id}">Edit</a></li>
                                             <li>
                                                 <hr class="dropdown-divider" />
                                             </li>

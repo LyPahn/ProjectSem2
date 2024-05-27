@@ -87,6 +87,7 @@ public class ProductController {
     public String editProduct(Model model, @PathVariable String id) {
         model.addAttribute("product", productService.getById(id));
         model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("brands" , brandService.getAll());
         model.addAttribute("page" , "product/edit");
         return "admin";
     }
@@ -128,5 +129,14 @@ public class ProductController {
         productService.delete(productService.getById(id));
 
         return "redirect:/admin/product";
+    }
+
+    @GetMapping("detail/{id}")
+    public String detail(@PathVariable String id, Model model) {
+        model.addAttribute("product", productService.getById(id));
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("page" , "product/detail");
+        return "admin";
     }
 }

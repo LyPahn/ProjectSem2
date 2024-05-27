@@ -117,11 +117,7 @@
                                 <div class="mb-5">
                                     <h2 class="mb-0 fs-exact-18">Categories</h2>
                                 </div>
-                                <form:select class="sa-select2 form-select" multiple=""  path="categoryId">
-                                    <c:forEach var="c" items="${categories}">
-                                        <option value="${c.id}">${c.cateName}</option>
-                                    </c:forEach>
-                                </form:select>
+                                <form:select class="sa-select2 form-select" path="categoryId" items="${categories}" itemValue="id" itemLabel="cateName" />
                                 <div class="mt-4 mb-n2"><a href="${contextPath}/admin/category/add-category">Add new category</a></div>
                             </div>
                         </div>
@@ -130,11 +126,7 @@
                                 <div class="mb-5">
                                     <h2 class="mb-0 fs-exact-18">Brands</h2>
                                 </div>
-                                <form:select class="sa-select2 form-select" multiple=""  path="brandId">
-                                    <c:forEach var="b" items="${brands}">
-                                        <option value="${b.id}">${b.brandName}</option>
-                                    </c:forEach>
-                                </form:select>
+                                <form:select class="sa-select2 form-select" path="brandId" items="${brands}" itemValue="id" itemLabel="brandName" />
                                 <div class="mt-4 mb-n2"><a href="${contextPath}/admin/brand/add-brand">Add new Brand</a></div>
                             </div>
                         </div>
