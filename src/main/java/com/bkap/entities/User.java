@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -44,4 +45,7 @@ public class User {
     private String image;
     @Column(name = "role")
     private boolean role;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    private List<Cart> carts;
 }

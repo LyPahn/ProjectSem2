@@ -5,11 +5,9 @@
 <fmt:setLocale value="vi_VN" scope="session"/>
 <!doctype html>
 <html lang="en" dir="ltr" data-scompiler-id="0">
-
-
-<!-- Mirrored from new.axilthemes.com/demo/template/etrade/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Mar 2024 09:25:33 GMT -->
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Trang Sức Cao Cấp PNJ</title>
     <meta name="robots" content="noindex, follow" />
@@ -37,9 +35,6 @@
 
 
 <body>
-<!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-<![endif]-->
 <a href="#top" class="back-to-top" id="backto-top"><i class="fal fa-arrow-up"></i></a>
 <!-- Start Header -->
 <header class="header axil-header header-style-4">
@@ -99,12 +94,12 @@
                                     <i class="flaticon-heart"></i>
                                 </a>
                             </li>
-                            <li class="shopping-cart">
-                                <a href="${contextPath}/gio-hang" class="cart-btn">
-                                    <span class="cart-count" id="basket_total"><jsp:include page="${contextPath}/countItems"></jsp:include></span>
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                            </li>
+<%--                            <li class="shopping-cart">--%>
+<%--                                <a href="${contextPath}/gio-hang" class="cart-btn">--%>
+<%--                                    <span class="cart-count" id="basket_total"><jsp:include page="${contextPath}/countItems"></jsp:include></span>--%>
+<%--                                    <i class="flaticon-shopping-cart"></i>--%>
+<%--                                </a>--%>
+<%--                            </li>--%>
                             <c:choose>
                                 <c:when test="${!empty sessionScope.id }">
 
@@ -185,16 +180,16 @@
                         </div>
                         <ul class="mainmenu">
                             <li class="menu-item">
-                                <a href="trang-chu">Trang chủ</a>
+                                <a href="${contextPath}/trang-chu">Trang chủ</a>
                             </li>
                             <li class="menu-item">
-                                <a href="cua-hang">Cửa hàng</a>
+                                <a href="${contextPath}/cua-hang">Cửa hàng</a>
                             </li>
-                            <li><a href="gioi-thieu">Giới thiệu</a></li>
+                            <li><a href="${contextPath}/gioi-thieu">Giới thiệu</a></li>
                             <li class="menu-item">
-                                <a href="bai-viet">Bài viết</a>
+                                <a href="${contextPath}/bai-viet">Bài viết</a>
                             </li>
-                            <li><a href="lien-he">Liên hệ</a></li>
+                            <li><a href="${contextPath}/lien-he">Liên hệ</a></li>
                         </ul>
                     </nav>
                     <!-- End Mainmanu Nav -->
@@ -560,7 +555,7 @@
 <script src="${contextPath}/resources/home/assets/js/vendor/bootstrap.min.js"></script>
 <script src="${contextPath}/resources/home/assets/js/vendor/slick.min.js"></script>
 <script src="${contextPath}/resources/home/assets/js/vendor/js.cookie.js"></script>
-<!-- <script src="${contextPath}/resources/home/assets/js/vendor/jquery.style.switcher.js"></script> -->
+<script src="${contextPath}/resources/home/assets/js/vendor/jquery.style.switcher.js"></script>
 <script src="${contextPath}/resources/home/assets/js/vendor/jquery-ui.min.js"></script>
 <script src="${contextPath}/resources/home/assets/js/vendor/jquery.ui.touch-punch.min.js"></script>
 <script src="${contextPath}/resources/home/assets/js/vendor/jquery.countdown.min.js"></script>
@@ -573,13 +568,10 @@
 
 <!-- Main JS -->
 <script src="${contextPath}/resources/home/assets/js/main.js"></script>
-<%--<script>--%>
-<%--    var path='${pageContext.servletContext.contextPath}';--%>
-<%--</script>--%>
-<script type="text/javascript" src="${contextPath}/resources/home/assets//js/home.js"></script>
+<script>
+    var path='${pageContext.servletContext.contextPath}';
+</script>
+<script type="text/javascript" src="${contextPath}/resources/home/assets/js/home.js"></script>
 
 </body>
-
-
-<!-- Mirrored from new.axilthemes.com/demo/template/etrade/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Mar 2024 09:26:16 GMT -->
 </html>

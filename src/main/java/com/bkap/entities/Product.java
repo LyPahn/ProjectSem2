@@ -31,7 +31,7 @@ public class Product {
     @Column(name = "image")
     private String image;
     @Column(name = "size")
-    private int size;
+    private boolean size;
     @Column(name = "quantity")
     private int quantity;
     @Column(name = "categoryId")
@@ -55,4 +55,8 @@ public class Product {
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private List<Images> images;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="productId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Cart carts;
 }
