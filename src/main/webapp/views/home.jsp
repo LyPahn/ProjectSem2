@@ -105,28 +105,23 @@
                                     <ul>
                                         <li class="active"><a href="${contextPath}/">Home</a>
                                         </li>
-                                        <li class="position-static"><a href="#">pages <i
+                                        <li class="position-static"><a href="#">Category<i
                                                 class="fa fa-angle-down"></i></a>
                                             <ul class="megamenu dropdown">
-                                                <li class="mega-title"><span>column 01</span>
+                                                <li class="mega-title"><span>Category</span>
                                                     <ul>
-                                                        <li><a href="shop.html">shop grid left sidebar</a></li>
-                                                        <li><a href="shop-grid-right-sidebar.html">shop grid right
-                                                            sidebar</a></li>
-                                                        <li><a href="shop-list-left-sidebar.html">shop list left
-                                                            sidebar</a></li>
-                                                        <li><a href="shop-list-right-sidebar.html">shop list right
-                                                            sidebar</a></li>
+                                                        <li><a href="shop.html">Vòng tay</a></li>
+                                                        <li><a href="shop-grid-right-sidebar.html">Mặt dây chuyền</a></li>
+                                                        <li><a href="shop-list-left-sidebar.html">Nhẫn</a></li>
+                                                        <li><a href="shop-list-right-sidebar.html">Dây chuyền</a></li>
                                                     </ul>
                                                 </li>
-                                                <li class="mega-title"><span>column 02</span>
+                                                <li class="mega-title"><span>Category</span>
                                                     <ul>
-                                                        <li><a href="product-details.html">product details</a></li>
-                                                        <li><a href="product-details-affiliate.html">product details
-                                                            affiliate</a></li>
-                                                        <li><a href="product-details-variable.html">product details
-                                                            variable</a></li>
-                                                        <li><a href="privacy-policy.html">privacy policy</a></li>
+                                                        <li><a href="product-details.html">Vàng</a></li>
+                                                        <li><a href="product-details-affiliate.html">Bạc</a></li>
+                                                        <li><a href="product-details-variable.html">Đá quý</a></li>
+                                                        <li><a href="privacy-policy.html">Kim cương</a></li>
                                                     </ul>
                                                 </li>
                                                 <li class="megamenu-banners d-none d-lg-block">
@@ -136,63 +131,8 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a href="shop.html">shop <i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">shop grid layout <i
-                                                        class="fa fa-angle-right"></i></a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="shop.html">shop grid left sidebar</a></li>
-                                                        <li><a href="shop-grid-right-sidebar.html">shop grid right
-                                                            sidebar</a></li>
-                                                        <li><a href="shop-grid-full-3-col.html">shop grid full 3
-                                                            col</a></li>
-                                                        <li><a href="shop-grid-full-4-col.html">shop grid full 4
-                                                            col</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">shop list layout <i
-                                                        class="fa fa-angle-right"></i></a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="shop-list-left-sidebar.html">shop list left
-                                                            sidebar</a></li>
-                                                        <li><a href="shop-list-right-sidebar.html">shop list right
-                                                            sidebar</a></li>
-                                                        <li><a href="shop-list-full-width.html">shop list full
-                                                            width</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">products details <i
-                                                        class="fa fa-angle-right"></i></a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="product-details.html">product details</a></li>
-                                                        <li><a href="product-details-affiliate.html">product details
-                                                            affiliate</a></li>
-                                                        <li><a href="product-details-variable.html">product details
-                                                            variable</a></li>
-                                                        <li><a href="product-details-group.html">product details
-                                                            group</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="blog-left-sidebar.html">Blog <i
-                                                class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-                                                <li><a href="blog-list-left-sidebar.html">blog list left sidebar</a>
-                                                </li>
-                                                <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                                                <li><a href="blog-list-right-sidebar.html">blog list right
-                                                    sidebar</a></li>
-                                                <li><a href="blog-grid-full-width.html">blog grid full width</a>
-                                                </li>
-                                                <li><a href="blog-details.html">blog details</a></li>
-                                                <li><a href="blog-details-left-sidebar.html">blog details left
-                                                    sidebar</a></li>
-                                                <li><a href="blog-details-audio.html">blog details audio</a></li>
-                                                <li><a href="blog-details-video.html">blog details video</a></li>
-                                                <li><a href="blog-details-image.html">blog details image</a></li>
-                                            </ul>
+                                        <li><a href="shop.html">shop</a></li>
+                                        <li><a href="blog-left-sidebar.html">Blog</a>
                                         </li>
                                         <li><a href="contact-us.html">Contact us</a></li>
                                     </ul>
@@ -218,16 +158,31 @@
                             </div>
                             <div class="header-configure-area">
                                 <ul class="nav justify-content-end">
-                                    <li class="user-hover">
-                                        <a href="#">
-                                            <i class="pe-7s-user"></i>
-                                        </a>
-                                        <ul class="dropdown-list">
-                                            <li><a href="login-register.html">login</a></li>
-                                            <li><a href="login-register.html">register</a></li>
-                                            <li><a href="my-account.html">my account</a></li>
-                                        </ul>
-                                    </li>
+                                    <c:choose>
+                                        <c:when test="${!empty sessionScope.id}">
+                                            <li class="user-hover">
+                                                <a href="#">
+                                                    <i class="pe-7s-user"></i>
+                                                </a>
+                                                <ul class="dropdown-list">
+                                                    <li>${sessionScope.fullName}</li>
+                                                    <li><a href="${contextPath}/logout">Logout</a></li>
+                                                </ul>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="user-hover">
+                                                <a href="#">
+                                                    <i class="pe-7s-user"></i>
+                                                </a>
+                                                <ul class="dropdown-list">
+                                                    <li><a href="${contextPath}/dang-nhap">login</a></li>
+                                                    <li><a href="login-register.html">register</a></li>
+                                                    <li><a href="my-account.html">my account</a></li>
+                                                </ul>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
                                     <li>
                                         <a href="wishlist.html">
                                             <i class="pe-7s-like"></i>
