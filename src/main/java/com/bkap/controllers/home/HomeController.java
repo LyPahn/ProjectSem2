@@ -69,6 +69,7 @@ public class HomeController {
         session.setAttribute("id",user.getId());
         session.setAttribute("picture",user.getImage());
         session.setAttribute("fullName", user.getLastName() + "" + user.getFirstName());
+        session.setAttribute("role" , user.isRole());
 
         return "redirect:/";
 
