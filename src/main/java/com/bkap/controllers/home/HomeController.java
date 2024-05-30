@@ -27,7 +27,7 @@ public class HomeController {
     @GetMapping({"/","trang-chu"})
     public String index(Model model){
         model.addAttribute("categories" , categoryService.getAll());
-        model.addAttribute("products", productService.getAll());
+        model.addAttribute("products", productService.findTop8ByOderByCreateDateDESC());
         model.addAttribute("brands", brandService.getAll());
         model.addAttribute("page" , "index");
         return "home";

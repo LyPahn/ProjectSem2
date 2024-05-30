@@ -38,4 +38,9 @@ public class ProductImpl implements ProductService {
     public void delete(Product product) {
         productRepository.delete(product);
     }
+
+    @Override
+    public List<Product> findTop8ByOderByCreateDateDESC() {
+        return productRepository.findTop8ByOrderByCreateDateDesc();
+    }
 }

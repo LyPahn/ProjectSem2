@@ -32,9 +32,6 @@ public class Cart {
     @Column(name = "userId")
     private int userId;
 
-    @OneToMany(mappedBy = "carts", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    private List<Product> products;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="userId", referencedColumnName = "id", insertable = false, updatable = false)
     private User user;
