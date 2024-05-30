@@ -178,7 +178,7 @@
                                                 </a>
                                                 <ul class="dropdown-list">
                                                     <li><a href="${contextPath}/dang-nhap">login</a></li>
-                                                    <li><a href="login-register.html">register</a></li>
+                                                    <li><a href="${contextPath}/register">register</a></li>
                                                     <li><a href="my-account.html">my account</a></li>
                                                 </ul>
                                             </li>

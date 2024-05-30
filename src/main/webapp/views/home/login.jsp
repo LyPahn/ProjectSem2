@@ -27,7 +27,7 @@
             <div class="member-area-from-wrap">
                 <div class="row">
                     <!-- Login Content Start -->
-                    <div class="col-lg-6 mt-auto">
+                    <div class="col-lg-6 m-auto">
                         <div class="login-reg-form-wrap">
                             <h5>Sign In</h5>
                             <form action="#" method="post">

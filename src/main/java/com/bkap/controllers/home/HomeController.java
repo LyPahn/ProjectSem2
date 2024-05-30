@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 
 @Controller
 @RequiredArgsConstructor
@@ -45,8 +48,9 @@ public class HomeController {
     }
 
     @GetMapping("dang-nhap")
-    public String loginUser(Model model) {
-        return "home/login";
+    public String loginUser(Model model){
+        model.addAttribute("page","login");
+        return "home";
     }
 
     @PostMapping("dang-nhap")
@@ -83,5 +87,20 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("register")
+    public String addUser(Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("page", "register");
+        return "home";
+    }
 
+    @PostMapping("save")
+    public String save(Model model, @ModelAttribute User user , HttpServletRequest req) {
+        model.addAttribute("user", user);
+        model.addAttribute("page" , "register");
+        String password = Cipher.GenerateMD5(user.getPassword());
+        user.setPassword(password);
+        userService.save(user);
+        return "redirect:/dang-nhap";
+    }
 }
