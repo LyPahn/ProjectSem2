@@ -56,4 +56,7 @@ public class Product {
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private List<Images> images;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="productId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Cart carts;
 }
