@@ -1,20 +1,14 @@
 package com.bkap.controllers.home;
 
 import com.bkap.entities.User;
-import com.bkap.services.BrandService;
-import com.bkap.services.CategoryService;
-import com.bkap.services.ProductService;
-import com.bkap.services.UserService;
+import com.bkap.services.*;
 import com.bkap.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -88,4 +82,6 @@ public class HomeController {
         model.addAttribute("page", "detail");
         return "home";
     }
+
+
 }
