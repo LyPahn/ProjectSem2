@@ -46,6 +46,4 @@ public class User {
     @Column(name = "role")
     private boolean role;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    private List<Cart> carts;
 }
