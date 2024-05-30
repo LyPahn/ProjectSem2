@@ -264,7 +264,7 @@
                     <div class="product-carousel-4_2 slick-row-10 slick-arrow-style">
                         <c:forEach var="p" items="${products}">
                             <!-- product item start -->
-                            <div class="product-item">
+                            <div class="${contextPath}/chi-tiet/${p.id}">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
                                         <img class="" src="${contextPath}/resources/images/${p.image}" alt="product">
@@ -274,7 +274,7 @@
                                             <span>new</span>
                                         </div>
                                         <div class="product-label discount">
-                                            <span>${p.priceOld / p.price * 100}%</span>
+                                            <span>${(p.price * 100) / p.priceOld}%</span>
                                         </div>
                                     </div>
                                     <div class="button-group">
