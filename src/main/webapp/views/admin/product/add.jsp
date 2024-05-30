@@ -47,6 +47,19 @@
                                         <span class="form-check-label">Hidden</span>
                                     </label>
                                 </div>
+                                <div class="mb-5">
+                                    <h2 class="mb-0 fs-exact-18">Size</h2>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-check">
+                                        <form:radiobutton class="form-check-input" path="size" checked="" value="true" />
+                                        <span class="form-check-label">Show</span>
+                                    </label>
+                                    <label class="form-check">
+                                        <form:radiobutton class="form-check-input" path="size" value="false"/>
+                                        <span class="form-check-label">Hidden</span>
+                                    </label>
+                                </div>
                                 <div class="mb-4">
                                     <label class="form-label">Description</label>
                                     <form:textarea id="editor" class="" rows="8" path="description" />
