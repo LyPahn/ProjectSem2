@@ -266,7 +266,7 @@
                             <!-- product item start -->
                             <div class="product-item">
                                 <figure class="product-thumb">
-                                    <a href="${contextPath}/chi-tiet/${p.id}">
+                                    <a href="product-details.html">
                                         <img class="" src="${contextPath}/resources/images/${p.image}" alt="product">
                                     </a>
                                     <div class="product-badge">
@@ -274,7 +274,7 @@
                                             <span>new</span>
                                         </div>
                                         <div class="product-label discount">
-                                            <span>${(p.price * 100) / p.priceOld}%</span>
+                                            <span>${p.priceOld / p.price * 100}%</span>
                                         </div>
                                     </div>
                                     <div class="button-group">
