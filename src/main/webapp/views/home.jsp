@@ -167,6 +167,7 @@
                                                 </a>
                                                 <ul class="dropdown-list">
                                                     <li>${sessionScope.fullName}</li>
+                                                    <li><a href="my-account.html">my account</a></li>
                                                     <li><a href="${contextPath}/logout">Logout</a></li>
                                                 </ul>
                                             </li>
@@ -179,7 +180,6 @@
                                                 <ul class="dropdown-list">
                                                     <li><a href="${contextPath}/dang-nhap">login</a></li>
                                                     <li><a href="${contextPath}/register">register</a></li>
-                                                    <li><a href="my-account.html">my account</a></li>
                                                 </ul>
                                             </li>
                                         </c:otherwise>
