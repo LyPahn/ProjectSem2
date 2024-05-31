@@ -167,6 +167,7 @@
                                                 </a>
                                                 <ul class="dropdown-list">
                                                     <li>${sessionScope.fullName}</li>
+                                                    <li><a href="my-account.html">my account</a></li>
                                                     <li><a href="${contextPath}/logout">Logout</a></li>
                                                     <li><a href="${contextPath}/my-account/${sessionScope.id}" >my account</a></li>
                                                 </ul>

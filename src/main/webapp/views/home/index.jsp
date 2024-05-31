@@ -262,9 +262,9 @@
                     <div class="product-carousel-4_2 slick-row-10 slick-arrow-style">
                         <c:forEach var="p" items="${products}">
                             <!-- product item start -->
-                            <div class="${contextPath}/chi-tiet/${p.id}">
+                            <div class="product-item">
                                 <figure class="product-thumb">
-                                    <a href="product-details.html">
+                                    <a href="${contextPath}/chi-tiet/${p.id}">
                                         <img class="" src="${contextPath}/resources/images/${p.image}" alt="product">
                                     </a>
                                     <div class="product-badge">
