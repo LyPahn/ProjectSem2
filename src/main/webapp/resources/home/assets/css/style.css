@@ -8,7 +8,7 @@ Table of content
 5. product
 6. categories area
 7. testimonial
-8. blog
+8. blog.jsp
 9. shop grid view
 10. shop list view
 11. product details
@@ -3772,7 +3772,7 @@ textarea:focus {
 }
 
 /*------ pagination area style end ------*/
-/*------- blog item start -------*/
+/*------- blog.jsp item start -------*/
 .blog-post-item:hover .blog-thumb img {
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
@@ -3812,8 +3812,8 @@ textarea:focus {
   color: #c29958;
 }
 
-/*------- blog item end -------*/
-/*------ blog list item start ------*/
+/*------- blog.jsp item end -------*/
+/*------ blog.jsp list item start ------*/
 .blog-list-inner .blog-post-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3861,8 +3861,8 @@ textarea:focus {
   text-decoration: underline;
 }
 
-/*------ blog list item end ------*/
-/*----- blog sidebar start -------*/
+/*------ blog.jsp list item end ------*/
+/*----- blog.jsp sidebar start -------*/
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .blog-sidebar-wrapper {
     margin-bottom: -5px;
@@ -4024,7 +4024,7 @@ textarea:focus {
   text-transform: capitalize;
 }
 
-/*----- blog sidebar end -------*/
+/*----- blog.jsp sidebar end -------*/
 .entry-summary {
   padding-top: 25px;
 }
@@ -4059,7 +4059,7 @@ blockquote {
           transform: none;
 }
 
-/*------- blog main content wrapper start --------*/
+/*------- blog.jsp main content wrapper start --------*/
 .blog-post-item .tag-line {
   padding: 10px 0;
   margin-top: 20px;
@@ -4144,8 +4144,8 @@ blockquote {
   }
 }
 
-/*--- blog main content wrapper end ---*/
-/*--- blog comment section start ---*/
+/*--- blog.jsp main content wrapper end ---*/
+/*--- blog.jsp comment section start ---*/
 .comment-section {
   margin-top: -3px;
 }
@@ -4225,8 +4225,8 @@ blockquote {
   background-color: #c29958;
 }
 
-/*--- blog comment section end ---*/
-/*------ blog comment box start -----*/
+/*--- blog.jsp comment section end ---*/
+/*------ blog.jsp comment box start -----*/
 .blog-comment-wrapper {
   margin-top: -10px;
 }
@@ -4279,7 +4279,7 @@ blockquote {
   }
 }
 
-/*------- blog comment box end --------*/
+/*------- blog.jsp comment box end --------*/
 /*------- about us area start -------*/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .about-thumb {

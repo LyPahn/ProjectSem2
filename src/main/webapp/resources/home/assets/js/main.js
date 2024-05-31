@@ -233,7 +233,7 @@
 	});
 
 
-	// blog carousel active start
+	// blog.jsp carousel active start
 	$('.group-list-carousel--3').slick({
 		autoplay: true,
 		speed: 1000,
@@ -257,8 +257,8 @@
 		}]
 	});
 
-	// blog carousel active start
-	$('.blog-carousel-2').slick({
+	// blog.jsp carousel active start
+	$('.blog.jsp-carousel-2').slick({
 		speed: 1000,
 		dots: true,
 		arrows: false,
@@ -284,8 +284,8 @@
 	});
 
 
-	// blog carousel active
-	$('.blog-carousel-active').slick({
+	// blog.jsp carousel active
+	$('.blog.jsp-carousel-active').slick({
 		autoplay: true,
 		speed: 1000,
 		slidesToShow: 3,

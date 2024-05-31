@@ -417,7 +417,7 @@
     </section>
     <!-- testimonial area end -->
 
-    <!-- latest blog area start -->
+    <!-- latest blog.jsp area start -->
     <section class="latest-blog-area section-padding">
         <div class="container">
             <div class="row">
@@ -433,7 +433,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="blog-carousel-active slick-row-10 slick-arrow-style">
-                        <!-- blog post item start -->
+                        <!-- blog.jsp post item start -->
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
@@ -450,9 +450,9 @@
                                 </h5>
                             </div>
                         </div>
-                        <!-- blog post item end -->
+                        <!-- blog.jsp post item end -->
 
-                        <!-- blog post item start -->
+                        <!-- blog.jsp post item start -->
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
@@ -469,9 +469,9 @@
                                 </h5>
                             </div>
                         </div>
-                        <!-- blog post item end -->
+                        <!-- blog.jsp post item end -->
 
-                        <!-- blog post item start -->
+                        <!-- blog.jsp post item start -->
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
@@ -488,9 +488,9 @@
                                 </h5>
                             </div>
                         </div>
-                        <!-- blog post item end -->
+                        <!-- blog.jsp post item end -->
 
-                        <!-- blog post item start -->
+                        <!-- blog.jsp post item start -->
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
@@ -507,9 +507,9 @@
                                 </h5>
                             </div>
                         </div>
-                        <!-- blog post item end -->
+                        <!-- blog.jsp post item end -->
 
-                        <!-- blog post item start -->
+                        <!-- blog.jsp post item start -->
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
@@ -526,13 +526,13 @@
                                 </h5>
                             </div>
                         </div>
-                        <!-- blog post item end -->
+                        <!-- blog.jsp post item end -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- latest blog area end -->
+    <!-- latest blog.jsp area end -->
 
     <!-- brand logo area start -->
     <div class="brand-logo section-padding pt-0">

@@ -33,8 +33,6 @@
                         <div class="login-reg-form-wrap sign-up-form">
                             <h5>Singup Form</h5>
                             <form:form action="${contextPath}/save" method="post" modelAttribute="user">
-                                <form:hidden path="role" value="false"/>
-                                <form:hidden path="status" value="false"/>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="single-input-item">

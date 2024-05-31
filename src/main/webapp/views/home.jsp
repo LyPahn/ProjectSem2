@@ -131,11 +131,11 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a href="shop.html">shop</a>
+                                        <li><a href="${contextPath}/shop">shop</a>
                                         </li>
-                                        <li><a href="blog-left-sidebar.html">Blog</a>
+                                        <li><a href="${contextPath}/blog">Blog</a>
                                         </li>
-                                        <li><a href="contact-us.html">Contact us</a></li>
+                                        <li><a href="${contextPath}/contact-us">Contact us</a></li>
                                     </ul>
                                 </nav>
                                 <!-- main menu navbar end -->
@@ -168,6 +168,7 @@
                                                 <ul class="dropdown-list">
                                                     <li>${sessionScope.fullName}</li>
                                                     <li><a href="${contextPath}/logout">Logout</a></li>
+                                                    <li><a href="${contextPath}/my-account/${sessionScope.id}" >my account</a></li>
                                                 </ul>
                                             </li>
                                         </c:when>
@@ -179,7 +180,6 @@
                                                 <ul class="dropdown-list">
                                                     <li><a href="${contextPath}/dang-nhap">login</a></li>
                                                     <li><a href="${contextPath}/register">register</a></li>
-                                                    <li><a href="my-account.html">my account</a></li>
                                                 </ul>
                                             </li>
                                         </c:otherwise>

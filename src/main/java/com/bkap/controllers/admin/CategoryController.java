@@ -3,9 +3,11 @@ package com.bkap.controllers.admin;
 import com.bkap.entities.Category;
 import com.bkap.services.CategoryService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,10 +35,15 @@ public class CategoryController {
     }
 
     @PostMapping("/add-category")
-    public String addCategory(@ModelAttribute Category category
+    public String addCategory(@Valid  @ModelAttribute Category category , BindingResult bindingResult
             , @RequestParam("file") MultipartFile file
-            , HttpServletRequest req, Model model){
+            , HttpServletRequest req , Model model){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("category", category);
+            model.addAttribute("page" , "category/add");
 
+            return "admin";
+        }
         if(file != null && !file.isEmpty()) {
             String uploadRootPath = req.getServletContext().getRealPath("resources/images");
             File f = new File(uploadRootPath);

@@ -26,7 +26,9 @@
                                     </div>
                                     <div class="mb-4">
                                         <label for="form-category/name" class="form-label">Name</label>
-                                        <form:input type="text" class="form-control" id="form-category/name"  path="cateName"/>
+                                        <form:input type="text" class="form-control" id="form-category/name"  path="cateName" />
+                                        <form:errors path="cateName" cssStyle="color: red"/>
+
                                     </div>
                                     <div class="mb-5">
                                         <h2 class="mb-0 fs-exact-18">Status</h2>

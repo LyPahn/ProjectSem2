@@ -24,32 +24,36 @@ public class HomeController {
     @GetMapping({"/","trang-chu"})
     public String index(Model model){
         model.addAttribute("categories" , categoryService.getAll());
-        model.addAttribute("products", productService.getAll());
+        model.addAttribute("products", productService.findbyStatus());
         model.addAttribute("brands", brandService.getAll());
         model.addAttribute("page" , "index");
         return "home";
     }
-    @GetMapping("gioi-thieu")
-    public String about(Model model) {
-        model.addAttribute("page", "about");
-        return "home";
-    }
 
-    @GetMapping("bai-viet")
-    public String blog(Model model) {
-        model.addAttribute("page", "blog");
-        return "home";
-    }
-
-    @GetMapping("lien-he")
-    public String contact(Model model) {
-        model.addAttribute("page","contact");
+    @GetMapping("shop")
+    public String shop(Model model){
+        model.addAttribute("categories" , categoryService.getAll());
+        model.addAttribute("products", productService.findbyStatus());
+        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("page" , "shop");
         return "home";
     }
 
     @GetMapping("dang-nhap")
     public String loginUser(Model model){
         model.addAttribute("page","login");
+        return "home";
+    }
+
+    @GetMapping("blog")
+    public String blog(Model model){
+        model.addAttribute("page","blog");
+        return "home";
+    }
+
+    @GetMapping("contact-us")
+    public String contactus(Model model){
+        model.addAttribute("page","contactus");
         return "home";
     }
 
@@ -100,7 +104,57 @@ public class HomeController {
         model.addAttribute("page" , "register");
         String password = Cipher.GenerateMD5(user.getPassword());
         user.setPassword(password);
+        user.setRole(false);
+        user.setStatus(false);
         userService.save(user);
         return "redirect:/dang-nhap";
+    }
+
+    @GetMapping("my-account/{id}")
+    public String editUser(@PathVariable int id, Model model) {
+        model.addAttribute("user", userService.getById(id));
+        model.addAttribute("resetpassword" , userService.getById(id));
+        model.addAttribute("page", "myaccount");
+        return "home";
+    }
+
+    @PostMapping("update")
+    public String update(Model model, @ModelAttribute User user , @RequestParam("file") MultipartFile file ,HttpServletRequest req) {
+        if(file != null && !file.isEmpty()) {
+            // nếu tải tệp mới
+            String UploadRootPath = req.getServletContext().getRealPath("images");
+            String imageUploadPath = UploadRootPath+"/"+file.getOriginalFilename();
+
+            try {
+                //Lưu ảnh tệp mới
+                File destination = new File(imageUploadPath);
+                file.transferTo(destination);
+                //Cập nhật đường dẫn ảnh mới vào category
+                user.setImage(file.getOriginalFilename());
+            } catch (Exception e) {
+                model.addAttribute("error",e.getMessage());
+                model.addAttribute("user", user);
+                model.addAttribute("page", "user/edit");
+                return "admin";
+            }
+
+        }else {
+            var userOld = userService.getById(user.getId());
+            user.setImage(userOld.getImage());
+        }
+        var dateOld = userService.getById(user.getId());
+        user.setCreated_at(dateOld.getCreated_at());
+        user.setRole(user.isRole());
+        user.setPassword(user.getPassword());
+        user.setStatus(false);
+        userService.update(user);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("resetpassword")
+    public String resetpassword(@ModelAttribute User resetpassword , HttpServletRequest req , Model model ) {
+        
+        return "";
     }
 }

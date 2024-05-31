@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <main>
     <!-- breadcrumb area start -->
@@ -30,14 +31,33 @@
                         <div class="sidebar-single">
                             <h5 class="sidebar-title">categories</h5>
                             <div class="sidebar-body">
-                                <ul class="shop-categories">
-                                    <li><a href="#">fashionware <span>(10)</span></a></li>
-                                    <li><a href="#">kitchenware <span>(5)</span></a></li>
-                                    <li><a href="#">electronics <span>(8)</span></a></li>
-                                    <li><a href="#">accessories <span>(4)</span></a></li>
-                                    <li><a href="#">shoe <span>(5)</span></a></li>
-                                    <li><a href="#">toys <span>(2)</span></a></li>
-                                </ul>
+                                <form id="filterFormCategory" onsubmit="return filterCategories()">
+                                    <ul class="checkbox-container categories-list">
+                                        <c:forEach var="c" items="${categories}">
+                                            <c:choose>
+                                                <c:when test="${c.id == categoryId}">
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
+                                                            <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
+                                                        </div>
+                                                    </li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
+                                                            <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
+                                                        </div>
+                                                    </li>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </ul>
+                                    <div class="range-slider d-flex align-items-center justify-content-between">
+                                        <button class="filter-btn">filter</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <!-- single sidebar end -->
@@ -66,38 +86,33 @@
                         <div class="sidebar-single">
                             <h5 class="sidebar-title">Brand</h5>
                             <div class="sidebar-body">
-                                <ul class="checkbox-container categories-list">
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                            <label class="custom-control-label" for="customCheck2">Studio (3)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                            <label class="custom-control-label" for="customCheck3">Hastech (4)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                            <label class="custom-control-label" for="customCheck4">Quickiin (15)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label" for="customCheck1">Graphic corner (10)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                            <label class="custom-control-label" for="customCheck5">devItems (12)</label>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <form id="filterFormBrand" onsubmit="return filterBrands()">
+                                    <ul class="checkbox-container categories-list">
+                                        <c:forEach var="b" items="${brands}">
+                                            <c:choose>
+                                                <c:when test="${b.id == brandId}">
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="cate${b.id}" checked value="${b.id}">
+                                                            <label class="custom-control-label" for="cate${b.id}">${b.brandName} (${b.productCount})</label>
+                                                        </div>
+                                                    </li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="cate${b.id}" checked value="${b.id}">
+                                                            <label class="custom-control-label" for="cate${b.id}">${b.brandName} (${b.productCount})</label>
+                                                        </div>
+                                                    </li>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </ul>
+                                    <div class="range-slider d-flex align-items-center justify-content-between">
+                                        <button class="filter-btn">filter</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <!-- single sidebar end -->
@@ -234,7 +249,7 @@
                                     <!-- product grid start -->
                                     <div class="product-item">
                                         <figure class="product-thumb">
-                                            <a href="product-details.html">
+                                            <a href="${contextPath}/chi-tiet/${p.id}">
                                                 <img class="" src="${contextPath}/resources/images/${p.image}" alt="product">
                                             </a>
                                             <div class="product-badge">
@@ -362,3 +377,43 @@
     </div>
     <!-- page main wrapper end -->
 </main>
+<script>
+    function filterCategories() {
+        var form = document.getElementById('filterFormCategory');
+        var checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+        var categoryIds = [];
+
+        checkboxes.forEach(function(checkbox) {
+            categoryIds.push(checkbox.value);
+        });
+
+        if (categoryIds.length > 0) {
+            var url = 'shop/categories/' + categoryIds.join(',');
+            window.location.href = url;
+        } else {
+            alert("Please select at least one category.");
+        }
+
+        return false; // Prevent form submission
+    }
+</script>
+<script>
+    function filterBrands() {
+        var form = document.getElementById('filterFormBrand');
+        var checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+        var bnandIds = [];
+
+        checkboxes.forEach(function(checkbox) {
+            bnandIds.push(checkbox.value);
+        });
+
+        if (bnandIds.length > 0) {
+            var url = 'shop/brands/' + bnandIds.join(',');
+            window.location.href = url;
+        } else {
+            alert("Please select at least one brand.");
+        }
+
+        return false; // Prevent form submission
+    }
+</script>

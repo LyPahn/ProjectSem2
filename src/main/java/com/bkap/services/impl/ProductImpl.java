@@ -38,4 +38,14 @@ public class ProductImpl implements ProductService {
     public void delete(Product product) {
         productRepository.delete(product);
     }
+
+    @Override
+    public List<Product> findbycreateDate() {
+        return productRepository.findTop8ByOrderByCreateDateDesc();
+    }
+
+    @Override
+    public List<Product> findbyStatus() {
+        return productRepository.findByStatusTrue();
+    }
 }
