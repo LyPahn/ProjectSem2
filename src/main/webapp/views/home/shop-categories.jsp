@@ -257,7 +257,7 @@
                                                     <span>new</span>
                                                 </div>
                                                 <div class="product-label discount">
-                                                    <span>${(p.price * 100) / p.priceOld}%</span>
+                                                    <span>${p.priceOld / p.price * 100}%</span>
                                                 </div>
                                             </div>
                                             <div class="button-group">
@@ -273,6 +273,20 @@
                                             <div class="product-identity">
                                                 <p class="manufacturer-name"><a href="product-details.html">${p.category.cateName}</a></p>
                                             </div>
+                                            <ul class="color-categories">
+                                                <li>
+                                                    <a class="c-lightblue" href="#" title="LightSteelblue"></a>
+                                                </li>
+                                                <li>
+                                                    <a class="c-darktan" href="#" title="Darktan"></a>
+                                                </li>
+                                                <li>
+                                                    <a class="c-grey" href="#" title="Grey"></a>
+                                                </li>
+                                                <li>
+                                                    <a class="c-brown" href="#" title="Brown"></a>
+                                                </li>
+                                            </ul>
                                             <h6 class="product-name">
                                                 <a href="product-details.html">${p.productName}</a>
                                             </h6>
@@ -394,7 +408,7 @@
         });
 
         if (bnandIds.length > 0) {
-            var url = 'shop-brands/' + bnandIds.join(',');
+            var url = bnandIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one brand.");
@@ -402,7 +416,4 @@
 
         return false; // Prevent form submission
     }
-</script>
-<script>
-
 </script>

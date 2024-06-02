@@ -48,4 +48,9 @@ public class ProductImpl implements ProductService {
     public List<Product> findbyStatus() {
         return productRepository.findByStatusTrue();
     }
+
+    @Override
+    public List<Product> findProductsByCategoryId(Integer categoryId) {
+        return productRepository.findProductsByCategoryId(categoryId);
+    }
 }
