@@ -28,29 +28,29 @@ public class HomeController {
 
     @GetMapping({"/","trang-chu"})
     public String index(Model model){
-        model.addAttribute("categories" , categoryService.getAll());
+        model.addAttribute("categories" , categoryService.findByStatusIsTrue());
         model.addAttribute("products", productService.findbyStatus());
-        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("brands", brandService.findByStatusIsTrue());
         model.addAttribute("page" , "index");
         return "home";
     }
 
     @GetMapping("shop")
     public String shop(Model model){
-        model.addAttribute("categories" , categoryService.getAll());
+        model.addAttribute("categories" , categoryService.findByStatusIsTrue());
         model.addAttribute("products", productService.findbyStatus());
-        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("brands", brandService.findByStatusIsTrue());
         model.addAttribute("page" , "shop");
         return "home";
     }
 
     @GetMapping("shop-categories/{categoryId}")
     public String shopcategories(Model model , @PathVariable int categoryId){
-        model.addAttribute("categories" , categoryService.getAll());
+        model.addAttribute("categories" , categoryService.findByStatusIsTrue());
         model.addAttribute("proCate", productService.findProductsByCategoryId(categoryId));
         model.addAttribute("products", productService.findbyStatus());
         model.addAttribute("brands", brandService.getAll());
-        model.addAttribute("page" , "shop");
+        model.addAttribute("page" , "shop-categories");
         return "home";
     }
 
@@ -149,9 +149,10 @@ public class HomeController {
                 user.setImage(file.getOriginalFilename());
             } catch (Exception e) {
                 model.addAttribute("error",e.getMessage());
+                System.out.println(e.getMessage());
                 model.addAttribute("user", user);
-                model.addAttribute("page", "user/edit");
-                return "admin";
+                model.addAttribute("page", "myaccount");
+                return "home";
             }
 
         }else {

@@ -46,4 +46,8 @@ public class CategoryImpl implements CategoryService {
     }
 
 
+    @Override
+    public List<Category> findByStatusIsTrue() {
+        return categoryRepository.findByStatusIsTrue();
+    }
 }

@@ -74,6 +74,7 @@
                                 <div class="row g-4">
                                     <div class="col"><label for="form-product/price" class="form-label">Price</label>
                                         <form:input type="number" class="form-control" id="form-product/price" path="price"/>
+                                        <form:errors path="price"/>
                                     </div>
                                     <div class="col"><label for="form-product/old-price" class="form-label">Old price</label>
                                         <form:input type="number" class="form-control" id="form-product/old-price" path="priceOld"/>

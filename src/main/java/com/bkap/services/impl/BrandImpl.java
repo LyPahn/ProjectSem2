@@ -44,4 +44,9 @@ public class BrandImpl implements BrandService {
     public void delete(Brand brand) {
         brandRepository.delete(brand);
     }
+
+    @Override
+    public List<Brand> findByStatusIsTrue() {
+        return brandRepository.findByStatusIsTrue();
+    }
 }

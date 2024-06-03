@@ -105,25 +105,24 @@
                                     <ul>
                                         <li class="active"><a href="${contextPath}/">Home</a>
                                         </li>
-                                        <li class="position-static"><a href="#">Category<i
+                                        <li class="position-static"><a href="${contextpath}/shop">Category<i
                                                 class="fa fa-angle-down"></i></a>
                                             <ul class="megamenu dropdown">
                                                 <li class="mega-title"><span>Category</span>
+                                                    <c:forEach var="c" items="${categories}">
                                                     <ul>
-                                                        <li><a href="shop.html">Vòng tay</a></li>
-                                                        <li><a href="shop-grid-right-sidebar.html">Mặt dây chuyền</a></li>
-                                                        <li><a href="shop-list-left-sidebar.html">Nhẫn</a></li>
-                                                        <li><a href="shop-list-right-sidebar.html">Dây chuyền</a></li>
+                                                        <li><a href="${contextPath}/shop-categories/${c.id} ">${c.cateName}</a></li>
                                                     </ul>
+                                                    </c:forEach>
                                                 </li>
-                                                <li class="mega-title"><span>Category</span>
-                                                    <ul>
-                                                        <li><a href="product-details.html">Vàng</a></li>
-                                                        <li><a href="product-details-affiliate.html">Bạc</a></li>
-                                                        <li><a href="product-details-variable.html">Đá quý</a></li>
-                                                        <li><a href="privacy-policy.html">Kim cương</a></li>
-                                                    </ul>
-                                                </li>
+<%--                                                <li class="mega-title"><span>Category</span>--%>
+<%--                                                    <ul>--%>
+<%--                                                        <li><a href="product-details.html">Vàng</a></li>--%>
+<%--                                                        <li><a href="product-details-affiliate.html">Bạc</a></li>--%>
+<%--                                                        <li><a href="product-details-variable.html">Đá quý</a></li>--%>
+<%--                                                        <li><a href="privacy-policy.html">Kim cương</a></li>--%>
+<%--                                                    </ul>--%>
+<%--                                                </li>--%>
                                                 <li class="megamenu-banners d-none d-lg-block">
                                                     <a href="product-details.html">
                                                         <img src="${contextPath}/resources/home/assets/img/banner/img2-static-menu.jpg" alt="">
@@ -131,7 +130,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a href="${contextPath}/shop">shop</a>
+                                        <li><a href="">shop</a>
                                         </li>
                                         <li><a href="${contextPath}/blog">Blog</a>
                                         </li>
@@ -166,10 +165,10 @@
                                                     <i class="pe-7s-user"></i>
                                                 </a>
                                                 <ul class="dropdown-list">
-                                                    <li>${sessionScope.fullName}</li>
-                                                    <li><a href="my-account.html">my account</a></li>
-                                                    <li><a href="${contextPath}/logout">Logout</a></li>
+                                                    <li>${sessionScope.fullName}</li><br>
                                                     <li><a href="${contextPath}/my-account/${sessionScope.id}" >my account</a></li>
+                                                    <li><a href="${contextPath}/logout">Logout</a></li>
+
                                                 </ul>
                                             </li>
                                         </c:when>

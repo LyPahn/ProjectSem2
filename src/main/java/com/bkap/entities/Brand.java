@@ -25,7 +25,6 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "brandName", columnDefinition = "NVARCHAR(50)")
-    @UniqueElements(message = "Tên nhãn hàng đã tồn tại")
     @NotEmpty(message = "Tên nhãn hàng không được để trống")
     private String brandName;
     @Column(name = "image")

@@ -35,7 +35,7 @@
                                     <ul class="checkbox-container categories-list">
                                         <c:forEach var="c" items="${categories}">
                                             <c:choose>
-                                                <c:when test="${c.id == cateid}">
+                                                <c:when test="${c.id == cateId}">
                                                     <li>
                                                         <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
@@ -372,7 +372,7 @@
         });
 
         if (categoryIds.length > 0) {
-            var url = 'shop-categories/' + categoryIds.join(',');
+            var url = 'shop-categories/' + categoryIds.join('    ,');
             window.location.href = url;
         } else {
             alert("Please select at least one category.");
