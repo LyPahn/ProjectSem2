@@ -186,7 +186,7 @@
                                         </c:otherwise>
                                     </c:choose>
                                     <li>
-                                        <a href="wishlist.html">
+                                        <a href="${contextPath}/wishlist">
                                             <i class="pe-7s-like"></i>
                                             <div class="notification">0</div>
                                         </a>

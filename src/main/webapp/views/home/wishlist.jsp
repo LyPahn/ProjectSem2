@@ -42,12 +42,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach>
+                                <c:forEach var="w" items="${wishlists}">
                                     <tr>
                                         <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/img/product/product-5.jpg" alt="Product" /></a></td>
-                                        <td class="pro-title"><a href="#">Diamond Exclusive Ornament</a></td>
-                                        <td class="pro-price"><span>$295.00</span></td>
-                                        <td class="pro-quantity"><span class="text-success">In Stock</span></td>
+                                        <td class="pro-title"><a href="#">${wishlist.product.productName}</a></td>
+                                        <td class="pro-price"><span>${wishlist.product.price}</span></td>
+                                        <td class="pro-quantity"><span class="text-success">${wishlist.product.status}</span></td>
                                         <td class="pro-subtotal"><a href="cart.html" class="btn btn-sqr">Add to
                                             Cart</a></td>
                                         <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>

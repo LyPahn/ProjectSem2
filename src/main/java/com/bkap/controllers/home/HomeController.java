@@ -1,6 +1,8 @@
 package com.bkap.controllers.home;
 
 import com.bkap.entities.User;
+import com.bkap.entities.Wishlist;
+import com.bkap.repository.WishlistRepository;
 import com.bkap.services.*;
 import com.bkap.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +23,9 @@ public class HomeController {
     private final ProductService productService;
     private final BrandService brandService;
     private final UserService userService;
+    private final WishlistRepository wishlistRepository;
+    private final WishlistService wishlistService;
+
     @GetMapping({"/","trang-chu"})
     public String index(Model model){
         model.addAttribute("categories" , categoryService.getAll());
@@ -97,6 +102,7 @@ public class HomeController {
     @GetMapping("chi-tiet/{id}")
     public String productDetail(Model model , @PathVariable("id") String id){
         model.addAttribute("product" , productService.getById(id));
+        model.addAttribute("wishlist" , new Wishlist());
         model.addAttribute("page", "detail");
         return "home";
     }
@@ -166,5 +172,19 @@ public class HomeController {
     public String resetpassword(@ModelAttribute User resetpassword , HttpServletRequest req , Model model ) {
         
         return "";
+    }
+
+    @GetMapping("wishlist")
+    public String wishlist(Model model){
+        model.addAttribute("wishlist", wishlistService.getAll());
+        model.addAttribute("page" , "wishlist");
+        return "home";
+    }
+
+    @PostMapping("addwishlist")
+    public String addwishlist(Model model, @ModelAttribute Wishlist wishlist , HttpServletRequest req){
+        model.addAttribute("wishlist", wishlist);
+        wishlistRepository.save(wishlist);
+        return "redirect:/wishlist";
     }
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <main>
     <!-- breadcrumb area start -->
     <div class="breadcrumb-area">
@@ -92,8 +94,11 @@
                                     <div class="useful-links">
                                         <a href="#" data-bs-toggle="tooltip" title="Compare"><i
                                                 class="pe-7s-refresh-2"></i>compare</a>
-                                        <a href="#" data-bs-toggle="tooltip" title="Wishlist"><i
-                                                class="pe-7s-like"></i>wishlist</a>
+                                        <form:form method="post" action="${contextPath}/addwishlist" modelAttribute="wishlist">
+                                            <input:hidden path="productId" value="${product.id}" />
+                                            <input:hidden path="userId" value="${sessionScope.id}" />
+                                            <button> <i class="pe-7s-like"></i>wishlist</button>
+                                        </form:form>
                                     </div>
                                     <div class="like-icon">
                                         <a class="facebook" href="#"><i class="fa fa-facebook"></i>like</a>
