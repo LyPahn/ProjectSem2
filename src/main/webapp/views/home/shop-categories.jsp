@@ -31,7 +31,7 @@
                         <div class="sidebar-single">
                             <h5 class="sidebar-title">categories</h5>
                             <div class="sidebar-body">
-                                <form id="filterFormCategory" onsubmit="return filterCategories()">
+                                <form id="filterFormCategory" onsubmit="return filterCategories()" class="d-flex align-items-center justify-content-between">
                                     <ul class="checkbox-container categories-list">
                                         <c:forEach var="c" items="${categories}">
                                             <c:choose>
@@ -54,9 +54,7 @@
                                             </c:choose>
                                         </c:forEach>
                                     </ul>
-                                    <div class="range-slider d-flex align-items-center justify-content-between">
-                                        <button class="filter-btn" type="submit">filter</button>
-                                    </div>
+                                    <button class="filter-btn" type="submit">filter</button>
                                 </form>
                             </div>
                         </div>
@@ -86,7 +84,7 @@
                         <div class="sidebar-single">
                             <h5 class="sidebar-title">Brand</h5>
                             <div class="sidebar-body">
-                                <form id="filterFormBrand" onsubmit="return filterBrands()">
+                                <form id="filterFormBrand" onsubmit="return filterBrands()" class="d-flex align-items-center justify-content-between">
                                     <ul class="checkbox-container categories-list">
                                         <c:forEach var="b" items="${brands}">
                                             <c:choose>
@@ -195,7 +193,7 @@
                         <div class="sidebar-banner">
                             <div class="img-container">
                                 <a href="#">
-                                    <img src="assets/img/banner/sidebar-banner.jpg" alt="">
+                                    <img src="${contextPath}/resources/home/assets/img/banner/sidebar-banner.jpg" alt="">
                                 </a>
                             </div>
                         </div>
@@ -257,7 +255,7 @@
                                                     <span>new</span>
                                                 </div>
                                                 <div class="product-label discount">
-                                                    <span>${p.priceOld / p.price * 100}%</span>
+                                                    <span>${(p.price * 100) / p.priceOld}%</span>
                                                 </div>
                                             </div>
                                             <div class="button-group">
@@ -273,20 +271,6 @@
                                             <div class="product-identity">
                                                 <p class="manufacturer-name"><a href="product-details.html">${p.category.cateName}</a></p>
                                             </div>
-                                            <ul class="color-categories">
-                                                <li>
-                                                    <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                                </li>
-                                                <li>
-                                                    <a class="c-darktan" href="#" title="Darktan"></a>
-                                                </li>
-                                                <li>
-                                                    <a class="c-grey" href="#" title="Grey"></a>
-                                                </li>
-                                                <li>
-                                                    <a class="c-brown" href="#" title="Brown"></a>
-                                                </li>
-                                            </ul>
                                             <h6 class="product-name">
                                                 <a href="product-details.html">${p.productName}</a>
                                             </h6>
@@ -408,7 +392,7 @@
         });
 
         if (bnandIds.length > 0) {
-            var url = bnandIds.join(',');
+            var url = 'shop-brands/' + bnandIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one brand.");
