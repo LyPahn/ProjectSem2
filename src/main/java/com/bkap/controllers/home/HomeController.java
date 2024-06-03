@@ -35,8 +35,8 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("shop")
-    public String shop(Model model){
+    @GetMapping("shop/{categoryId}")
+    public String shop(Model model ,@PathVariable int categoryId){
         model.addAttribute("categories" , categoryService.findByStatusIsTrue());
         model.addAttribute("products", productService.findbyStatus());
         model.addAttribute("brands", brandService.findByStatusIsTrue());
@@ -44,13 +44,14 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("shop-categories/{categoryId}")
-    public String shopcategories(Model model , @PathVariable int categoryId){
+    @GetMapping("shop?cate={id}")
+    public String shopcategories(Model model , @PathVariable int id){
         model.addAttribute("categories" , categoryService.findByStatusIsTrue());
-        model.addAttribute("proCate", productService.findProductsByCategoryId(categoryId));
+        model.addAttribute("proCate", productService.findProductsByCategoryId(id));
         model.addAttribute("products", productService.findbyStatus());
         model.addAttribute("brands", brandService.getAll());
-        model.addAttribute("page" , "shop-categories");
+        model.addAttribute("page" , "shop");
+        System.out.println(productService.findProductsByCategoryId(id));
         return "home";
     }
 
