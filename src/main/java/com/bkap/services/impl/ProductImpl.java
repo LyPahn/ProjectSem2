@@ -7,6 +7,10 @@ import com.bkap.repository.ProductRepository;
 import com.bkap.services.BrandService;
 import com.bkap.services.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,5 +66,17 @@ public class ProductImpl implements ProductService {
     @Override
     public List<Product> findProductsByBrandId(Integer brandId) {
         return productRepository.findProductsByBrandId(brandId);
+    }
+
+    @Override
+    public Page<Product> findAll(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Product> findAll(int page, int size, Sort sort) {
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return productRepository.findAll(pageable);
     }
 }

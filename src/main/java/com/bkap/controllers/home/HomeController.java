@@ -1,5 +1,6 @@
 package com.bkap.controllers.home;
 
+import com.bkap.entities.Product;
 import com.bkap.entities.User;
 import com.bkap.entities.Wishlist;
 import com.bkap.repository.WishlistRepository;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.eclipse.jdt.internal.compiler.util.Sorting;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,24 +40,32 @@ public class HomeController {
     }
 
     @GetMapping("shop")
-    public String shop(Model model , @RequestParam(value = "0",required = false) int sort){
-//        switch (sort){
-//            case 1:
-//                Sort sorting = Sort.by("productName").ascending();
-//                break;
-//            case 2:
-//                Sort sorting = Sort.by("productName").descending();
-//                break;
-//            case 3:
-//                model.addAttribute("products" , productService.sortByPrice());
-//                break;
-//            case 4:
-//                model.addAttribute("products" , productService.sortByPriceDesc());
-//                break;
-//        }
+    public String shop(Model model ,
+                       @RequestParam(defaultValue = "0") int page,
+                       @RequestParam(defaultValue = "12") int size,
+                       @RequestParam(defaultValue = "default",required = false) String sort){
+        Sort sorting = Sort.unsorted();
+        switch (sort){
+            case "name_asc":
+                sorting = Sort.by("productName").ascending();
+                break;
+            case "name_desc":
+                sorting = Sort.by("productName").descending();
+                break;
+            case "price_asc":
+                sorting = Sort.by("price").ascending();;
+                break;
+            case "price_desc":
+                sorting = Sort.by("price").descending();;
+                break;
+        }
+        Page<Product> productPage = productService.findAll(page, size, sorting);
         model.addAttribute("categories" , categoryService.getAll());
-        model.addAttribute("products", productService.findbyStatus());
-        model.addAttribute("brands", brandService.getAll()  );
+        model.addAttribute("products", productPage);
+        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("currentPage" , page);
+        model.addAttribute("pageSize" , size);
+        model.addAttribute("sort" , sort);
         model.addAttribute("page" , "shop");
         return "home";
     }

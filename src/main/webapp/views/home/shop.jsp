@@ -222,17 +222,15 @@
                                     <div class="top-bar-right">
                                         <div class="product-short">
                                             <p>Sort By : </p>
-                                            <form:form action="${contextPath}/shop" method="get" >
-                                                <select class="nice-select" name="case">
-                                                    <option value="trending">Relevance</option>
-                                                    <option value="1">Name (A - Z)</option>
-                                                    <option value="2">Name (Z - A)</option>
-                                                    <option value="3">Price (Low &gt; High)</option>
-                                                    <option value="4">Rating (Lowest)</option>
-                                                    <option value="">Model (A - Z)</option>
-                                                    <option value="price-asc">Model (Z - A)</option>
+                                            <form id="submitForm" action="${contextPath}/shop" method="get" onchange="submitSortForm()">
+                                                <select class="nice-select" name="sort">
+                                                    <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Relevance</option>
+                                                    <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Name (A - Z)</option>
+                                                    <option value="name_desc" <c:if test="${sort == 'name_desc'}">selected</c:if>>Name (Z - A)</option>
+                                                    <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Price (Low &gt; High)</option>
+                                                    <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Price (High > Low)</option>
                                                 </select>
-                                            </form:form>
+                                            </form>
 
                                         </div>
                                     </div>
@@ -244,7 +242,7 @@
                         <!-- product item list wrapper start -->
                         <div class="shop-product-wrap grid-view row mbn-30">
                             <c:if test="${procate == null}">
-                                <c:forEach var="p" items="${products}">
+                                <c:forEach var="p" items="${products.content}">
                                     <!-- product single item start -->
                                     <div class="col-md-4 col-sm-6">
                                         <!-- product grid start -->
@@ -403,5 +401,8 @@
         }
 
         return false; // Prevent form submission
+    }
+    function submitSortForm(){
+        document.getElementById('submitForm').submit();
     }
 </script>
