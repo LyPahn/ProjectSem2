@@ -1,8 +1,10 @@
 package com.bkap.services.impl;
 
 import com.bkap.entities.Product;
+import com.bkap.repository.BrandRepository;
 import com.bkap.repository.ImagesRepository;
 import com.bkap.repository.ProductRepository;
+import com.bkap.services.BrandService;
 import com.bkap.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ import java.util.List;
 public class ProductImpl implements ProductService {
     private final ProductRepository productRepository;
     private final ImagesRepository imagesRepository;
+    private final BrandService brandService;
+    private final BrandRepository brandRepository;
+
     @Override
     public List<Product> getAll() {
         return productRepository.findAll();
@@ -52,5 +57,10 @@ public class ProductImpl implements ProductService {
     @Override
     public List<Product> findProductsByCategoryId(Integer categoryId) {
         return productRepository.findProductsByCategoryId(categoryId);
+    }
+
+    @Override
+    public List<Product> findProductsByBrandId(Integer brandId) {
+        return productRepository.findProductsByBrandId(brandId);
     }
 }

@@ -54,6 +54,16 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("shop-brands/{id}")
+    public String shopbrands(Model model , @PathVariable int id){
+        model.addAttribute("categories" , categoryService.getAll());
+        model.addAttribute("proBrand", productService.findProductsByBrandId(id));
+        model.addAttribute("products", productService.findbyStatus());
+        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("page" , "shop-brands");
+        return "home";
+    }
+
     @GetMapping("dang-nhap")
     public String loginUser(Model model){
         model.addAttribute("page","login");

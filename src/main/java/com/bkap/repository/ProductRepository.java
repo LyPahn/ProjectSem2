@@ -13,6 +13,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
     Integer countProductByCategoryIdAndStatusIsTrue(Integer categoryId);
     Integer countProductByBrandIdAndStatusIsTrue(Integer brandId);
     List<Product> findProductsByCategoryId(Integer categoryId);
+    List<Product> findProductsByBrandId(Integer brandId);
 //    public List<Product> sortByPriceAsc();
 //    public List<Product> sortByPriceDesc();
 //    public List<Product> sortByName();

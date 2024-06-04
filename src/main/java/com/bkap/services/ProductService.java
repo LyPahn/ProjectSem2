@@ -9,4 +9,5 @@ public interface ProductService extends GenericService<Product , String> {
     public List<Product> findbycreateDate();
     public List<Product> findbyStatus();
     List<Product> findProductsByCategoryId(Integer categoryId);
+    List<Product> findProductsByBrandId(Integer categoryId);
 }
