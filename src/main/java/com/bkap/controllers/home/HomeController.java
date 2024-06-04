@@ -201,10 +201,9 @@ public class HomeController {
         return "";
     }
 
-    @GetMapping("wishlist/{userId}")
-    public String wishlist(Model model, @PathVariable int userId){
-        model.addAttribute("wishlist", wishlistService.getAll());
-        System.out.println(wishlistService.getAll());
+    @GetMapping("wishlist/{id}")
+    public String wishlist(Model model , @PathVariable int id){
+        model.addAttribute("wishlist", wishlistService.findWishlistsByUserId(id));
         model.addAttribute("page" , "wishlist");
         return "home";
     }

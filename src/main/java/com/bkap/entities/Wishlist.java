@@ -28,5 +28,5 @@ public class Wishlist {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="productId", referencedColumnName = "id", insertable = false, updatable = false)
-    private Product product_wishlist;
+    private Product product;
 }

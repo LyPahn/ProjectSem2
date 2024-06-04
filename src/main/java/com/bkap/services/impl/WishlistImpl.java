@@ -37,4 +37,9 @@ public class WishlistImpl implements WishlistService {
     public void delete(Wishlist wishlist) {
 
     }
+
+    @Override
+    public List<Wishlist> findWishlistsByUserId(Integer userId) {
+        return wishlistRepository.findWishlistsByUserId(userId);
+    }
 }

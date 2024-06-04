@@ -7,5 +7,5 @@ import java.util.List;
 
 @Service
 public interface WishlistService extends GenericService<Wishlist , Integer> {
-    public List<Wishlist> findByUser(Integer user);
+    List<Wishlist> findWishlistsByUserId(Integer userId);
 }
