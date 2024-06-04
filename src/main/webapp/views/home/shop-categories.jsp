@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <main>
     <!-- breadcrumb area start -->
     <div class="breadcrumb-area">
@@ -31,7 +32,7 @@
                         <div class="sidebar-single">
                             <h5 class="sidebar-title">categories</h5>
                             <div class="sidebar-body">
-                                <form id="filterFormCategory" onsubmit="return filterCategories()" class="d-flex align-items-center justify-content-between">
+                                <form:form id="filterFormCategory" onsubmit="return filterCategories()" class="d-flex align-items-center justify-content-between">
                                     <ul class="checkbox-container categories-list">
                                         <c:forEach var="c" items="${categories}">
                                             <c:choose>
@@ -55,7 +56,7 @@
                                         </c:forEach>
                                     </ul>
                                     <button class="filter-btn" type="submit">filter</button>
-                                </form>
+                                </form:form>
                             </div>
                         </div>
                         <!-- single sidebar end -->
@@ -241,7 +242,7 @@
 
                         <!-- product item list wrapper start -->
                         <div class="shop-product-wrap grid-view row mbn-30">
-                            <c:forEach var="p" items="${products}">
+                            <c:forEach var="p" items="${proCate}">
                                 <!-- product single item start -->
                                 <div class="col-md-4 col-sm-6">
                                     <!-- product grid start -->

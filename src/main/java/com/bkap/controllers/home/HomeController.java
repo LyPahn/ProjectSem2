@@ -44,14 +44,13 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("shop?cate={id}")
+    @GetMapping("shop-categories/{id}")
     public String shopcategories(Model model , @PathVariable int id){
-        model.addAttribute("categories" , categoryService.findByStatusIsTrue());
+        model.addAttribute("categories" , categoryService.getAll());
         model.addAttribute("proCate", productService.findProductsByCategoryId(id));
         model.addAttribute("products", productService.findbyStatus());
         model.addAttribute("brands", brandService.getAll());
-        model.addAttribute("page" , "shop");
-        System.out.println(productService.findProductsByCategoryId(id));
+        model.addAttribute("page" , "shop-categories");
         return "home";
     }
 
