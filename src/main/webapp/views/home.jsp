@@ -185,7 +185,7 @@
                                         </c:otherwise>
                                     </c:choose>
                                     <li>
-                                        <a href="${contextPath}/wishlist">
+                                        <a href="${contextPath}/wishlist/${sessionScope.id}">
                                             <i class="pe-7s-like"></i>
                                             <div class="notification">0</div>
                                         </a>

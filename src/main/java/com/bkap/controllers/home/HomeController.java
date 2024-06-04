@@ -8,6 +8,8 @@ import com.bkap.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.eclipse.jdt.internal.compiler.util.Sorting;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +38,21 @@ public class HomeController {
     }
 
     @GetMapping("shop")
-    public String shop(Model model){
+    public String shop(Model model , @RequestParam(value = "0",required = false) int sort){
+//        switch (sort){
+//            case 1:
+//                Sort sorting = Sort.by("productName").ascending();
+//                break;
+//            case 2:
+//                Sort sorting = Sort.by("productName").descending();
+//                break;
+//            case 3:
+//                model.addAttribute("products" , productService.sortByPrice());
+//                break;
+//            case 4:
+//                model.addAttribute("products" , productService.sortByPriceDesc());
+//                break;
+//        }
         model.addAttribute("categories" , categoryService.getAll());
         model.addAttribute("products", productService.findbyStatus());
         model.addAttribute("brands", brandService.getAll()  );
@@ -185,9 +201,10 @@ public class HomeController {
         return "";
     }
 
-    @GetMapping("wishlist")
-    public String wishlist(Model model){
+    @GetMapping("wishlist/{userId}")
+    public String wishlist(Model model, @PathVariable int userId){
         model.addAttribute("wishlist", wishlistService.getAll());
+        System.out.println(wishlistService.getAll());
         model.addAttribute("page" , "wishlist");
         return "home";
     }
@@ -196,6 +213,6 @@ public class HomeController {
     public String addwishlist(Model model, @ModelAttribute Wishlist wishlist , HttpServletRequest req){
         model.addAttribute("wishlist", wishlist);
         wishlistRepository.save(wishlist);
-        return "redirect:/wishlist";
+        return "redirect:/";
     }
 }

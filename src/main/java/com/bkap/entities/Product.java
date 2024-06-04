@@ -58,6 +58,11 @@ public class Product {
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private List<Images> images;
 
-    @OneToMany(mappedBy = "product_wishlist", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    private List<Wishlist> wishlists;
+//    @OneToMany(mappedBy = "product_wishlist", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+//    private List<Wishlist> wishlists;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "productId" , referencedColumnName = "id")
+    private Wishlist wishlist;
+
+
 }

@@ -222,15 +222,18 @@
                                     <div class="top-bar-right">
                                         <div class="product-short">
                                             <p>Sort By : </p>
-                                            <select class="nice-select" name="sortby">
-                                                <option value="trending">Relevance</option>
-                                                <option value="sales">Name (A - Z)</option>
-                                                <option value="sales">Name (Z - A)</option>
-                                                <option value="rating">Price (Low &gt; High)</option>
-                                                <option value="date">Rating (Lowest)</option>
-                                                <option value="price-asc">Model (A - Z)</option>
-                                                <option value="price-asc">Model (Z - A)</option>
-                                            </select>
+                                            <form:form action="${contextPath}/shop" method="get" >
+                                                <select class="nice-select" name="case">
+                                                    <option value="trending">Relevance</option>
+                                                    <option value="1">Name (A - Z)</option>
+                                                    <option value="2">Name (Z - A)</option>
+                                                    <option value="3">Price (Low &gt; High)</option>
+                                                    <option value="4">Rating (Lowest)</option>
+                                                    <option value="">Model (A - Z)</option>
+                                                    <option value="price-asc">Model (Z - A)</option>
+                                                </select>
+                                            </form:form>
+
                                         </div>
                                     </div>
                                 </div>
