@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <main>
     <!-- breadcrumb area start -->
     <div class="breadcrumb-area">
@@ -31,19 +32,31 @@
                         <div class="sidebar-single">
                             <h5 class="sidebar-title">categories</h5>
                             <div class="sidebar-body">
-                                <form method="get" action="${contextPath}/shop" class="d-flex align-items-center justify-content-between">
-                                    <ul class="checkbox-container categories-list">
-                                        <c:forEach var="c" items="${categories}">
-                                            <li>
-                                                <div class="custom-control ">
-                                                    <input type="radio" class="custom-control-input" id="cate${c.id}" name="cate" value="${c.id}">
-                                                    <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
-                                                </div>
-                                            </li>
-                                        </c:forEach>
-                                    </ul>
-                                    <button class="filter-btn" type="submit">filter</button>
-                                </form>
+                                <form:form id="filterFormCategory" onsubmit="return filterCategories()" class="d-flex align-items-center justify-content-between">
+                                        <ul class="checkbox-container categories-list">
+                                            <c:forEach var="c" items="${categories}">
+                                                <c:choose>
+                                                    <c:when test="${c.id == cateid}">
+                                                        <li>
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
+                                                                <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
+                                                            </div>
+                                                        </li>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <li>
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="cate${c.id}" value="${c.id}">
+                                                                <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
+                                                            </div>
+                                                        </li>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+                                        </ul>
+                                        <button class="filter-btn" type="submit">filter</button>
+                                </form:form>
                             </div>
                         </div>
                         <!-- single sidebar end -->
@@ -460,7 +473,7 @@
         });
 
         if (categoryIds.length > 0) {
-            var url = 'shop-categories/' + categoryIds.join('    ,');
+            var url = 'shop-categories/' + categoryIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one category.");

@@ -35,11 +35,11 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("shop/{categoryId}")
-    public String shop(Model model ,@PathVariable int categoryId){
-        model.addAttribute("categories" , categoryService.findByStatusIsTrue());
+    @GetMapping("shop")
+    public String shop(Model model){
+        model.addAttribute("categories" , categoryService.getAll());
         model.addAttribute("products", productService.findbyStatus());
-        model.addAttribute("brands", brandService.findByStatusIsTrue());
+        model.addAttribute("brands", brandService.getAll()  );
         model.addAttribute("page" , "shop");
         return "home";
     }
