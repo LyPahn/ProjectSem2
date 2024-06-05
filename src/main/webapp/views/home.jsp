@@ -187,7 +187,7 @@
                                     <li>
                                         <a href="${contextPath}/wishlist/${sessionScope.id}">
                                             <i class="pe-7s-like"></i>
-                                            <div class="notification">0</div>
+                                            <div class="notification">${sessionScope.countwishlist}</div>
                                         </a>
                                     </li>
                                     <li>

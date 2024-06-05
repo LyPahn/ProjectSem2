@@ -11,7 +11,7 @@ public interface ProductService extends GenericService<Product , String> {
     public List<Product> findbycreateDate();
     public List<Product> findbyStatus();
     List<Product> findProductsByCategoryId(Integer categoryId);
-    List<Product> findProductsByBrandId(Integer categoryId);
+    List<Product> findProductsByBrandId(Integer brandId);
     Page<Product> findAll(int page, int size);
     Page<Product> findAll(int page, int size, Sort sort);
 }

@@ -3,6 +3,7 @@ package com.bkap.controllers.home;
 import com.bkap.entities.Product;
 import com.bkap.entities.User;
 import com.bkap.entities.Wishlist;
+import com.bkap.repository.UserRepository;
 import com.bkap.repository.WishlistRepository;
 import com.bkap.services.*;
 import com.bkap.util.Cipher;
@@ -29,6 +30,7 @@ public class HomeController {
     private final UserService userService;
     private final WishlistRepository wishlistRepository;
     private final WishlistService wishlistService;
+    private final UserRepository userRepository;
 
     @GetMapping({"/","trang-chu"})
     public String index(Model model){
@@ -116,14 +118,14 @@ public class HomeController {
             model.addAttribute("msg" , "Thông tin đăng nhập sai");
             return "login";
         }
-
+        var data = userService.getUser(username).getId();
         HttpSession session = req.getSession();
         session.setMaxInactiveInterval(3600);
         session.setAttribute("id",user.getId());
         session.setAttribute("picture",user.getImage());
         session.setAttribute("fullName", user.getLastName() + "" + user.getFirstName());
         session.setAttribute("role" , user.isRole());
-
+        session.setAttribute("countwishlist" , wishlistService.findWishlistsByUserId(data).size());
         return "redirect:/";
 
     }

@@ -65,8 +65,8 @@
                                         </div>
                                     </div>
                                     <div class="price-box">
-                                        <span class="price-regular">$${p.price}</span>
-                                        <span class="price-old"><del>$${p.priceOld}</del></span>
+                                        <span class="price-regular">$${product.price}</span>
+                                        <span class="price-old"><del>$${product.priceOld}</del></span>
                                     </div>
                                     <div class="availability">
                                         <i class="fa fa-check-circle"></i>

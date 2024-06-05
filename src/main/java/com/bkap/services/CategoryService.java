@@ -8,5 +8,4 @@ import java.util.List;
 @Service
 public interface CategoryService extends GenericService<Category , Integer> {
     public List<Category> findByStatusIsTrue();
-
 }
