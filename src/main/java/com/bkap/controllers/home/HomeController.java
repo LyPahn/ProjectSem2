@@ -212,8 +212,9 @@ public class HomeController {
     }
 
     @GetMapping("wishlist/{id}")
-    public String wishlist(Model model , @PathVariable int id){
-        model.addAttribute("wishlist", wishlistService.findWishlistsByUserId(id));
+    public String wishlist(Model model,@PathVariable int id){
+        model.addAttribute("products", productService.getAll());
+        model.addAttribute("wishlist" , wishlistService.findWishlistsByUserId(id));
         model.addAttribute("page" , "wishlist");
         return "home";
     }
@@ -224,4 +225,11 @@ public class HomeController {
         wishlistRepository.save(wishlist);
         return "redirect:/";
     }
+
+    @GetMapping("delete-wishlist/{id}")
+    public String deleteWishlist(Model model , @PathVariable int id){
+        wishlistService.delete(wishlistService.getById(id));
+        return "redirect:/";
+    }
+
 }

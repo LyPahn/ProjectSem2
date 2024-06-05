@@ -20,7 +20,7 @@ public class WishlistImpl implements WishlistService {
 
     @Override
     public Wishlist getById(Integer id) {
-        return null;
+        return wishlistRepository.findById(id).orElseThrow(()-> new RuntimeException("Wishlist not found"));
     }
 
     @Override
@@ -35,7 +35,7 @@ public class WishlistImpl implements WishlistService {
 
     @Override
     public void delete(Wishlist wishlist) {
-
+        wishlistRepository.delete(wishlist);
     }
 
     @Override
