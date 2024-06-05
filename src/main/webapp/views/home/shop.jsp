@@ -241,7 +241,6 @@
 
                         <!-- product item list wrapper start -->
                         <div class="shop-product-wrap grid-view row mbn-30">
-                            <c:if test="${procate == null}">
                                 <c:forEach var="p" items="${products.content}">
                                     <!-- product single item start -->
                                     <div class="col-md-4 col-sm-6">
@@ -340,7 +339,6 @@
                                     </div>
                                     <!-- product single item start -->
                                 </c:forEach>
-                            </c:if>
                         </div>
                         <!-- product item list wrapper end -->
 

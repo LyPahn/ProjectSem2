@@ -40,6 +40,6 @@ public class WishlistImpl implements WishlistService {
 
     @Override
     public List<Wishlist> findWishlistsByUserId(Integer userId) {
-        return wishlistRepository.findWishlistsByUserId(userId);
+        return wishlistRepository.findWishlistByUserId(userId);
     }
 }
