@@ -24,4 +24,6 @@ public class Cart {
     @OneToMany(mappedBy="cart")
     private List<Cart_item> items;
 
+
+
 }

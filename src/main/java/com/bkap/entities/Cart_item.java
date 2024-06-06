@@ -17,6 +17,7 @@ public class Cart_item {
     private int cartId;
     private int quantity;
     private String productId;
+    private int size;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="productId", referencedColumnName = "id", insertable = false, updatable = false)

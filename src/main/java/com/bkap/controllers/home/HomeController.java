@@ -1,8 +1,7 @@
 package com.bkap.controllers.home;
 
-import com.bkap.entities.Product;
-import com.bkap.entities.User;
-import com.bkap.entities.Wishlist;
+import com.bkap.entities.*;
+import com.bkap.repository.CartRepository;
 import com.bkap.repository.UserRepository;
 import com.bkap.repository.WishlistRepository;
 import com.bkap.services.*;
@@ -31,6 +30,9 @@ public class HomeController {
     private final WishlistRepository wishlistRepository;
     private final WishlistService wishlistService;
     private final UserRepository userRepository;
+    private final CartRepository cartRepository;
+    private final CartService cartService;
+    private final Cart_itemService cart_itemService;
 
     @GetMapping({"/","trang-chu"})
     public String index(Model model){
@@ -95,6 +97,7 @@ public class HomeController {
     @GetMapping("dang-nhap")
     public String loginUser(Model model){
         model.addAttribute("page","login");
+        model.addAttribute("cart" , new Cart());
         return "home";
     }
 
@@ -119,6 +122,13 @@ public class HomeController {
             return "login";
         }
         var data = userService.getUser(username).getId();
+        Cart cart = cartService.findByUserId(data);
+        if(cart == null){
+            cart = new Cart();
+            cart.setUser(user);
+            cartService.save(cart);
+        }
+
         HttpSession session = req.getSession();
         session.setMaxInactiveInterval(3600);
         session.setAttribute("id",user.getId());
@@ -126,6 +136,7 @@ public class HomeController {
         session.setAttribute("fullName", user.getLastName() + "" + user.getFirstName());
         session.setAttribute("role" , user.isRole());
         session.setAttribute("countwishlist" , wishlistService.findWishlistsByUserId(data).size());
+        session.setAttribute("cart" , cart );
         return "redirect:/";
 
     }
@@ -141,6 +152,7 @@ public class HomeController {
     public String productDetail(Model model , @PathVariable("id") String id){
         model.addAttribute("product" , productService.getById(id));
         model.addAttribute("wishlist" , new Wishlist());
+        model.addAttribute("cart_item" , new Cart_item());
         model.addAttribute("page", "detail");
         return "home";
     }
@@ -232,6 +244,20 @@ public class HomeController {
     public String deleteWishlist(Model model , @PathVariable int id){
         wishlistService.delete(wishlistService.getById(id));
         return "redirect:/";
+    }
+
+    @GetMapping("addtocart/{proId}")
+    public String addtocart(Model model, @PathVariable String proId, @ModelAttribute Cart_item cart_item , HttpServletRequest req) {
+        cart_item.setProductId(proId);
+        cart_itemService.save(cart_item);
+        return "redirect:/";
+    }
+
+    @GetMapping("cart/{id}")
+    public String cart(Model model , @PathVariable int id) {
+        model.addAttribute("cart_item" , cart_itemService.findByCart(cartService.findByUserId(id)));
+        model.addAttribute("page" , "index");
+        return "home";
     }
 
 }

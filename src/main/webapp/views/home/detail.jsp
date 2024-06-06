@@ -73,24 +73,28 @@
                                         <span>${product.quantity} in stock</span>
                                     </div>
                                     <p class="pro-desc">${product.description}</p>
+                                    <form:form method="get" action="${contextPath}/addtocart/${product.id}" modelAttribute="cart_item">
                                     <div class="quantity-cart-box d-flex align-items-center">
                                         <h6 class="option-title">qty:</h6>
                                         <div class="quantity">
-                                            <div class="pro-qty"><input type="text" value="1"></div>
+                                            <div class="pro-qty">
+                                                <form:input type="text" min="1" path="quantity"/>
+                                            </div>
                                         </div>
                                         <div class="action_link">
-                                            <a class="btn btn-cart2" href="#">Add to cart</a>
+                                            <button class="btn btn-cart2" type="submit">Add to cart</button>
                                         </div>
                                     </div>
                                     <div class="pro-size">
                                         <h6 class="option-title">size :</h6>
-                                        <select class="nice-select">
-                                            <option>S</option>
-                                            <option>M</option>
-                                            <option>L</option>
-                                            <option>XL</option>
-                                        </select>
+                                        <form:select class="nice-select" path="size">
+                                            <form:option value="1" selected = "selected">S</form:option>
+                                            <form:option value="2" >M</form:option>
+                                            <form:option value="3" >L</form:option>
+                                            <form:option value="4" >XL</form:option>
+                                        </form:select>
                                     </div>
+                                    </form:form>
                                     <div class="useful-links">
                                         <a href="#" data-bs-toggle="tooltip" title="Compare"><i
                                                 class="pe-7s-refresh-2"></i>compare</a>
