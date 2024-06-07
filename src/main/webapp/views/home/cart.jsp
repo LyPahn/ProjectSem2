@@ -55,7 +55,6 @@
                                         <c:set var="total" value="${total+c.product.price*c.quantity}" />
                                         <td class="pro-subtotal"><span>${c.product.price*c.quantity}</span></td>
                                         <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                        <td><button onclick="updateCartItem(${cart_item.id})">Update Cart</button></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -70,7 +69,7 @@
                                 </form>
                             </div>
                             <div class="cart-update">
-                                <button class="btn btn-sqr" onclick="updateCartItem(${cart_item.id})">Update Cart</button>
+                                <a href="#" class="btn btn-sqr">Update Cart</a>
                             </div>
                         </div>
                     </div>
@@ -99,27 +98,3 @@
     </div>
     <!-- cart main wrapper end -->
 </main>
-<script>
-    function updateCartItem(cartId) {
-        const quantity = $(`#quantity-${cartId}`).val();
-        $.ajax({
-            url: `/cart-update`,
-            type: 'POST',
-            data: {
-                cartItemId: cartId,
-                quantity: quantity
-            },
-            success: function(response) {
-                alert('Cart item updated');
-                fetchCart();
-            },
-            error: function(error) {
-                console.error('Error updating cart item:', error);
-            }
-        });
-    }
-
-    $(document).ready(function() {
-        fetchCart();
-    });
-</script>

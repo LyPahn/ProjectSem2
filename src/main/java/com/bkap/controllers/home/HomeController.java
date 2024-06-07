@@ -269,12 +269,4 @@ public class HomeController {
         cart_itemService.delete(cart_itemService.getById(id));
         return "redirect:/";
     }
-
-    @PostMapping("/update-cart")
-    public ResponseEntity<Cart_item> updateCartItemQuantity(
-            @RequestParam Integer cartId,
-            @RequestParam Integer quantity) {
-        Cart_item cartItem = cartService.updateCartItemQuantity(cartId, quantity);
-        return ResponseEntity.ok(cartItem);
-    }
 }

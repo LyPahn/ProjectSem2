@@ -46,17 +46,4 @@ public class CartServiceImpl implements CartService {
     public Cart findByUserId(Integer userId) {
         return cartRepository.findByUserId(userId);
     }
-
-    @Override
-    public Cart_item updateCartItemQuantity(Integer cartId, Integer quantity) {
-        Optional<Cart_item> cartItemOpt = cart_itemRepository.findById(cartId);
-        if (!cartItemOpt.isPresent()) {
-            throw new RuntimeException("Cart item not found");
-        }
-
-        Cart_item cartItem = cartItemOpt.get();
-        cartItem.setQuantity(quantity);
-
-        return cart_itemRepository.save(cartItem);
-    }
 }
