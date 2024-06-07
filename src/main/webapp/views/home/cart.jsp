@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="total" value="0" />
 <main>
     <!-- breadcrumb area start -->
     <div class="breadcrumb-area">
@@ -41,16 +43,19 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="c" items="${carts}">
+                                <c:forEach var="c" items="${cart_item}">
                                     <tr>
                                         <td class="pro-thumbnail"><a href="${contextPath}/chi-tiet/${c.product.id}"><img class="img-fluid" src="${contextPath}/resources/images/${c.product.image}" alt="Product" /></a></td>
                                         <td class="pro-title"><a href="#">${c.product.productName}</a></td>
-                                        <td class="pro-price">${w.product.price}<span></span></td>
+                                        <td class="pro-price">${c.product.price}<span></span></td>
                                         <td class="pro-quantity">
-                                            <div class="pro-qty"><input type="text" value="1"></div>
+                                            <div class="pro-qty">
+                                                <input type="number" id="quantity-${c.id}" value="${c.quantity}"></div>
                                         </td>
-                                        <td class="pro-subtotal"><span>$295.00</span></td>
+                                        <c:set var="total" value="${total+c.product.price*c.quantity}" />
+                                        <td class="pro-subtotal"><span>${c.product.price*c.quantity}</span></td>
                                         <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                        <td><button onclick="updateCartItem(${cart_item.id})">Update Cart</button></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -65,7 +70,7 @@
                                 </form>
                             </div>
                             <div class="cart-update">
-                                <a href="#" class="btn btn-sqr">Update Cart</a>
+                                <button class="btn btn-sqr" onclick="updateCartItem(${cart_item.id})">Update Cart</button>
                             </div>
                         </div>
                     </div>
@@ -78,17 +83,9 @@
                                 <h6>Cart Totals</h6>
                                 <div class="table-responsive">
                                     <table class="table">
-                                        <tr>
-                                            <td>Sub Total</td>
-                                            <td>$230</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Shipping</td>
-                                            <td>$70</td>
-                                        </tr>
                                         <tr class="total">
                                             <td>Total</td>
-                                            <td class="total-amount">$300</td>
+                                            <td class="total-amount"><fmt:formatNumber value="${total}" type="currency"/></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -102,3 +99,27 @@
     </div>
     <!-- cart main wrapper end -->
 </main>
+<script>
+    function updateCartItem(cartId) {
+        const quantity = $(`#quantity-${cartId}`).val();
+        $.ajax({
+            url: `/cart-update`,
+            type: 'POST',
+            data: {
+                cartItemId: cartId,
+                quantity: quantity
+            },
+            success: function(response) {
+                alert('Cart item updated');
+                fetchCart();
+            },
+            error: function(error) {
+                console.error('Error updating cart item:', error);
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        fetchCart();
+    });
+</script>

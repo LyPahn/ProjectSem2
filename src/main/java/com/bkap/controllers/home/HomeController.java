@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.eclipse.jdt.internal.compiler.util.Sorting;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -128,7 +129,6 @@ public class HomeController {
             cart.setUser(user);
             cartService.save(cart);
         }
-
         HttpSession session = req.getSession();
         session.setMaxInactiveInterval(3600);
         session.setAttribute("id",user.getId());
@@ -136,7 +136,8 @@ public class HomeController {
         session.setAttribute("fullName", user.getLastName() + "" + user.getFirstName());
         session.setAttribute("role" , user.isRole());
         session.setAttribute("countwishlist" , wishlistService.findWishlistsByUserId(data).size());
-        session.setAttribute("cart" , cart );
+        session.setAttribute("cart",cart);
+
         return "redirect:/";
 
     }
@@ -234,9 +235,9 @@ public class HomeController {
     }
 
     @PostMapping("addwishlist")
-    public String addwishlist(Model model, @ModelAttribute Wishlist wishlist , HttpServletRequest req){
+    public String addwishlist(Model model, @ModelAttribute Wishlist wishlist){
         model.addAttribute("wishlist", wishlist);
-        wishlistRepository.save(wishlist);
+        wishlistService.save(wishlist);
         return "redirect:/";
     }
 
@@ -246,18 +247,34 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("addtocart/{proId}")
-    public String addtocart(Model model, @PathVariable String proId, @ModelAttribute Cart_item cart_item , HttpServletRequest req) {
+    @GetMapping("addtocart/{proId}/{userId}")
+    public String addtocart(Model model, @PathVariable String proId, @PathVariable int userId,
+                          @ModelAttribute Cart_item cart_item) {
         cart_item.setProductId(proId);
+        cart_item.setCartId(cartService.findByUserId(userId).getId());
         cart_itemService.save(cart_item);
+
         return "redirect:/";
     }
 
     @GetMapping("cart/{id}")
     public String cart(Model model , @PathVariable int id) {
         model.addAttribute("cart_item" , cart_itemService.findByCart(cartService.findByUserId(id)));
-        model.addAttribute("page" , "index");
+        model.addAttribute("page" , "cart");
         return "home";
     }
 
+    @GetMapping("delete-cart/{id}")
+    public String deleteCart(Model model , @PathVariable int id) {
+        cart_itemService.delete(cart_itemService.getById(id));
+        return "redirect:/";
+    }
+
+    @PostMapping("/update-cart")
+    public ResponseEntity<Cart_item> updateCartItemQuantity(
+            @RequestParam Integer cartId,
+            @RequestParam Integer quantity) {
+        Cart_item cartItem = cartService.updateCartItemQuantity(cartId, quantity);
+        return ResponseEntity.ok(cartItem);
+    }
 }

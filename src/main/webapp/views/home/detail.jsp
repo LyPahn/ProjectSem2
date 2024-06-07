@@ -72,9 +72,11 @@
                                         <i class="fa fa-check-circle"></i>
                                         <span>${product.quantity} in stock</span>
                                     </div>
+                                    <h1>${sessionScope.id}</h1>
                                     <p class="pro-desc">${product.description}</p>
-                                    <form:form method="get" action="${contextPath}/addtocart/${product.id}" modelAttribute="cart_item">
-                                    <div class="quantity-cart-box d-flex align-items-center">
+                                    <form:form method="get" action="${contextPath}/addtocart/${product.id}/${sessionScope.id}" modelAttribute="cart_item">
+<%--                                        <form:hidden path="cartId}" value="${sessionScope.cart.id}"/>--%>
+                                        <div class="quantity-cart-box d-flex align-items-center">
                                         <h6 class="option-title">qty:</h6>
                                         <div class="quantity">
                                             <div class="pro-qty">

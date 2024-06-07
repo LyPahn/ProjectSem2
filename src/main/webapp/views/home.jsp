@@ -187,13 +187,11 @@
                                     <li>
                                         <a href="${contextPath}/wishlist/${sessionScope.id}">
                                             <i class="pe-7s-like"></i>
-                                            <div class="notification">${sessionScope.countwishlist}</div>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="minicart-btn">
+                                        <a href="${contextPath}/cart/${sessionScope.id}">
                                             <i class="pe-7s-shopbag"></i>
-                                            <div class="notification">2</div>
                                         </a>
                                     </li>
                                 </ul>
