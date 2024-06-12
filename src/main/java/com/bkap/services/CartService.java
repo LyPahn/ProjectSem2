@@ -1,7 +1,7 @@
 package com.bkap.services;
 
 import com.bkap.entities.Cart;
-import com.bkap.entities.Cart_item;
+import com.bkap.entities.CartItem;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.stereotype.Service;
 

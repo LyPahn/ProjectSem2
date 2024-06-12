@@ -9,10 +9,8 @@ import com.bkap.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.eclipse.jdt.internal.compiler.util.Sorting;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +31,7 @@ public class HomeController {
     private final UserRepository userRepository;
     private final CartRepository cartRepository;
     private final CartService cartService;
-    private final Cart_itemService cart_itemService;
+    private final CartItemService cartItemService;
 
     @GetMapping({"/","trang-chu"})
     public String index(Model model){
@@ -134,6 +132,11 @@ public class HomeController {
         session.setAttribute("id",user.getId());
         session.setAttribute("picture",user.getImage());
         session.setAttribute("fullName", user.getLastName() + "" + user.getFirstName());
+        session.setAttribute("firstname", user.getFirstName());
+        session.setAttribute("lastname", user.getLastName());
+        session.setAttribute("email", user.getEmail());
+        session.setAttribute("address", user.getAddress());
+        session.setAttribute("phone", user.getPhone());
         session.setAttribute("role" , user.isRole());
         session.setAttribute("countwishlist" , wishlistService.findWishlistsByUserId(data).size());
         session.setAttribute("cart",cart);
@@ -153,7 +156,7 @@ public class HomeController {
     public String productDetail(Model model , @PathVariable("id") String id){
         model.addAttribute("product" , productService.getById(id));
         model.addAttribute("wishlist" , new Wishlist());
-        model.addAttribute("cart_item" , new Cart_item());
+        model.addAttribute("cartItem" , new CartItem());
         model.addAttribute("page", "detail");
         return "home";
     }
@@ -249,24 +252,24 @@ public class HomeController {
 
     @GetMapping("addtocart/{proId}/{userId}")
     public String addtocart(Model model, @PathVariable String proId, @PathVariable int userId,
-                          @ModelAttribute Cart_item cart_item) {
-        cart_item.setProductId(proId);
-        cart_item.setCartId(cartService.findByUserId(userId).getId());
-        cart_itemService.save(cart_item);
+                          @ModelAttribute CartItem cartItem) {
+        cartItem.setProductId(proId);
+        cartItem.setCartId(cartService.findByUserId(userId).getId());
+        cartItemService.save(cartItem);
 
         return "redirect:/";
     }
 
     @GetMapping("cart/{id}")
     public String cart(Model model , @PathVariable int id) {
-        model.addAttribute("cart_item" , cart_itemService.findByCart(cartService.findByUserId(id)));
+        model.addAttribute("cartItem" , cartItemService.findByCart(cartService.findByUserId(id)));
         model.addAttribute("page" , "cart");
         return "home";
     }
 
     @GetMapping("delete-cart/{id}")
     public String deleteCart(Model model , @PathVariable int id) {
-        cart_itemService.delete(cart_itemService.getById(id));
+        cartItemService.delete(cartItemService.getById(id));
         return "redirect:/";
     }
 }

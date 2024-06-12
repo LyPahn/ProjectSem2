@@ -43,7 +43,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="c" items="${cart_item}">
+                                <c:forEach var="c" items="${cartItem}">
                                     <tr>
                                         <td class="pro-thumbnail"><a href="${contextPath}/chi-tiet/${c.product.id}"><img class="img-fluid" src="${contextPath}/resources/images/${c.product.image}" alt="Product" /></a></td>
                                         <td class="pro-title"><a href="#">${c.product.productName}</a></td>
@@ -89,7 +89,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <a href="checkout.html" class="btn btn-sqr d-block">Proceed Checkout</a>
+                            <a href="${pageContext}/order/${sessionScope.id}" class="btn btn-sqr d-block">Proceed Checkout</a>
                         </div>
                     </div>
                 </div>

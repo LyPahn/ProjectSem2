@@ -62,5 +62,10 @@ public class Product {
     private List<Wishlist> wishlists;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    private List<Cart_item> cart_items;
+    private List<CartItem> cartItems;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems;
+
+
 }

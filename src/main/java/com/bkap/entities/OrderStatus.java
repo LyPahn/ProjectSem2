@@ -9,21 +9,18 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cart {
+@Table(name = "OrderStatus")
+public class OrderStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToOne
-    @JoinColumn(name = "userId")
-    private User user;
+    @Column(name = "status" , columnDefinition = "NVARCHAR(100)")
+    private String status;
 
-    @OneToMany(mappedBy="cart")
-    private List<CartItem> items;
-
-
-
+    @OneToMany(mappedBy = "orderStatus", cascade = CascadeType.ALL)
+    private List<Order> orders;
 }
