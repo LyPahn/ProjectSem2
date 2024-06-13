@@ -74,13 +74,13 @@
                                     </div>
                                     <h1>${sessionScope.id}</h1>
                                     <p class="pro-desc">${product.description}</p>
-                                    <form:form method="get" action="${contextPath}/addtocart/${product.id}/${sessionScope.id}" modelAttribute="cartItem">
+                                    <form:form method="get" action="${contextPath}/addtocart/${product.id}" modelAttribute="cartItem">
 <%--                                        <form:hidden path="cartId}" value="${sessionScope.cart.id}"/>--%>
                                         <div class="quantity-cart-box d-flex align-items-center">
                                         <h6 class="option-title">qty:</h6>
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <form:input type="text" min="1" path="quantity"/>
+                                                <form:input type="text"  path="quantity" value = "1" />
                                             </div>
                                         </div>
                                         <div class="action_link">

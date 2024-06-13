@@ -158,7 +158,6 @@
                             </div>
                             <div class="header-configure-area">
                                 <ul class="nav justify-content-end">
-                                    <h1>${sessionScope.id}</h1>
                                     <c:choose>
                                         <c:when test="${!empty sessionScope.fullName}">
                                             <li class="user-hover">
@@ -188,13 +187,31 @@
                                     <li>
                                         <a href="${contextPath}/wishlist">
                                             <i class="pe-7s-like"></i>
-                                            <div class="notification">${countWishlist}</div>
+                                            <div class="notification">
+                                                <c:choose>
+                                                    <c:when test="${sessionScope.id == null}">
+                                                        0
+                                                    </c:when>
+                                                    <c:otherwise >
+                                                        ${countWishlist}
+                                                    </c:otherwise>
+                                                </c:choose>
+                                               </div>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="${contextPath}/cart">
                                             <i class="pe-7s-shopbag"></i>
-                                            <div class="notification">${countCartItem}</div>
+                                            <div class="notification">
+                                                <c:choose>
+                                                    <c:when test="${sessionScope.id == null}">
+                                                        0
+                                                    </c:when>
+                                                    <c:otherwise >
+                                                        ${countCartItem}
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                </div>
                                         </a>
                                     </li>
                                 </ul>

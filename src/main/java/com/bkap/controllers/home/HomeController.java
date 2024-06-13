@@ -8,12 +8,15 @@ import com.bkap.services.*;
 import com.bkap.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -30,7 +33,6 @@ public class HomeController {
     private final WishlistService wishlistService;
     private final CartService cartService;
     private final CartItemService cartItemService;
-    private final HttpSession httpSession;
 
     @GetMapping({"/","trang-chu"})
     public String index(Model model){
@@ -93,7 +95,7 @@ public class HomeController {
     }
 
     @GetMapping("dang-nhap")
-    public String loginUser(Model model){
+    public String loginUser(Model model , HttpServletRequest req , SessionStatus status){
         model.addAttribute("page","login");
         model.addAttribute("cart" , new Cart());
         return "home";
@@ -112,7 +114,7 @@ public class HomeController {
     }
 
     @PostMapping("dang-nhap")
-    public String loginSave(String username, String password, HttpServletRequest req, Model model) {
+    public String loginSave(String username, String password, HttpServletRequest req, Model model ,  SessionStatus status) {
         User user = userService.getUser(username);
         String passMD5 = Cipher.GenerateMD5(password);
         if ( user == null|| !user.getPassword().equals(passMD5)) {
@@ -127,6 +129,7 @@ public class HomeController {
             cartService.save(cart);
         }
         HttpSession session = req.getSession();
+
         session.setMaxInactiveInterval(3600);
         session.setAttribute("id",user.getId());
         session.setAttribute("picture",user.getImage());
@@ -145,8 +148,11 @@ public class HomeController {
     }
 
     @GetMapping("logout")
-    public String logout(Model model , HttpServletRequest req) {
+    public String logout(Model model , HttpServletRequest req , SessionStatus status) {
         HttpSession session = req.getSession();
+        status.setComplete();
+        req.removeAttribute("id");
+
         session.setAttribute("id" , null);
         session.invalidate();
         return "redirect:/";
@@ -238,9 +244,10 @@ public class HomeController {
     }
 
     @ModelAttribute("countWishlist")
-    public Integer getCountWishlist(@ModelAttribute("id") Integer id) {
+    public Integer getCountWishlist(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("id");
         if (id == null)
-            return 0;
+            return null;
         return wishlistService.countWishlistInUser(id);
     }
 
@@ -257,18 +264,25 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("addtocart/{proId}/{userId}")
-    public String addtocart(Model model, @PathVariable String proId, @PathVariable int userId,
+    @GetMapping("addtocart/{proId}")
+    public String addtocart(Model model, @PathVariable String proId,@ModelAttribute("id") int userId,
                           @ModelAttribute CartItem cartItem) {
         int cart = cartService.findByUserId(userId).getId();
-       if (cartItemService.findByProductIdAndCartId(proId, cart).getProduct().getId() != proId) {
-           cartItem.setProductId(proId);
-           cartItem.setCartId(cartService.findByUserId(userId).getId());
-       }
-       cartItem.setQuantity(cartItemService.findByProductIdAndCartId(proId, cart).getQuantity() + 1);
-        cartItemService.save(cartItem);
+        var findCart = cartItemService.findByProductIdAndCartId(proId ,cart);
+        if(findCart == null){
+            cartItem.setProductId(proId);
+            cartItem.setCartId(cartService.findByUserId(userId).getId());
+        }else{
+            findCart.setQuantity(findCart.getQuantity() + cartItem.getQuantity());
+            cartItemService.update(findCart);
+            return "redirect:/";
+        }
+
+            cartItemService.save(cartItem);
 
         return "redirect:/";
+
+
     }
 
     @GetMapping("cart")
@@ -279,7 +293,10 @@ public class HomeController {
     }
 
     @ModelAttribute("countCartItem")
-    public Integer getCountCartItem(@ModelAttribute("id") Integer id) {
+    public Integer getCountCartItem(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("id");
+        if (id == null)
+            return null;
         return cartService.countItemsInCart(id);
     }
 
