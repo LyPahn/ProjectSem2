@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <c:set var="total" value="0" />
 <main>
     <!-- breadcrumb area start -->
@@ -25,7 +26,7 @@
     <!-- breadcrumb area end -->
 
     <!-- checkout main wrapper start -->
-    <form:form>
+    <form:form action="" method="post" modelAttribute="" >
         <div class="checkout-page-wrapper section-padding">
             <div class="container">
                 <div class="row">
@@ -101,7 +102,10 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="c" items="${cart}">
+                                        <c:forEach var="c" items="${cartItem}">
+                                            <form:hidden path="productId" value="${c.product.id}" />
+                                            <form:hidden path="price" value="${c.product.price*c.quantity}" />
+                                            <form:hidden path="quantity" value="${c.quantity}" />
                                             <tr>
                                                 <td><a href="">${c.product.productName} <strong> × ${c.quantity}</strong></a>
                                                 </td>
