@@ -11,4 +11,7 @@ import java.util.List;
 @Repository
 public interface WishlistRepository extends JpaRepository<Wishlist, Integer> {
     List<Wishlist> findWishlistByUserId(Integer userId);
+
+    @Query("select count(wl) from Wishlist wl where wl.user.id = :userId")
+    Integer countWishlistByUserId(Integer userId);
 }

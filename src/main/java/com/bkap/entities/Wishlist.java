@@ -21,6 +21,8 @@ public class Wishlist {
     private int userId;
     @Column(name = "productId")
     private String productId;
+    @Transient
+    private Integer countWishlist;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="userId", referencedColumnName = "id", insertable = false, updatable = false)

@@ -54,7 +54,7 @@
                                         </td>
                                         <c:set var="total" value="${total+c.product.price*c.quantity}" />
                                         <td class="pro-subtotal"><span>${c.product.price*c.quantity}</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                        <td class="pro-remove"><a href="${contextPath}/delete-cart/${c.id}"><i class="fa fa-trash-o"></i></a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -89,7 +89,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <a href="${pageContext}/order/${sessionScope.id}" class="btn btn-sqr d-block">Proceed Checkout</a>
+                            <a href="${contextPath}/order/${sessionScope.id}" class="btn btn-sqr d-block">Proceed Checkout</a>
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,6 @@ import java.util.List;
 
 @Service
 public interface WishlistService extends GenericService<Wishlist , Integer> {
-
     List<Wishlist> findWishlistsByUserId(Integer userId);
+    Integer countWishlistInUser(Integer userId);
 }

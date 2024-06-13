@@ -44,4 +44,9 @@ public class CartServiceImpl implements CartService {
     public Cart findByUserId(Integer userId) {
         return cartRepository.findByUserId(userId);
     }
+
+    @Override
+    public Integer countItemsInCart(Integer userId) {
+        return cartItemRepository.countCartItemsByUserId(userId);
+    }
 }

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<c:set var="total" value="0" />
 <main>
     <!-- breadcrumb area start -->
     <div class="breadcrumb-area">
@@ -67,8 +68,8 @@
                                     </div>
 
                                     <div class="single-input-item">
-                                        <label for="postcode" class="required">Postcode / ZIP</label>
-                                        <input type="text" id="postcode" placeholder="Postcode / ZIP" required />
+                                        <label for="street-address" class="required mt-20">Street address</label>
+                                        <input type="text" id="street-address" placeholder="Street address Line 1" required value="${sessionScope.address}"/>
                                     </div>
 
                                     <div class="single-input-item">
@@ -100,43 +101,19 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="p" items="${cartItem}">
+                                        <c:forEach var="c" items="${cart}">
                                             <tr>
-                                                <td><a href="">${p.product.prouductName} <strong> × ${p.quantity}</strong></a>
+                                                <td><a href="">${c.product.productName} <strong> × ${c.quantity}</strong></a>
                                                 </td>
-                                                <td>$${p.product.price*p.quantity}</td>
+                                                <td>$${c.product.price*c.quantity}</td>
                                             </tr>
+                                            <c:set var="total" value="${total+c.product.price*c.quantity}" />
                                         </c:forEach>
                                         </tbody>
                                         <tfoot>
                                         <tr>
-                                            <td>Sub Total</td>
-                                            <td><strong>$400</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Shipping</td>
-                                            <td class="d-flex justify-content-center">
-                                                <ul class="shipping-type">
-                                                    <li>
-                                                        <div class="custom-control custom-radio">
-                                                            <input type="radio" id="flatrate" name="shipping" class="custom-control-input" checked />
-                                                            <label class="custom-control-label" for="flatrate">Flat
-                                                                Rate: $70.00</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="custom-control custom-radio">
-                                                            <input type="radio" id="freeshipping" name="shipping" class="custom-control-input" />
-                                                            <label class="custom-control-label" for="freeshipping">Free
-                                                                Shipping</label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td>Total Amount</td>
-                                            <td><strong>$470</strong></td>
+                                            <td><strong><fmt:formatNumber value="${total}" type="currency"/></strong></td>
                                         </tr>
                                         </tfoot>
                                     </table>
@@ -185,7 +162,7 @@
                                         <div class="payment-method-name">
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" id="paypalpayment" name="paymentmethod" value="paypal" class="custom-control-input" />
-                                                <label class="custom-control-label" for="paypalpayment">Paypal <img src="assets/img/paypal-card.jpg" class="img-fluid paypal-card" alt="Paypal" /></label>
+                                                <label class="custom-control-label" for="paypalpayment">Paypal <img src="${contextPath}/resources/home/assets/img/paypal-card.jpg" class="img-fluid paypal-card" alt="Paypal" /></label>
                                             </div>
                                         </div>
                                         <div class="payment-method-details" data-method="paypal">

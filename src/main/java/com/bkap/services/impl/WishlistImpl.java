@@ -42,4 +42,10 @@ public class WishlistImpl implements WishlistService {
     public List<Wishlist> findWishlistsByUserId(Integer userId) {
         return wishlistRepository.findWishlistByUserId(userId);
     }
+
+    @Override
+    public Integer countWishlistInUser(Integer userId) {
+        return wishlistRepository.countWishlistByUserId(userId);
+    }
+
 }

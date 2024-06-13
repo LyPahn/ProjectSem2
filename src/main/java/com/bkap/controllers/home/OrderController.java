@@ -19,7 +19,7 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public String Checkout(Model model , @PathVariable int id) {
-        model.addAttribute("cartItem" , cartItemService.findByCart(cartService.findByUserId(id)));
+        model.addAttribute("cart" , cartItemService.findByCart(cartService.findByUserId(id)));
         model.addAttribute("order", new Order());
         model.addAttribute("page","checkout");
         return "home";

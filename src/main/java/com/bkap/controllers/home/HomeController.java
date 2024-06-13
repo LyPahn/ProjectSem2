@@ -20,18 +20,17 @@ import java.io.File;
 
 @Controller
 @RequiredArgsConstructor
+@SessionAttributes("id")
 @RequestMapping("")
 public class HomeController {
     private final CategoryService categoryService;
     private final ProductService productService;
     private final BrandService brandService;
     private final UserService userService;
-    private final WishlistRepository wishlistRepository;
     private final WishlistService wishlistService;
-    private final UserRepository userRepository;
-    private final CartRepository cartRepository;
     private final CartService cartService;
     private final CartItemService cartItemService;
+    private final HttpSession httpSession;
 
     @GetMapping({"/","trang-chu"})
     public String index(Model model){
@@ -148,6 +147,7 @@ public class HomeController {
     @GetMapping("logout")
     public String logout(Model model , HttpServletRequest req) {
         HttpSession session = req.getSession();
+        session.setAttribute("id" , null);
         session.invalidate();
         return "redirect:/";
     }
@@ -229,12 +229,19 @@ public class HomeController {
         return "";
     }
 
-    @GetMapping("wishlist/{id}")
-    public String wishlist(Model model,@PathVariable int id){
+    @GetMapping("wishlist")
+    public String wishlist(Model model , @ModelAttribute("id") int id){
         model.addAttribute("products", productService.getAll());
         model.addAttribute("wishlist" , wishlistService.findWishlistsByUserId(id));
         model.addAttribute("page" , "wishlist");
         return "home";
+    }
+
+    @ModelAttribute("countWishlist")
+    public Integer getCountWishlist(@ModelAttribute("id") Integer id) {
+        if (id == null)
+            return 0;
+        return wishlistService.countWishlistInUser(id);
     }
 
     @PostMapping("addwishlist")
@@ -253,18 +260,27 @@ public class HomeController {
     @GetMapping("addtocart/{proId}/{userId}")
     public String addtocart(Model model, @PathVariable String proId, @PathVariable int userId,
                           @ModelAttribute CartItem cartItem) {
-        cartItem.setProductId(proId);
-        cartItem.setCartId(cartService.findByUserId(userId).getId());
+        int cart = cartService.findByUserId(userId).getId();
+       if (cartItemService.findByProductIdAndCartId(proId, cart).getProduct().getId() != proId) {
+           cartItem.setProductId(proId);
+           cartItem.setCartId(cartService.findByUserId(userId).getId());
+       }
+       cartItem.setQuantity(cartItemService.findByProductIdAndCartId(proId, cart).getQuantity() + 1);
         cartItemService.save(cartItem);
 
         return "redirect:/";
     }
 
-    @GetMapping("cart/{id}")
-    public String cart(Model model , @PathVariable int id) {
+    @GetMapping("cart")
+    public String cart(Model model , @ModelAttribute("id") int id) {
         model.addAttribute("cartItem" , cartItemService.findByCart(cartService.findByUserId(id)));
         model.addAttribute("page" , "cart");
         return "home";
+    }
+
+    @ModelAttribute("countCartItem")
+    public Integer getCountCartItem(@ModelAttribute("id") Integer id) {
+        return cartService.countItemsInCart(id);
     }
 
     @GetMapping("delete-cart/{id}")

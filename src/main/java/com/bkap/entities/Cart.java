@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.util.List;
 
+@Table(name = "Carts")
 @Entity
 @Getter
 @Setter
@@ -20,6 +21,8 @@ public class Cart {
     @OneToOne
     @JoinColumn(name = "userId")
     private User user;
+    @Transient
+    private Integer countCartItem;
 
     @OneToMany(mappedBy="cart")
     private List<CartItem> items;

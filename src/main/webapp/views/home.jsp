@@ -158,8 +158,9 @@
                             </div>
                             <div class="header-configure-area">
                                 <ul class="nav justify-content-end">
+                                    <h1>${sessionScope.id}</h1>
                                     <c:choose>
-                                        <c:when test="${!empty sessionScope.id}">
+                                        <c:when test="${!empty sessionScope.fullName}">
                                             <li class="user-hover">
                                                 <a href="#">
                                                     <i class="pe-7s-user"></i>
@@ -185,13 +186,15 @@
                                         </c:otherwise>
                                     </c:choose>
                                     <li>
-                                        <a href="${contextPath}/wishlist/${sessionScope.id}">
+                                        <a href="${contextPath}/wishlist">
                                             <i class="pe-7s-like"></i>
+                                            <div class="notification">${countWishlist}</div>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="${contextPath}/cart/${sessionScope.id}">
+                                        <a href="${contextPath}/cart">
                                             <i class="pe-7s-shopbag"></i>
+                                            <div class="notification">${countCartItem}</div>
                                         </a>
                                     </li>
                                 </ul>
