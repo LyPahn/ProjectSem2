@@ -103,9 +103,9 @@
                                         </thead>
                                         <tbody>
                                         <c:forEach var="c" items="${cartItem}">
-                                            <form:hidden path="productId" value="${c.product.id}" />
-                                            <form:hidden path="price" value="${c.product.price*c.quantity}" />
-                                            <form:hidden path="quantity" value="${c.quantity}" />
+<%--                                            <form:hidden path="productId" value="${c.product.id}" />--%>
+<%--                                            <form:hidden path="price" value="${c.product.price*c.quantity}" />--%>
+<%--                                            <form:hidden path="quantity" value="${c.quantity}" />--%>
                                             <tr>
                                                 <td><a href="">${c.product.productName} <strong> × ${c.quantity}</strong></a>
                                                 </td>

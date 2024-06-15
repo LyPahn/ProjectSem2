@@ -21,6 +21,6 @@ public class OrderStatus {
     @Column(name = "status" , columnDefinition = "NVARCHAR(100)")
     private String status;
 
-    @OneToMany(mappedBy = "orderStatus", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "orderStatusId", cascade = CascadeType.ALL)
     private List<Order> orders;
 }

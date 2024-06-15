@@ -18,21 +18,26 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int userId;
-    @Column(name = "status" , columnDefinition = "NVARCHAR(100)")
-    private String status;
+    private int orderId;
+    private String productId;
     private float price;
-
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    private List<OrderItem> orderItems;
+    private int quantity;
+    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "orderStatusId")
+    private OrderStatus orderStatusId;
 
     @ManyToOne
     @JoinColumn(name = "userId" , insertable = false , updatable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "orderStatusId")
-    private OrderStatus orderStatus;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="productId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Product product;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="orderId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Order order;
 
 
 }
