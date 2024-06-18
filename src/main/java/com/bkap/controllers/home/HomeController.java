@@ -119,7 +119,8 @@ public class HomeController {
         String passMD5 = Cipher.GenerateMD5(password);
         if ( user == null|| !user.getPassword().equals(passMD5)) {
             model.addAttribute("msg" , "Thông tin đăng nhập sai");
-            return "login";
+            model.addAttribute("page" , "login");
+            return "";
         }
         var data = userService.getUser(username).getId();
         Cart cart = cartService.findByUserId(data);
@@ -304,5 +305,14 @@ public class HomeController {
     public String deleteCart(Model model , @PathVariable int id) {
         cartItemService.delete(cartItemService.getById(id));
         return "redirect:/";
+    }
+
+    @GetMapping("updateCart/{proId}/{quantity}")
+    public String updateCart(Model model , @PathVariable("proId") String proId , @PathVariable("quantity") int quantity) {
+        var data = cartItemService.findByProductId(proId);
+            data.setQuantity(quantity);
+            cartItemService.update(data);
+        return "redirect:/cart";
+
     }
 }

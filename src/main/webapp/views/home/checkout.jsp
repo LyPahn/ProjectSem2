@@ -26,7 +26,7 @@
     <!-- breadcrumb area end -->
 
     <!-- checkout main wrapper start -->
-    <form:form action="" method="post" modelAttribute="" >
+    <form:form action="add" method="post" modelAttribute="order" >
         <div class="checkout-page-wrapper section-padding">
             <div class="container">
                 <div class="row">

@@ -138,22 +138,10 @@
                                 <!-- blog post item start -->
                                 <div class="blog-post-item mb-30">
                                     <figure class="blog-thumb">
-                                        <div class="blog-carousel-2 slick-row-15 slick-arrow-style slick-dot-style">
-                                            <div class="blog-single-slide">
-                                                <a href="blog-details.html">
-                                                    <img src="${contextPath}/resources/home/assets/img/blog/blog-img5.jpg" alt="blog image">
-                                                </a>
-                                            </div>
-                                            <div class="blog-single-slide">
-                                                <a href="blog-details.html">
-                                                    <img src="${contextPath}/resources/home/assets/img/blog/blog-img4.jpg" alt="blog image">
-                                                </a>
-                                            </div>
-                                            <div class="blog-single-slide">
-                                                <a href="blog-details.html">
-                                                    <img src="${contextPath}/resources/home/assets/img/blog/blog-img3.jpg" alt="blog image">
-                                                </a>
-                                            </div>
+                                        <div class="blog-single-slide">
+                                            <a href="blog-details.html">
+                                                <img src="${contextPath}/resources/home/assets/img/blog/blog-img3.jpg" alt="blog image">
+                                            </a>
                                         </div>
                                     </figure>
                                     <div class="blog-content">

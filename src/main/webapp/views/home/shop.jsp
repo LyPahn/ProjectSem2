@@ -380,8 +380,7 @@
 
         return false; // Prevent form submission
     }
-</script>
-<script>
+
     function filterBrands() {
         var form = document.getElementById('filterFormBrand');
         var checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');

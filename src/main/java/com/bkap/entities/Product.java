@@ -65,7 +65,7 @@ public class Product {
     private List<CartItem> cartItems;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    private List<Order> orders;
+    private List<OrderItem> orderItems;
 
 
 }

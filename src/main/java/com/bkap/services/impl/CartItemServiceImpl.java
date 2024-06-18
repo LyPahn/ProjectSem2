@@ -49,5 +49,10 @@ public class CartItemServiceImpl implements CartItemService {
         return cartItemRepository.findByProductIdAndCartId(productId, cartId);
     }
 
+    @Override
+    public CartItem findByProductId(String productId) {
+        return cartItemRepository.findByProductId(productId);
+    }
+
 
 }

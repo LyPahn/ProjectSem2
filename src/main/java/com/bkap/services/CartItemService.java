@@ -10,4 +10,5 @@ import java.util.List;
 public interface CartItemService extends GenericService<CartItem , Integer> {
     List<CartItem> findByCart(Cart cart);
     CartItem findByProductIdAndCartId(String productId , int cartId);
+     CartItem findByProductId(String productId);
 }

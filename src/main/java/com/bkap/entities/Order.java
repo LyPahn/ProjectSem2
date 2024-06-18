@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,26 +19,26 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int orderId;
-    private String productId;
-    private float price;
-    private int quantity;
     private int userId;
     @ManyToOne
     @JoinColumn(name = "orderStatusId")
     private OrderStatus orderStatusId;
+    private Date orderDate;
 
     @ManyToOne
     @JoinColumn(name = "userId" , insertable = false , updatable = false)
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="productId", referencedColumnName = "id", insertable = false, updatable = false)
-    private Product product;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="orderId", referencedColumnName = "id", insertable = false, updatable = false)
-    private Order order;
-
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems;
 
 }
+
+
+
+
+
+
+
+
+

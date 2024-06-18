@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <c:set var="total" value="0" />
 <main>
     <!-- breadcrumb area start -->
@@ -44,18 +45,23 @@
                                 </thead>
                                 <tbody>
                                 <c:forEach var="c" items="${cartItem}">
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="${contextPath}/chi-tiet/${c.product.id}"><img class="img-fluid" src="${contextPath}/resources/images/${c.product.image}" alt="Product" /></a></td>
-                                        <td class="pro-title"><a href="#">${c.product.productName}</a></td>
-                                        <td class="pro-price">${c.product.price}<span></span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty">
-                                                <input type="number" id="quantity-${c.id}" value="${c.quantity}"></div>
-                                        </td>
-                                        <c:set var="total" value="${total+c.product.price*c.quantity}" />
-                                        <td class="pro-subtotal"><span>${c.product.price*c.quantity}</span></td>
-                                        <td class="pro-remove"><a href="${contextPath}/delete-cart/${c.id}"><i class="fa fa-trash-o"></i></a></td>
-                                    </tr>
+                                        <tr>
+                                            <td class="pro-thumbnail"><a href="${contextPath}/chi-tiet/${c.product.id}"><img class="img-fluid" src="${contextPath}/resources/images/${c.product.image}" alt="Product" /></a></td>
+                                            <td class="pro-title"><a href="${contextPath}/chi-tiet/${c.product.id}">${c.product.productName}</a></td>
+                                            <td class="pro-price">${c.product.price}<span></span></td>
+                                            <td class="pro-quantity">
+
+                                                    <input type="hidden" name="id" value="${c.product.id}">
+                                                  <input type="hidden" name="productId" value="${c.product.id}">
+                                                    <div class="pro-qty">
+                                                        <input name="quantity" type="number" onchange="updateCart('${c.product.id}' , this.value)" id="quantity" min="1" value="${c.quantity}">
+                                                    </div>
+
+                                            </td>
+                                            <c:set var="total" value="${total+c.product.price*c.quantity}" />
+                                            <td class="pro-subtotal"><span>${c.product.price*c.quantity}</span></td>
+                                            <td class="pro-remove"><a href="${contextPath}/delete-cart/${c.id}"><i class="fa fa-trash-o"></i></a></td>
+                                        </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
@@ -67,9 +73,6 @@
                                     <input type="text" placeholder="Enter Your Coupon Code" required />
                                     <button class="btn btn-sqr">Apply Coupon</button>
                                 </form>
-                            </div>
-                            <div class="cart-update">
-                                <a href="#" class="btn btn-sqr">Update Cart</a>
                             </div>
                         </div>
                     </div>
@@ -98,3 +101,11 @@
     </div>
     <!-- cart main wrapper end -->
 </main>
+<script>
+    function updateCart(id , quantity) {
+        $.get("/updateCart/" + id + "/" + quantity, function() {
+            window.location.reload();
+            // document.getElementById('submitForm').submit();
+        });
+    }
+</script>
