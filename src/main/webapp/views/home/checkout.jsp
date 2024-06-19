@@ -26,7 +26,7 @@
     <!-- breadcrumb area end -->
 
     <!-- checkout main wrapper start -->
-    <form:form action="add" method="post" modelAttribute="order" >
+    <form action="${contextPath}/order/saveOrder" method="post" modelAttribute="order" >
         <div class="checkout-page-wrapper section-padding">
             <div class="container">
                 <div class="row">
@@ -189,6 +189,6 @@
                 </div>
             </div>
         </div>
-    </form:form>
+    </form>
     <!-- checkout main wrapper end -->
 </main>

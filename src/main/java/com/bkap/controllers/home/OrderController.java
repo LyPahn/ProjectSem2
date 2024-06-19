@@ -25,5 +25,12 @@ public class OrderController {
         return "home";
     }
 
+    @PostMapping("saveOrder")
+    public String saveOrder(@ModelAttribute("order") Order order, Model model) {
+        System.out.println(model.getAttribute("cartItem"));
+        return "";
+    }
+
+
 
 }

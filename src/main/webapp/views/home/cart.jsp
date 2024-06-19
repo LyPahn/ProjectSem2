@@ -54,7 +54,10 @@
                                                     <input type="hidden" name="id" value="${c.product.id}">
                                                   <input type="hidden" name="productId" value="${c.product.id}">
                                                     <div class="pro-qty">
-                                                        <input name="quantity" type="number" onchange="updateCart('${c.product.id}' , this.value)" id="quantity" min="1" value="${c.quantity}">
+                                                        <button class="dec qtybtn decrease" id="dec-quantity" >-</button>
+                                                        <input type="hidden" class="proId" value="${c.product.id}">
+                                                        <input name="quantity" class="quantity" type="number"   min="1" value="${c.quantity}" readonly>
+                                                        <button class="inc qtybtn increase" id="inc-quantity" >+</button>
                                                     </div>
 
                                             </td>
@@ -108,4 +111,38 @@
             // document.getElementById('submitForm').submit();
         });
     }
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Lấy tất cả các nút tăng và giảm số lượng sản phẩm
+        const increaseButtons = document.querySelectorAll('.increase');
+        const decreaseButtons = document.querySelectorAll('.decrease');
+
+        // Thêm sự kiện click cho từng nút tăng
+        increaseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const product = button.parentElement;
+                const quantityElement = product.querySelector('.quantity');
+                const proId = product.querySelector('.proId').value;
+                let currentQuantity = parseInt(quantityElement.value);
+                quantityElement.value = currentQuantity + 1;
+                updateCart(proId,quantityElement.value);
+            });
+        });
+
+        // Thêm sự kiện click cho từng nút giảm
+        decreaseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const product = button.parentElement;
+                const quantityElement = product.querySelector('.quantity');
+                let currentQuantity = parseInt(quantityElement.value);
+                if (currentQuantity > 1) {
+                    quantityElement.value = currentQuantity - 1;
+                    const proId = product.querySelector('.proId').value;
+                    updateCart(proId,quantityElement.value);
+                }
+            });
+        });
+    });
 </script>
