@@ -49,4 +49,10 @@ public class CartServiceImpl implements CartService {
     public Integer countItemsInCart(Integer userId) {
         return cartItemRepository.countCartItemsByUserId(userId);
     }
+
+    @Override
+    public void clearCart(Integer userId) {
+        List<CartItem> cartItems = cartItemRepository.findByCart(cartRepository.findByUserId(userId));
+        cartItemRepository.deleteAll(cartItems);
+    }
 }

@@ -180,7 +180,7 @@
                                             <label class="custom-control-label" for="terms">I have read and agree to
                                                 the website <a href="index.html">terms and conditions.</a></label>
                                         </div>
-                                        <button type="submit" class="btn btn-sqr">Place Order</button>
+                                        <button type="submit" class="btn btn-sqr" >Place Order</button>
                                     </div>
                                 </div>
                             </div>

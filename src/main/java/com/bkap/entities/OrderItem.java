@@ -29,5 +29,5 @@ public class OrderItem {
     @JoinColumn(name="orderId", referencedColumnName = "id", insertable = false, updatable = false)
     private Order order;
 
-
+    
 }

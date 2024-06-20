@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "orderStatusId")
     private OrderStatus orderStatusId;
+    @Column(name = "orderDate")
+    @Temporal(TemporalType.DATE)
+    @CreationTimestamp
     private Date orderDate;
 
     @ManyToOne

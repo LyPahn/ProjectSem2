@@ -95,7 +95,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <a href="${contextPath}/order/${sessionScope.id}" class="btn btn-sqr d-block">Proceed Checkout</a>
+                            <a href="${contextPath}/order" class="btn btn-sqr d-block">Proceed Checkout</a>
                         </div>
                     </div>
                 </div>
