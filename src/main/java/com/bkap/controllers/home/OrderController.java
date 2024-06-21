@@ -60,6 +60,7 @@ public class OrderController {
             orderItem.setOrderId(order.getId());
             orderItem.setQuantity(cartItem.getQuantity());
             orderItem.setProductId(cartItem.getProductId());
+            orderItem.setPrice(cartItem.getProduct().getPrice() * cartItem.getQuantity());
             orderItemService.save(orderItem);
         }
         cartService.clearCart(userId);

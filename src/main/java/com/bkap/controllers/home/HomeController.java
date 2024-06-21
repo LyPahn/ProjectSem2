@@ -120,7 +120,7 @@ public class HomeController {
         if ( user == null|| !user.getPassword().equals(passMD5)) {
             model.addAttribute("msg" , "Thông tin đăng nhập sai");
             model.addAttribute("page" , "login");
-            return "";
+            return "home";
         }
         var data = userService.getUser(username).getId();
         Cart cart = cartService.findByUserId(data);
@@ -182,7 +182,7 @@ public class HomeController {
         String password = Cipher.GenerateMD5(user.getPassword());
         user.setPassword(password);
         user.setRole(false);
-        user.setStatus(false);
+        user.setStatus(true);
         userService.save(user);
         return "redirect:/dang-nhap";
     }
