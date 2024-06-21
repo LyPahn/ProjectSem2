@@ -5,4 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface OrderService extends GenericService<Order , Integer>{
+    public Order findByUserId(Integer userId);
 }

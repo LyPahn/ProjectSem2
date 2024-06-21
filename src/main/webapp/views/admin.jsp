@@ -311,7 +311,7 @@
                 </svg></button></div>
                 <div class="sa-toolbar__item dropdown"><button class="sa-toolbar__button" type="button"
                                                                id="dropdownMenuButton3" data-bs-toggle="dropdown" data-bs-reference="parent"
-                                                               data-bs-offset="0,1" aria-expanded="false"><img src="${contextPath}/resources/admin/vendor/flag-icons/24/DE.png"
+                                                               data-bs-offset="0,1" aria-expanded="false"><img src="${contextPath}/resources/admin/vendor/flag-icons/24/GB.png"
                                                                                                                class="sa-language-icon" alt="" /></button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton3">
                         <li><a class="dropdown-item d-flex align-items-center" href="#"><img

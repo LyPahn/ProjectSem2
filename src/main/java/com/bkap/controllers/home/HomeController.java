@@ -33,6 +33,8 @@ public class HomeController {
     private final WishlistService wishlistService;
     private final CartService cartService;
     private final CartItemService cartItemService;
+    private final OrderService orderService;
+    private final OrderItemService orderItemService;
 
     @GetMapping({"/","trang-chu"})
     public String index(Model model){
@@ -161,6 +163,7 @@ public class HomeController {
 
     @GetMapping("chi-tiet/{id}")
     public String productDetail(Model model , @PathVariable("id") String id){
+        model.addAttribute("pros", productService.findbyStatus());
         model.addAttribute("product" , productService.getById(id));
         model.addAttribute("wishlist" , new Wishlist());
         model.addAttribute("cartItem" , new CartItem());
@@ -187,10 +190,11 @@ public class HomeController {
         return "redirect:/dang-nhap";
     }
 
-    @GetMapping("my-account/{id}")
-    public String editUser(@PathVariable int id, Model model) {
+    @GetMapping("my-account")
+    public String editUser(@ModelAttribute("id") int id, Model model) {
         model.addAttribute("user", userService.getById(id));
         model.addAttribute("resetpassword" , userService.getById(id));
+        model.addAttribute("orders" , orderItemService.findByOrderId(orderService.findByUserId(id).getId()));
         model.addAttribute("page", "myaccount");
         return "home";
     }
@@ -278,12 +282,8 @@ public class HomeController {
             cartItemService.update(findCart);
             return "redirect:/";
         }
-
-            cartItemService.save(cartItem);
-
+        cartItemService.save(cartItem);
         return "redirect:/";
-
-
     }
 
     @GetMapping("cart")
@@ -313,6 +313,5 @@ public class HomeController {
             data.setQuantity(quantity);
             cartItemService.update(data);
         return "redirect:/cart";
-
     }
 }

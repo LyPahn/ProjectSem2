@@ -264,58 +264,49 @@
             <div class="row">
                 <div class="col-12">
                     <div class="product-carousel-4 slick-row-10 slick-arrow-style">
-                        <!-- product item start -->
-                        <div class="product-item">
-                            <figure class="product-thumb">
-                                <a href="product-details.html">
-                                    <img class="pri-img" src="assets/img/product/product-11.jpg" alt="product">
-                                    <img class="sec-img" src="assets/img/product/product-8.jpg" alt="product">
-                                </a>
-                                <div class="product-badge">
-                                    <div class="product-label new">
-                                        <span>new</span>
+                        <c:forEach var="p" items="${pros}">
+                            <!-- product item start -->
+                            <div class="product-item">
+                                <figure class="product-thumb">
+                                    <a href="${contextPath}/chi-tiet/${p.id}">
+                                        <img class="" src="${contextPath}/resources/images/${p.image}" alt="product">
+                                    </a>
+                                    <div class="product-badge">
+                                        <div class="product-label new">
+                                            <span>new</span>
+                                        </div>
+                                        <div class="product-label discount">
+                                            <span>${(p.price * 100) / p.priceOld}%</span>
+                                        </div>
                                     </div>
-                                    <div class="product-label discount">
-                                        <span>10%</span>
+                                    <div class="button-group">
+                                        <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                           title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                        <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                           title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                     </div>
-                                </div>
-                                <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
-                                </div>
-                                <div class="cart-hover">
-                                    <button class="btn btn-cart">add to cart</button>
-                                </div>
-                            </figure>
-                            <div class="product-caption text-center">
-                                <div class="product-identity">
-                                    <p class="manufacturer-name"><a href="product-details.html">Gold</a></p>
-                                </div>
-                                <ul class="color-categories">
-                                    <li>
-                                        <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                    </li>
-                                    <li>
-                                        <a class="c-darktan" href="#" title="Darktan"></a>
-                                    </li>
-                                    <li>
-                                        <a class="c-grey" href="#" title="Grey"></a>
-                                    </li>
-                                    <li>
-                                        <a class="c-brown" href="#" title="Brown"></a>
-                                    </li>
-                                </ul>
-                                <h6 class="product-name">
-                                    <a href="product-details.html">Perfect Diamond Jewelry</a>
-                                </h6>
-                                <div class="price-box">
-                                    <span class="price-regular">$60.00</span>
-                                    <span class="price-old"><del>$70.00</del></span>
+                                    <div class="cart-hover">
+                                        <button class="btn btn-cart">add to cart</button>
+                                    </div>
+                                </figure>
+                                <div class="product-caption text-center">
+                                    <div class="product-identity">
+                                        <p class="manufacturer-name"><a href="product-details.html">${p.category.cateName}</a></p>
+                                    </div>
+                                    <h6 class="product-name">
+                                        <a href="product-details.html">${p.productName}</a>
+                                    </h6>
+                                    <div class="price-box">
+                                        <span class="price-regular">$${p.price}</span>
+                                        <span class="price-old"><del>$${p.priceOld}</del></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- product item end -->
+                            <!-- product item end -->
+                        </c:forEach>
                     </div>
                 </div>
             </div>

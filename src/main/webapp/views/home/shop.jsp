@@ -116,46 +116,6 @@
 
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
-                            <h5 class="sidebar-title">color</h5>
-                            <div class="sidebar-body">
-                                <ul class="checkbox-container categories-list">
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck12">
-                                            <label class="custom-control-label" for="customCheck12">black (20)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck13">
-                                            <label class="custom-control-label" for="customCheck13">red (6)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck14">
-                                            <label class="custom-control-label" for="customCheck14">blue (8)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck11">
-                                            <label class="custom-control-label" for="customCheck11">green (5)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck15">
-                                            <label class="custom-control-label" for="customCheck15">pink (4)</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- single sidebar end -->
-
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
                             <h5 class="sidebar-title">size</h5>
                             <div class="sidebar-body">
                                 <ul class="checkbox-container categories-list">
@@ -213,9 +173,6 @@
                                             <a class="active" href="#" data-target="grid-view" data-bs-toggle="tooltip" title="Grid View"><i class="fa fa-th"></i></a>
                                             <a href="#" data-target="list-view" data-bs-toggle="tooltip" title="List View"><i class="fa fa-list"></i></a>
                                         </div>
-                                        <div class="product-amount">
-                                            <p>Showing 1–16 of 21 results</p>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-md-6 order-1 order-md-2">
@@ -231,7 +188,6 @@
                                                     <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Price (High > Low)</option>
                                                 </select>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
@@ -269,10 +225,10 @@
                                             </figure>
                                             <div class="product-caption text-center">
                                                 <div class="product-identity">
-                                                    <p class="manufacturer-name"><a href="product-details.html">${p.category.cateName}</a></p>
+                                                    <p class="manufacturer-name"><a href="${contextPath}/chi-tiet/${p.id}">${p.category.cateName}</a></p>
                                                 </div>
                                                 <h6 class="product-name">
-                                                    <a href="product-details.html">${p.productName}</a>
+                                                    <a href="${contextPath}/chi-tiet/${p.id}">${p.productName}</a>
                                                 </h6>
                                                 <div class="price-box">
                                                     <span class="price-regular">$${p.price}</span>
@@ -285,16 +241,15 @@
                                         <!-- product list item end -->
                                         <div class="product-list-item">
                                             <figure class="product-thumb">
-                                                <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-1.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-18.jpg" alt="product">
+                                                <a href="${contextPath}/chi-tiet/${p.id}">
+                                                    <img class="" src="${contextPath}/resources/images/${p.image}" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
                                                         <span>new</span>
                                                     </div>
                                                     <div class="product-label discount">
-                                                        <span>10%</span>
+                                                        <span>${(p.price * 100) / p.priceOld}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="button-group">
@@ -308,31 +263,14 @@
                                             </figure>
                                             <div class="product-content-list">
                                                 <div class="manufacturer-name">
-                                                    <a href="product-details.html">Platinum</a>
+                                                    <a href="${contextPath}/chi-tiet/${p.id}">${p.category.cateName}</a>
                                                 </div>
-                                                <ul class="color-categories">
-                                                    <li>
-                                                        <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="c-darktan" href="#" title="Darktan"></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="c-grey" href="#" title="Grey"></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="c-brown" href="#" title="Brown"></a>
-                                                    </li>
-                                                </ul>
-
-                                                <h5 class="product-name"><a href="product-details.html">Perfect Diamond Jewelry</a></h5>
+                                                <h5 class="product-name"><a href="${contextPath}/chi-tiet/${p.id}">${p.productName}</a></h5>
                                                 <div class="price-box">
-                                                    <span class="price-regular">$50.00</span>
-                                                    <span class="price-old"><del>$29.99</del></span>
+                                                    <span class="price-regular">$${p.price}</span>
+                                                    <span class="price-old"><del>$${p.priceOld}</del></span>
                                                 </div>
-                                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde perspiciatis
-                                                    quod numquam, sit fugiat, deserunt ipsa mollitia sunt quam corporis ullam
-                                                    rem, accusantium adipisci officia eaque.</p>
+                                                <p>${p.description}</p>
                                             </div>
                                         </div>
                                         <!-- product list item end -->

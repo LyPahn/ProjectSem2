@@ -36,4 +36,9 @@ public class OrderItemServiceImpl implements OrderItemService {
     public void delete(OrderItem orderItem) {
         orderItemRepository.delete(orderItem);
     }
+
+    @Override
+    public List<OrderItem> findByOrderId(Integer orderId) {
+        return orderItemRepository.findByOrderId(orderId);
+    }
 }

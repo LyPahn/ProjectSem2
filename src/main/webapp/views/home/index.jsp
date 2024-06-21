@@ -292,20 +292,6 @@
                                     <div class="product-identity">
                                         <p class="manufacturer-name"><a href="product-details.html">${p.category.cateName}</a></p>
                                     </div>
-                                    <ul class="color-categories">
-                                        <li>
-                                            <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                        </li>
-                                        <li>
-                                            <a class="c-darktan" href="#" title="Darktan"></a>
-                                        </li>
-                                        <li>
-                                            <a class="c-grey" href="#" title="Grey"></a>
-                                        </li>
-                                        <li>
-                                            <a class="c-brown" href="#" title="Brown"></a>
-                                        </li>
-                                    </ul>
                                     <h6 class="product-name">
                                         <a href="product-details.html">${p.productName}</a>
                                     </h6>

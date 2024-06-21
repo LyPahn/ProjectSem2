@@ -19,14 +19,8 @@
     </div>
     <!-- breadcrumb area end -->
 
-    <!-- google map start -->
-    <div class="map-area section-padding">
-        <div id="google-map"></div>
-    </div>
-    <!-- google map end -->
-
     <!-- contact area start -->
-    <div class="contact-area section-padding pt-0">
+    <div class="contact-area section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">

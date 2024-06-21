@@ -36,4 +36,9 @@ public class OrderSeviceImpl implements OrderService {
     public void delete(Order order) {
         orderRepository.delete(order);
     }
+
+    @Override
+    public Order findByUserId(Integer userId) {
+        return orderRepository.findByUserId(userId);
+    }
 }
