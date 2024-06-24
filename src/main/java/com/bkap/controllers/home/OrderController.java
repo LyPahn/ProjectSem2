@@ -1,8 +1,6 @@
 package com.bkap.controllers.home;
 
-import com.bkap.entities.CartItem;
-import com.bkap.entities.Order;
-import com.bkap.entities.OrderItem;
+import com.bkap.entities.*;
 import com.bkap.services.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -22,10 +20,13 @@ public class OrderController {
     private final WishlistService wishlistService;
     private final OrderService orderService;
     private final OrderItemService orderItemService;
+    private final OrderStatusService orderStatusService;
+    private final UserService userService;
 
     @GetMapping("")
     public String Checkout(Model model , @SessionAttribute("id") int id) {
         model.addAttribute("cartItem" , cartItemService.findByCart(cartService.findByUserId(id)));
+        model.addAttribute("user" , userService.findUserById(id));
         model.addAttribute("order", new Order());
         model.addAttribute("page","checkout");
         return "home";
@@ -47,14 +48,15 @@ public class OrderController {
         return cartService.countItemsInCart(id);
     }
 
-    @PostMapping("saveOrder")
-    public String saveOrder(@ModelAttribute("order") Order order, Model model , HttpServletRequest req) {
+    @PostMapping("saveOrder/{total}")
+    public String saveOrder(@ModelAttribute("user") User user, @PathVariable Float total, Model model , HttpServletRequest req) {
+        Order order = new Order();
         Integer userId = (Integer) req.getSession().getAttribute("id");
         List<CartItem> cartItems = cartItemService.findByCart(cartService.findByUserId(userId));
-
         order.setUserId(userId);
+        order.setOrderStatusId(orderStatusService.getById(1));
+        order.setPrice(total);
         orderService.save(order);
-
         for (CartItem cartItem : cartItems) {
             OrderItem orderItem = new OrderItem();
             orderItem.setOrderId(order.getId());
@@ -63,6 +65,7 @@ public class OrderController {
             orderItem.setPrice(cartItem.getProduct().getPrice() * cartItem.getQuantity());
             orderItemService.save(orderItem);
         }
+
         cartService.clearCart(userId);
 
         return "redirect:/";

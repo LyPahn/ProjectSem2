@@ -26,7 +26,7 @@
     <!-- breadcrumb area end -->
 
     <!-- checkout main wrapper start -->
-    <form action="${contextPath}/order/saveOrder" method="post" modelAttribute="order">
+    <form:form action="${contextPath}/order/saveOrder/${total}" method="post" modelAttribute="user">
         <div class="checkout-page-wrapper section-padding">
             <div class="container">
                 <div class="row">
@@ -40,24 +40,22 @@
                                         <div class="col-md-6">
                                             <div class="single-input-item">
                                                 <label for="f_name" class="required">First Name</label>
-                                                <input type="text" id="f_name" placeholder="First Name" required
-                                                       value="${sessionScope.firstname}"/>
+                                                <form:input type="text" id="f_name" placeholder="First Name" path="firstName"/>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="single-input-item">
                                                 <label for="l_name" class="required">Last Name</label>
-                                                <input type="text" id="l_name" placeholder="Last Name" required
-                                                       value="${sessionScope.lastname}"/>
+                                                <form:input type="text" id="l_name" placeholder="Last Name" path="lastName"/>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="single-input-item">
                                         <label for="email" class="required">Email Address</label>
-                                        <input type="email" id="email" placeholder="Email Address" required
-                                               value="${sessionScope.email}"/>
+                                        <form:input type="text" id="email" placeholder="Email Address"
+                                               path="email"/>
                                     </div>
 
                                     <div class="single-input-item">
@@ -73,14 +71,14 @@
 
                                     <div class="single-input-item">
                                         <label for="street-address" class="required mt-20">Street address</label>
-                                        <input type="text" id="street-address" placeholder="Street address Line 1"
-                                               required value="${sessionScope.address}"/>
+                                        <form:input type="text" id="street-address" placeholder="Street address Line 1"
+                                               path="address"/>
                                     </div>
 
                                     <div class="single-input-item">
                                         <label for="phone">Phone</label>
-                                        <input type="text" id="phone" placeholder="Phone"
-                                               value="${sessionScope.phone}"/>
+                                        <form:input type="text" id="phone" placeholder="Phone"
+                                               path="phone"/>
                                     </div>
 
                                     <div class="single-input-item">
@@ -109,9 +107,6 @@
                                         </thead>
                                         <tbody>
                                         <c:forEach var="c" items="${cartItem}">
-                                            <%--                                            <form:hidden path="productId" value="${c.product.id}" />--%>
-                                            <%--                                            <form:hidden path="price" value="${c.product.price*c.quantity}" />--%>
-                                            <%--                                            <form:hidden path="quantity" value="${c.quantity}" />--%>
                                             <tr>
                                                 <td><a href="">${c.product.productName} <strong>
                                                     × ${c.quantity}</strong></a>
@@ -124,7 +119,8 @@
                                         <tfoot>
                                         <tr>
                                             <td>Total Amount</td>
-                                            <td><strong><fmt:formatNumber value="${total}" type="currency"/></strong>
+                                            <td>
+                                                <strong>$<fmt:formatNumber value="${total}"/></strong>
                                             </td>
                                         </tr>
                                         </tfoot>
@@ -204,6 +200,6 @@
                 </div>
             </div>
         </div>
-    </form>
+    </form:form>
     <!-- checkout main wrapper end -->
 </main>

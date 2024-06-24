@@ -28,6 +28,8 @@ public class Order {
     @Temporal(TemporalType.DATE)
     @CreationTimestamp
     private Date orderDate;
+    @Column(name = "price")
+    private float price;
 
     @ManyToOne
     @JoinColumn(name = "userId" , insertable = false , updatable = false)

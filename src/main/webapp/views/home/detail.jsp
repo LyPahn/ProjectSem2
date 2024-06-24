@@ -86,16 +86,23 @@
                                         <div class="action_link">
                                             <button class="btn btn-cart2" type="submit">Add to cart</button>
                                         </div>
-                                    </div>
-                                    <div class="pro-size">
-                                        <h6 class="option-title">size :</h6>
-                                        <form:select class="nice-select" path="size">
-                                            <form:option value="1" selected = "selected">S</form:option>
-                                            <form:option value="2" >M</form:option>
-                                            <form:option value="3" >L</form:option>
-                                            <form:option value="4" >XL</form:option>
-                                        </form:select>
-                                    </div>
+                                        </div>
+                                        <c:choose>
+                                            <c:when test="${product.size == true}">
+                                                <div class="pro-size">
+                                                    <h6 class="option-title">size :</h6>
+                                                    <form:select class="nice-select" path="size">
+                                                        <form:option value="1" selected = "selected">S</form:option>
+                                                        <form:option value="2" >M</form:option>
+                                                        <form:option value="3" >L</form:option>
+                                                        <form:option value="4" >XL</form:option>
+                                                    </form:select>
+                                                </div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <form:hidden path="size" value="0"/>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </form:form>
                                     <div class="useful-links">
                                         <a href="#" data-bs-toggle="tooltip" title="Compare"><i
