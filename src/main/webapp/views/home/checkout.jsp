@@ -26,7 +26,7 @@
     <!-- breadcrumb area end -->
 
     <!-- checkout main wrapper start -->
-    <form:form action="${contextPath}/order/saveOrder/${total}" method="post" modelAttribute="user">
+    <form:form action="${contextPath}/order/saveOrder" method="post" modelAttribute="user">
         <div class="checkout-page-wrapper section-padding">
             <div class="container">
                 <div class="row">
@@ -121,6 +121,7 @@
                                             <td>Total Amount</td>
                                             <td>
                                                 <strong>$<fmt:formatNumber value="${total}"/></strong>
+                                                <input type="hidden" name="total" value="${total}">
                                             </td>
                                         </tr>
                                         </tfoot>

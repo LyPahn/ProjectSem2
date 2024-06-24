@@ -48,15 +48,22 @@ public class OrderController {
         return cartService.countItemsInCart(id);
     }
 
-    @PostMapping("saveOrder/{total}")
-    public String saveOrder(@ModelAttribute("user") User user, @PathVariable Float total, Model model , HttpServletRequest req) {
+    @PostMapping("saveOrder")
+    public String saveOrder(@ModelAttribute("user") User user, @RequestParam("total") Float total, Model model , HttpServletRequest req) {
         Order order = new Order();
         Integer userId = (Integer) req.getSession().getAttribute("id");
+        User user1 = userService.findUserById(userId);
         List<CartItem> cartItems = cartItemService.findByCart(cartService.findByUserId(userId));
         order.setUserId(userId);
         order.setOrderStatusId(orderStatusService.getById(1));
         order.setPrice(total);
         orderService.save(order);
+        user.setStatus(user1.isStatus());
+        user.setPassword(user1.getPassword());
+        user.setRole(user1.isRole());
+        user.setUsername(user1.getUsername());
+        user.setImage(user1.getImage());
+        userService.update(user);
         for (CartItem cartItem : cartItems) {
             OrderItem orderItem = new OrderItem();
             orderItem.setOrderId(order.getId());
