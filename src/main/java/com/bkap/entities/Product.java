@@ -1,6 +1,7 @@
 package com.bkap.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -21,12 +22,17 @@ import java.util.List;
 public class Product {
     @Id
     @Column(name = "id")
+    @NotBlank(message = "Mã sản phẩm không được để trống")
     private String id;
     @Column(name = "productName" , columnDefinition = "NVARCHAR(200)")
+    @NotBlank(message = "Tên sản phẩm không được để trống")
     private String productName;
     @Column(name = "price")
+    @NotBlank(message = "Giá không được trống")
+    @Min(0)
     private float price;
     @Column(name = "priceOld")
+    @Min(0)
     private float priceOld;
     @Column(name = "description",columnDefinition = "NTEXT")
     private String description;
@@ -35,6 +41,7 @@ public class Product {
     @Column(name = "size")
     private boolean size;
     @Column(name = "quantity")
+    @Min(value = 1 , message = "Số lượng hàng phải lớn hơn 1 sản phẩm")
     private int quantity;
     @Column(name = "categoryId")
     private int categoryId;

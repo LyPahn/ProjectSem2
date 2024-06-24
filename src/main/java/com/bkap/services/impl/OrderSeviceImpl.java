@@ -38,7 +38,7 @@ public class OrderSeviceImpl implements OrderService {
     }
 
     @Override
-    public Order findByUserId(Integer userId) {
+    public List<Order> findByUserId(Integer userId) {
         return orderRepository.findByUserId(userId);
     }
 }

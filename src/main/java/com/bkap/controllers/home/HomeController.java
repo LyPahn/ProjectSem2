@@ -20,6 +20,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -192,9 +193,11 @@ public class HomeController {
 
     @GetMapping("my-account")
     public String editUser(@ModelAttribute("id") int id, Model model) {
+//        int orderId = orderService.findByUserId(id).getId();
+        List<Order> orders = orderService.findByUserId(id);
         model.addAttribute("user", userService.getById(id));
         model.addAttribute("resetpassword" , userService.getById(id));
-        model.addAttribute("orders" , orderItemService.findByOrderId(orderService.findByUserId(id).getId()));
+        model.addAttribute("orders" , orders);
         model.addAttribute("page", "myaccount");
         return "home";
     }
@@ -308,8 +311,9 @@ public class HomeController {
     }
 
     @GetMapping("updateCart/{proId}/{quantity}")
-    public String updateCart(Model model , @PathVariable("proId") String proId , @PathVariable("quantity") int quantity) {
-        var data = cartItemService.findByProductId(proId);
+    public String updateCart(Model model , @PathVariable("proId") String proId , @PathVariable("quantity") int quantity , HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("id");
+        var data = cartItemService.findByProductIdAndCartId(proId , cartService.findByUserId(id).getId());
             data.setQuantity(quantity);
             cartItemService.update(data);
         return "redirect:/cart";

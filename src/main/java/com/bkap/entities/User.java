@@ -1,6 +1,7 @@
 package com.bkap.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,14 +23,19 @@ public class User {
     @Column(name = "id")
     private Integer id;
     @Column(name = "username")
+    @NotBlank(message = "UserName không được để trống")
     private String username;
     @Column(name = "password")
+    @NotBlank(message = "Mật khẩu không được để trống")
     private String password;
     @Column(name = "email")
+    @NotBlank(message = "Email không được để trống")
     private String email;
     @Column(name = "firstName" , columnDefinition = "NVARCHAR(50)")
+    @NotBlank(message = "FirstName không được để trống")
     private String firstName;
     @Column(name = "lastName" , columnDefinition = "NVARCHAR(50)")
+    @NotBlank(message = "lastName không được để trống")
     private String lastName;
     @Column(name = "address" , columnDefinition = "NVARCHAR(255)")
     private String address;

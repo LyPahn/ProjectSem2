@@ -3,9 +3,11 @@ package com.bkap.controllers.admin;
 import com.bkap.entities.Brand;
 import com.bkap.services.BrandService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,7 +34,13 @@ public class BrandController {
     }
 
     @PostMapping("save")
-    public String save(@ModelAttribute Brand brand, Model model , HttpServletRequest req , @RequestParam("file") MultipartFile file) {
+    public String save(@Valid @ModelAttribute Brand brand , BindingResult bindingResult, Model model , HttpServletRequest req , @RequestParam("file") MultipartFile file ) {
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("brand" , brand);
+            model.addAttribute("page", "brand/add");
+            return "admin";
+        }
         if(file != null && !file.isEmpty()) {
             String uploadRootPath = req.getServletContext().getRealPath("resources/images");
             File f = new File(uploadRootPath);

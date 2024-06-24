@@ -1,6 +1,7 @@
 package com.bkap.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "brandName", columnDefinition = "NVARCHAR(50)")
-    @NotEmpty(message = "Tên nhãn hàng không được để trống")
+    @NotBlank(message = "Tên nhãn hàng không được để trống")
     private String brandName;
     @Column(name = "image")
     private String image;

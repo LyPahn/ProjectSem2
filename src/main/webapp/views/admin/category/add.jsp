@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-<script type="">
+<script>
     function showImg(input, target) {
         let file = input.files[0];
         let reader = new FileReader();
