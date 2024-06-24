@@ -49,11 +49,11 @@ public class ProductController {
     }
 
     @PostMapping("save")
-    public String save(@Valid @ModelAttribute Product product, Model model, BindingResult bindingResult,
+    public String save(@Valid @ModelAttribute Product product , BindingResult bindingResult, Model model,
                        @RequestParam("file") MultipartFile file,
                        HttpServletRequest req, @RequestParam("files") MultipartFile[] files
                       ) {
-        if(bindingResult.hasErrors()){
+        if(bindingResult.hasErrors()) {
             model.addAttribute("product", product);
             model.addAttribute("page" , "product/add");
 

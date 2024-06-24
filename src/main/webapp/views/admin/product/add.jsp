@@ -29,10 +29,12 @@
                                 <div class="mb-4">
                                     <label for="form-category/name" class="form-label">Id</label>
                                     <form:input type="text" class="form-control" id="form-category/name"  path="id"/>
+                                    <form:errors path="id" cssStyle="color: red"/>
                                 </div>
                                 <div class="mb-4">
                                     <label for="form-category/name" class="form-label">Name</label>
                                     <form:input type="text" class="form-control" id="form-category/name"  path="productName"/>
+                                    <form:errors path="productName" cssStyle="color: red"/>
                                 </div>
                                 <div class="mb-5">
                                     <h2 class="mb-0 fs-exact-18">Status</h2>
@@ -46,9 +48,11 @@
                                         <form:radiobutton class="form-check-input" path="status" value="false"/>
                                         <span class="form-check-label">Hidden</span>
                                     </label>
+
                                 </div>
                                 <div class="mb-5">
                                     <h2 class="mb-0 fs-exact-18">Size</h2>
+
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-check">
@@ -78,6 +82,7 @@
                                     </div>
                                     <div class="col"><label for="form-product/old-price" class="form-label">Old price</label>
                                         <form:input type="number" class="form-control" id="form-product/old-price" path="priceOld"/>
+                                        <form:errors path="priceOld" cssStyle="color: red"/>
                                     </div>
                                 </div>
                             </div>
@@ -90,6 +95,7 @@
                                 <div class="row g-4">
                                     <div class="col"><label for="form-product/old-price" class="form-label">Quantity</label>
                                         <form:input type="number" class="form-control" id="form-product/old-price" path="quantity"/>
+                                        <form:errors path="quantity" cssStyle="color: red"/>
                                     </div>
                                 </div>
                             </div>

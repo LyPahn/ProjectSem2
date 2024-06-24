@@ -1,7 +1,9 @@
 package com.bkap.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +31,8 @@ public class User {
     @NotBlank(message = "Mật khẩu không được để trống")
     private String password;
     @Column(name = "email")
-    @NotBlank(message = "Email không được để trống")
+    @Email
+    @NotNull(message = "email không được trống")
     private String email;
     @Column(name = "firstName" , columnDefinition = "NVARCHAR(50)")
     @NotBlank(message = "FirstName không được để trống")
@@ -39,6 +42,7 @@ public class User {
     private String lastName;
     @Column(name = "address" , columnDefinition = "NVARCHAR(255)")
     private String address;
+
     @Column(name = "phone")
     private String phone;
     @Column(name = "status")

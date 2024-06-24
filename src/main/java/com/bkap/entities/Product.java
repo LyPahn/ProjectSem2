@@ -28,7 +28,7 @@ public class Product {
     @NotBlank(message = "Tên sản phẩm không được để trống")
     private String productName;
     @Column(name = "price")
-    @NotBlank(message = "Giá không được trống")
+    @NotNull(message = "Giá không được trống")
     @Min(0)
     private float price;
     @Column(name = "priceOld")
