@@ -105,7 +105,7 @@
                                     <ul>
                                         <li class="active"><a href="${contextPath}/">Home</a>
                                         </li>
-                                        <li class="position-static"><a href="${contextpath}/shop">Category<i
+                                        <li class="position-static"><a href="${contextpath}/shop">Shop<i
                                                 class="fa fa-angle-down"></i></a>
                                             <ul class="megamenu dropdown">
                                                 <li class="mega-title"><span>Category</span>
@@ -149,10 +149,10 @@
                             <div class="header-search-container">
                                 <button class="search-trigger d-xl-none d-lg-block"><i
                                         class="pe-7s-search"></i></button>
-                                <form class="header-search-box d-lg-none d-xl-block">
-                                    <input type="text" placeholder="Search entire store hire"
+                                <form class="header-search-box d-lg-none d-xl-block" action="${contextPath}/search-name">
+                                    <input name="keyword" type="text" placeholder="Search entire store hire"
                                            class="header-search-field">
-                                    <button class="header-search-btn"><i class="pe-7s-search"></i></button>
+                                    <button class="header-search-btn" onclick="submitSearchForm()"><i class="pe-7s-search"></i></button>
                                 </form>
                             </div>
                             <div class="header-configure-area">

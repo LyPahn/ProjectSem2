@@ -39,7 +39,7 @@
                                                     <c:when test="${c.id == cateid}">
                                                         <li>
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
+                                                                <input type="" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
                                                                 <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
                                                             </div>
                                                         </li>
@@ -68,10 +68,10 @@
                                 <div class="price-range-wrap">
                                     <div class="price-range" data-min="1" data-max="1000"></div>
                                     <div class="range-slider">
-                                        <form action="#" class="d-flex align-items-center justify-content-between">
+                                        <form action="${contextPath}/searchPrice" class="d-flex align-items-center justify-content-between">
                                             <div class="price-input">
                                                 <label for="amount">Price: </label>
-                                                <input type="text" id="amount">
+                                                <input type="text" id="amount" name="amount">
                                             </div>
                                             <button class="filter-btn">filter</button>
                                         </form>
@@ -283,11 +283,32 @@
                         <!-- start pagination area -->
                         <div class="paginatoin-area text-center">
                             <ul class="pagination-box">
-                                <li><a class="previous" href="#"><i class="pe-7s-angle-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a class="next" href="#"><i class="pe-7s-angle-right"></i></a></li>
+                                <c:choose>
+                                    <c:when test="${not products.first}">
+                                        <li><a class="previous" href="?page=${products.number - 1}&size=${products.size}&sort=${sort}"><i class="pe-7s-angle-left"></i></a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a class="previous" ><i class="pe-7s-angle-left"></i></a></li>
+                                    </c:otherwise>
+                                </c:choose>
+                                <c:forEach begin="0" end="${products.totalPages - 1}" step="1" varStatus="status">
+                                    <c:choose>
+                                        <c:when test="${status.index == products.number}">
+                                            <li class="active"><a href="#">${status.index + 1}</a></li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="#"><a href="?page=${status.index}&size=${products.size}&sort=${sort}">${status.index + 1}</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                                <c:choose>
+                                    <c:when test="${not products.last}">
+                                        <li><a class="next" href="?page=${products.number + 1}&size=${products.size}&sort=${sort}"><i class="pe-7s-angle-right"></i></a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a class="next"><i class="pe-7s-angle-right"></i></a></li>
+                                    </c:otherwise>
+                                </c:choose>
                             </ul>
                         </div>
                         <!-- end pagination area -->
@@ -340,4 +361,18 @@
     function submitSortForm(){
         document.getElementById('submitForm').submit();
     }
+</script>
+<script type="text/javascript">
+    function submitPageSize() {
+        document.getElementById('submitForm').submit();
+    }
+
+    function submitSortForm() {
+        document.getElementById('submitForm').submit();
+    }
+
+    function submitSearchForm() {
+        document.getElementById('searchForm').submit();
+    }
+
 </script>
