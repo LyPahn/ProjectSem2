@@ -30,9 +30,10 @@
                     <div class="col-lg-6 m-auto">
                         <div class="login-reg-form-wrap">
                             <h5>Sign In</h5>
-                            <form action="#" method="post">
+                            <span style="color:red">${msg}</span>
+                            <form action="${contextpath}/dang-nhap" method="post">
                                 <div class="single-input-item">
-                                    <input type="text" placeholder="Email or Username" required name="username"/>
+                                    <input type="text" placeholder="Username" required name="username"/>
                                 </div>
                                 <div class="single-input-item">
                                     <input type="password" placeholder="Enter your Password" required name="password"/>

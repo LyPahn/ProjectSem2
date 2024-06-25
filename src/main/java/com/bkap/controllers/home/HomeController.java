@@ -8,12 +8,14 @@ import com.bkap.services.*;
 import com.bkap.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import jakarta.websocket.Session;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
@@ -180,20 +182,32 @@ public class HomeController {
     }
 
     @PostMapping("save")
-    public String save(Model model, @ModelAttribute User user , HttpServletRequest req) {
+    public String save(@Valid  @ModelAttribute User user ,BindingResult bindingResult, HttpServletRequest req, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("page" , "register");
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("user", user);
+            model.addAttribute("page" , "register");
+            return "home";
+        }
+        if(userService.getUser(user.getUsername()) != null){
+            model.addAttribute("err" , "userName đã tồn tại");
+            model.addAttribute("page" , "register");
+            return "home";
+        }
         String password = Cipher.GenerateMD5(user.getPassword());
         user.setPassword(password);
         user.setRole(false);
         user.setStatus(true);
         userService.save(user);
         return "redirect:/dang-nhap";
+
+
+
     }
 
     @GetMapping("my-account")
     public String editUser(@ModelAttribute("id") int id, Model model) {
-//        int orderId = orderService.findByUserId(id).getId();
         List<Order> orders = orderService.findByUserId(id);
         model.addAttribute("user", userService.getById(id));
         model.addAttribute("resetpassword" , userService.getById(id));
@@ -203,7 +217,7 @@ public class HomeController {
     }
 
     @PostMapping("update")
-    public String update(Model model, @ModelAttribute User user , @RequestParam("file") MultipartFile file ,HttpServletRequest req) {
+    public String update( @ModelAttribute User user , @RequestParam("file") MultipartFile file ,HttpServletRequest req , Model model) {
         if(file != null && !file.isEmpty()) {
             // nếu tải tệp mới
             String UploadRootPath = req.getServletContext().getRealPath("images");
@@ -230,8 +244,10 @@ public class HomeController {
         var dateOld = userService.getById(user.getId());
         user.setCreated_at(dateOld.getCreated_at());
         user.setRole(user.isRole());
-        user.setPassword(user.getPassword());
-        user.setStatus(false);
+        user.setPassword(dateOld.getPassword());
+        user.setStatus(dateOld.isStatus());
+        user.setAddress(user.getAddress());
+        user.setEmail(user.getEmail());
         userService.update(user);
 
         return "redirect:/";

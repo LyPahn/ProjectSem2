@@ -188,8 +188,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="single-input-item">
-                                                            <label class="required">User Name</label>
-                                                            <form:input type="text" placeholder="User name" path="username"/>
+                                                            <label class="">User Name</label>
+                                                            <form:input placeholder="User name" path="username" readonly="true"/>
+
                                                         </div>
                                                         <div class="single-input-item">
                                                             <label class="required">Email</label>

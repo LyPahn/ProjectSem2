@@ -31,8 +31,8 @@ public class User {
     @NotBlank(message = "Mật khẩu không được để trống")
     private String password;
     @Column(name = "email")
-    @Email
-    @NotNull(message = "email không được trống")
+    @Email(message = "email không đúng định dạng")
+    @NotBlank(message = "email không được trống")
     private String email;
     @Column(name = "firstName" , columnDefinition = "NVARCHAR(50)")
     @NotBlank(message = "FirstName không được để trống")

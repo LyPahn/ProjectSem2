@@ -63,6 +63,7 @@ public class OrderController {
         user.setRole(user1.isRole());
         user.setUsername(user1.getUsername());
         user.setImage(user1.getImage());
+        user.setId(user1.getId());
         userService.update(user);
         for (CartItem cartItem : cartItems) {
             OrderItem orderItem = new OrderItem();

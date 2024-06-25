@@ -37,22 +37,28 @@
                                     <div class="col-lg-6">
                                         <div class="single-input-item">
                                             <form:input type="text" path="firstName" placeholder="firstName"/>
+                                            <form:errors path="firstName" cssStyle="color:red"/>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="single-input-item">
                                             <form:input type="text" path="lastName" placeholder="lastName"/>
+                                            <form:errors path="lastName" cssStyle="color:red"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="single-input-item">
                                     <form:input type="text" placeholder="User name" path="username"/>
+                                    <span style="color:red">${err}</span>
+                                    <form:errors path="username" cssStyle="color:red"/>
                                 </div>
                                 <div class="single-input-item">
                                     <form:input type="text" placeholder="Email" path="email"/>
+                                    <form:errors path="email" cssStyle="color:red"/>
                                 </div>
                                 <div class="single-input-item">
                                     <form:input type="password" placeholder="Password" path="password"/>
+                                    <form:errors path="password" cssStyle="color:red"/>
                                 </div>
                                 <div class="single-input-item">
                                     <div class="login-reg-form-meta">
