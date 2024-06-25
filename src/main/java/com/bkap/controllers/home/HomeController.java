@@ -220,7 +220,7 @@ public class HomeController {
     public String update( @ModelAttribute User user , @RequestParam("file") MultipartFile file ,HttpServletRequest req , Model model) {
         if(file != null && !file.isEmpty()) {
             // nếu tải tệp mới
-            String UploadRootPath = req.getServletContext().getRealPath("images");
+            String UploadRootPath = req.getServletContext().getRealPath("resources/images");
             String imageUploadPath = UploadRootPath+"/"+file.getOriginalFilename();
 
             try {
