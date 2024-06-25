@@ -69,14 +69,18 @@ public class ProductImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> findAll(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
+    public Page<Product> findAll(int page, int size, Sort sort) {
+        Pageable pageable = PageRequest.of(page, size, sort);
         return productRepository.findAll(pageable);
     }
 
     @Override
-    public Page<Product> findAll(int page, int size, Sort sort) {
-        Pageable pageable = PageRequest.of(page, size, sort);
-        return productRepository.findAll(pageable);
+    public Page<Product> search(String keyword, Pageable pageable) {
+        return productRepository.findByProductNameContainingIgnoreCase(keyword, pageable);
+    }
+
+    @Override
+    public Page<Product> search(double min, double max, Pageable pageable) {
+        return productRepository.findByPriceBetween(min, max, pageable);
     }
 }

@@ -3682,7 +3682,25 @@ textarea:focus {
   border-radius: 3px;
   background-color: #ebebeb;
 }
+
+.filter-btn {
+  border: none;
+  color: #222222;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 4px 15px;
+  border-radius: 3px;
+  background-color: #ebebeb;
+}
+
 .price-range-wrap .range-slider button.filter-btn:hover {
+  color: #fff;
+  background-color: #c29958;
+}
+
+.filter-btn:hover {
   color: #fff;
   background-color: #c29958;
 }

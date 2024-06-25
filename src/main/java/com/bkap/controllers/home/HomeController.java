@@ -12,6 +12,8 @@ import jakarta.validation.Valid;
 import jakarta.websocket.Session;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,12 +72,63 @@ public class HomeController {
         }
         Page<Product> productPage = productService.findAll(page, size, sorting);
         model.addAttribute("categories" , categoryService.getAll());
-        model.addAttribute("products", productPage);
         model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("products", productPage);
         model.addAttribute("currentPage" , page);
         model.addAttribute("pageSize" , size);
         model.addAttribute("sort" , sort);
-        model.addAttribute("page" , "shop");
+        model.addAttribute("page" , "shop/shop");
+        return "home";
+    }
+
+    @GetMapping("search-name")
+    public String search(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "12") int size,
+            @RequestParam(defaultValue = "") String keyword, Model model){
+
+        //Paginate
+        Pageable pageable = PageRequest.of(page, size);
+
+        //search and paginate
+        Page<Product> productPage = productService.search(keyword, pageable);
+
+        model.addAttribute("products", productPage);
+        model.addAttribute("categories" , categoryService.getAll());
+        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("size", size);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("totalItems", productPage.getTotalElements());
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", "shop/search-name");
+        return "home";
+    }
+
+    @GetMapping("searchPrice")
+    public String searchPrice(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "12") int size,
+            @RequestParam(defaultValue = "") double min,
+            @RequestParam(defaultValue = "") double max,
+            Model model){
+
+        //Phân trang
+        Pageable pageable = PageRequest.of(page, size);
+
+        //search and paginate
+        Page<Product> productPage = productService.search(min, max, pageable);
+
+        model.addAttribute("products", productPage);
+        model.addAttribute("categories" , categoryService.getAll());
+        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("size", size);
+        model.addAttribute("min", min);
+        model.addAttribute("max", max);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("totalItems", productPage.getTotalElements());
+        model.addAttribute("page", "shop/search-price");
         return "home";
     }
 
@@ -85,7 +138,7 @@ public class HomeController {
         model.addAttribute("proCate", productService.findProductsByCategoryId(id));
         model.addAttribute("products", productService.findbyStatus());
         model.addAttribute("brands", brandService.getAll());
-        model.addAttribute("page" , "shop-categories");
+        model.addAttribute("page" , "shop/shop-categories");
         return "home";
     }
 
@@ -95,7 +148,7 @@ public class HomeController {
         model.addAttribute("proBrand", productService.findProductsByBrandId(id));
         model.addAttribute("products", productService.findbyStatus());
         model.addAttribute("brands", brandService.getAll());
-        model.addAttribute("page" , "shop-brands");
+        model.addAttribute("page" , "shop/shop-brands");
         return "home";
     }
 
