@@ -37,7 +37,7 @@
 
 <div class="min-h-100 p-0 p-sm-6 d-flex align-items-stretch">
     <div class="card w-25x flex-grow-1 flex-sm-grow-0 m-sm-auto">
-    <form method="post" action="${contextPath}/dang-nhap">
+    <form method="post" action="">
         <div class="card-body p-sm-5 m-sm-3 flex-grow-0">
             <h1 class="mb-0 fs-3">Sign In</h1>
             <div class="fs-exact-14  mt-2 pt-1 mb-5 pb-2 text-danger">${msg}</div>

@@ -32,15 +32,6 @@
                                 </div>
                                 <div class="sa-divider my-5"></div>
                                 <div class="w-100">
-                                    <dl class="list-unstyled m-0">
-                                        <dt class="fs-exact-14 fw-medium">Last Order</dt>
-                                        <dd class="fs-exact-13 text-muted mb-0 mt-1">7 days ago – <a
-                                                href="app-order.html">#80294</a></dd>
-                                    </dl>
-                                    <dl class="list-unstyled m-0 mt-4">
-                                        <dt class="fs-exact-14 fw-medium">Average Order Value</dt>
-                                        <dd class="fs-exact-13 text-muted mb-0 mt-1">$574.00</dd>
-                                    </dl>
                                     <dl class="list-unstyled m-0 mt-4">
                                         <dt class="fs-exact-14 fw-medium">Registered</dt>
                                         <dd class="fs-exact-13 text-muted mb-0 mt-1">2 months ago</dd>
@@ -70,40 +61,19 @@
                             <div
                                     class="card-body px-5 py-4 d-flex align-items-center justify-content-between">
                                 <h2 class="mb-0 fs-exact-18 me-4">Orders</h2>
-                                <div class="text-muted fs-exact-14 text-end">Total spent $34,980.34 on 7
-                                    orders</div>
+                                <div class="text-muted fs-exact-14 text-end">Total spent $34,980.34</div>
                             </div>
                             <div class="table-responsive">
                                 <table class="sa-table text-nowrap">
                                     <tbody>
-                                    <tr>
-                                        <td><a href="app-order.html">#80294</a></td>
-                                        <td>Today at 6:10 pm</td>
-                                        <td>Pending</td>
-                                        <td>4 items</td>
-                                        <td>$320.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="app-order.html">#63736</a></td>
-                                        <td>May 15, 2019</td>
-                                        <td>Completed</td>
-                                        <td>7 items</td>
-                                        <td>$2,574.31</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="app-order.html">#63501</a></td>
-                                        <td>January 7, 2019</td>
-                                        <td>Completed</td>
-                                        <td>1 items</td>
-                                        <td>$34.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="app-order.html">#40278</a></td>
-                                        <td>October 19, 2018</td>
-                                        <td>Completed</td>
-                                        <td>2 items</td>
-                                        <td>$704.00</td>
-                                    </tr>
+                                    <c:forEach>
+                                        <tr>
+                                            <td><a href="app-order.html">#80294</a></td>
+                                            <td>Today at 6:10 pm</td>
+                                            <td>Pending</td>
+                                            <td>$320.00</td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

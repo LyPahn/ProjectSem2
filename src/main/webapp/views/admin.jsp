@@ -138,7 +138,7 @@
                                                 </path>
                                             </svg></span></a>
                                 <ul class="sa-nav__menu sa-nav__menu--sub" data-sa-collapse-content="">
-                                    <li class="sa-nav__menu-item"><a href="app-orders-list.html"
+                                    <li class="sa-nav__menu-item"><a href="${contextPath}/admin/order"
                                                                      class="sa-nav__link"><span
                                             class="sa-nav__menu-item-padding"></span><span
                                             class="sa-nav__title">Orders List</span></a></li>

@@ -48,7 +48,7 @@
                                         <tr>
                                             <td class="pro-thumbnail"><a href="${contextPath}/chi-tiet/${c.product.id}"><img class="img-fluid" src="${contextPath}/resources/images/${c.product.image}" alt="Product" /></a></td>
                                             <td class="pro-title"><a href="${contextPath}/chi-tiet/${c.product.id}">${c.product.productName}</a></td>
-                                            <td class="pro-price">${c.product.price}<span></span></td>
+                                            <td class="pro-price"><span>${c.product.price}</span></td>
                                             <td class="pro-quantity">
 
                                                     <input type="hidden" name="id" value="${c.product.id}">

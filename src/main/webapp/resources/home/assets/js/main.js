@@ -495,7 +495,8 @@
 	
 	// pricing filter
 	var rangeSlider = $(".price-range"),
-		amount = $("#amount"),
+		amount1 = $("#amount1"),
+		amount2 = $("#amount2"),
 		minPrice = rangeSlider.data('min'),
 		maxPrice = rangeSlider.data('max');
 	rangeSlider.slider({
@@ -504,12 +505,12 @@
 		max: maxPrice,
 		values: [minPrice, maxPrice],
 		slide: function (event, ui) {
-			amount.val("$" + ui.values[0] + " - $" + ui.values[1]);
+			amount1.val(ui.values[0]);
+			amount2.val(ui.values[1]);
 		}
 	});
-	amount.val(" $" + rangeSlider.slider("values", 0) +
-		" - $" + rangeSlider.slider("values", 1)
-	);
+	amount1.val(rangeSlider.slider("values", 0));
+	amount2.val(rangeSlider.slider("values", 1));
 
 
 	// Checkout Page accordion

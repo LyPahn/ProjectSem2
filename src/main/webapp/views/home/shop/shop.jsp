@@ -39,7 +39,7 @@
                                                     <c:when test="${c.id == cateid}">
                                                         <li>
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
+                                                                <input type="checkbox" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
                                                                 <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
                                                             </div>
                                                         </li>
@@ -70,8 +70,8 @@
                                     <div class="range-slider">
                                         <form action="${contextPath}/searchPrice" class="d-flex align-items-center justify-content-between">
                                             <div class="price-input">
-                                                <label for="amount">Price: </label>
-                                                <input type="text" id="amount" name="amount">
+                                                Min:$<input type="text" id="amount1" name="min">
+                                                Max:$<input type="text" id="amount2" name="max">
                                             </div>
                                             <button class="filter-btn">filter</button>
                                         </form>

@@ -80,7 +80,7 @@
                                     </svg></button>
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="product-context-menu-0">
-                                            <li><a class="dropdown-item" href="">Detail</a></li>
+                                            <li><a class="dropdown-item" href="${contextPath}/admin/user/detail-user/${u.id}">Detail</a></li>
                                             <li><a class="dropdown-item" href="">Reset Password</a></li>
                                             <li>
                                                 <hr class="dropdown-divider" />

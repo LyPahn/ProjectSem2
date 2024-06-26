@@ -86,16 +86,13 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-<%--                                                        <c:set var="total" value="0"/>--%>
                                                         <c:forEach var="o" items="${orders}" varStatus="loop">
-<%--                                                            <c:set var="total" value="${total+o.price*o.quantity}"/>--%>
                                                             <tr>
                                                                 <td>${loop.count}</td>
                                                                 <td>${o.orderDate}</td>
                                                                 <td>${o.orderStatusId.status}</td>
-                                                                <td></td>
-<%--                                                                <td>${total}$</td>--%>
-                                                                <td><a href="cart.html" class="btn btn-sqr">View</a>
+                                                                <td>${o.price}$</td>
+                                                                <td><a href="${contextPath}/order-detail/${o.id}" class="btn btn-sqr">View</a>
                                                                 </td>
                                                             </tr>
                                                         </c:forEach>
