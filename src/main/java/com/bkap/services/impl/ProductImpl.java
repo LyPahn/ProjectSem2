@@ -49,8 +49,13 @@ public class ProductImpl implements ProductService {
     }
 
     @Override
+    public List<Product> findByCategory(Integer categoryId) {
+        return productRepository.findTop8AndStatusIsTrueByOrderByCategory(categoryId);
+    }
+
+    @Override
     public List<Product> findbycreateDate() {
-        return productRepository.findTop8ByOrderByCreateDateDesc();
+        return productRepository.findTop8AndStatusIstrueByOrderByCreateDateDesc();
     }
 
     @Override
@@ -61,13 +66,13 @@ public class ProductImpl implements ProductService {
     @Override
     public Page<Product> findProductsByCategoryId(Integer categoryId, int page, int size, Sort sort) {
         Pageable pageable = PageRequest.of(page, size, sort);
-        return productRepository.findProductsByCategoryId(categoryId, pageable);
+        return productRepository.findProductsByCategoryIdAndStatusIsTrue(categoryId, pageable);
     }
 
     @Override
     public Page<Product> findProductsByBrandId(Integer brandId, int page, int size, Sort sort) {
         Pageable pageable = PageRequest.of(page, size, sort);
-        return productRepository.findProductsByBrandId(brandId, pageable);
+        return productRepository.findProductsByBrandIdAndStatusIsTrue(brandId, pageable);
     }
 
     @Override
@@ -79,12 +84,12 @@ public class ProductImpl implements ProductService {
     @Override
     public Page<Product> search(String keyword, int page, int size, Sort sort) {
         Pageable pageable = PageRequest.of(page, size, sort);
-        return productRepository.findByProductNameContainingIgnoreCase(keyword, pageable);
+        return productRepository.findByProductNameContainingIgnoreCaseAndStatusIsTrue(keyword, pageable);
     }
 
     @Override
     public Page<Product> search(double min, double max, int page, int size, Sort sort) {
         Pageable pageable = PageRequest.of(page, size, sort);
-        return productRepository.findByPriceBetween(min, max, pageable);
+        return productRepository.findByPriceBetweenAndStatusIsTrue(min, max, pageable);
     }
 }

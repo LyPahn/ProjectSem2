@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <main>
     <!-- hero slider area start -->
     <section class="slider-area">
@@ -264,7 +265,7 @@
                             <!-- product item start -->
                             <div class="product-item">
                                 <figure class="product-thumb">
-                                    <a href="${contextPath}/chi-tiet/${p.id}">
+                                    <a href="${contextPath}/chi-tiet/${p.id}/${p.categoryId}">
                                         <img class="" src="${contextPath}/resources/images/${p.image}" alt="product">
                                     </a>
                                     <div class="product-badge">
@@ -272,7 +273,7 @@
                                             <span>new</span>
                                         </div>
                                         <div class="product-label discount">
-                                            <span>${(p.price * 100) / p.priceOld}%</span>
+                                            <span><fmt:formatNumber value="${(p.price * 100) / p.priceOld}"/>%</span>
                                         </div>
                                     </div>
                                     <div class="button-group">
@@ -293,11 +294,11 @@
                                         <p class="manufacturer-name"><a href="product-details.html">${p.category.cateName}</a></p>
                                     </div>
                                     <h6 class="product-name">
-                                        <a href="product-details.html">${p.productName}</a>
+                                        <a href="${contextPath}/chi-tiet/${p.id}/${p.categoryId}">${p.productName}</a>
                                     </h6>
                                     <div class="price-box">
-                                        <span class="price-regular">$${p.price}</span>
-                                        <span class="price-old"><del>$${p.priceOld}</del></span>
+                                        <span class="price-regular">$<fmt:formatNumber value="${p.priceOld}"/> </span>
+                                        <span class="price-old"><del>$<fmt:formatNumber value="${p.price}"/></del></span>
                                     </div>
                                 </div>
                             </div>

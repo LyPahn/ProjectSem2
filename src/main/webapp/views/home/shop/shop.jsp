@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <main>
     <!-- breadcrumb area start -->
     <div class="breadcrumb-area">
@@ -203,7 +204,7 @@
                                         <!-- product grid start -->
                                         <div class="product-item">
                                             <figure class="product-thumb">
-                                                <a href="${contextPath}/chi-tiet/${p.id}">
+                                                <a href="${contextPath}/chi-tiet/${p.id}/${p.categoryId}">
                                                     <img class="" src="${contextPath}/resources/images/${p.image}" alt="product">
                                                 </a>
                                                 <div class="product-badge">
@@ -211,7 +212,7 @@
                                                         <span>new</span>
                                                     </div>
                                                     <div class="product-label discount">
-                                                        <span>${(p.price * 100) / p.priceOld}%</span>
+                                                        <span><fmt:formatNumber value="${(p.price * 100) / p.priceOld}"/>%</span>
                                                     </div>
                                                 </div>
                                                 <div class="button-group">
@@ -225,14 +226,14 @@
                                             </figure>
                                             <div class="product-caption text-center">
                                                 <div class="product-identity">
-                                                    <p class="manufacturer-name"><a href="${contextPath}/chi-tiet/${p.id}">${p.category.cateName}</a></p>
+                                                    <p class="manufacturer-name"><a href="${contextPath}/chi-tiet/${p.id}/${p.categoryId}">${p.category.cateName}</a></p>
                                                 </div>
                                                 <h6 class="product-name">
-                                                    <a href="${contextPath}/chi-tiet/${p.id}">${p.productName}</a>
+                                                    <a href="${contextPath}/chi-tiet/${p.id}/${p.categoryId}">${p.productName}</a>
                                                 </h6>
                                                 <div class="price-box">
-                                                    <span class="price-regular">$${p.price}</span>
-                                                    <span class="price-old"><del>$${p.priceOld}</del></span>
+                                                    <span class="price-regular">$<fmt:formatNumber value="${p.priceOld}"/></span>
+                                                    <span class="price-old"><del>$<fmt:formatNumber value="${p.price}"/></del></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -241,7 +242,7 @@
                                         <!-- product list item end -->
                                         <div class="product-list-item">
                                             <figure class="product-thumb">
-                                                <a href="${contextPath}/chi-tiet/${p.id}">
+                                                <a href="${contextPath}/chi-tiet/${p.id}/${p.categoryId}">
                                                     <img class="" src="${contextPath}/resources/images/${p.image}" alt="product">
                                                 </a>
                                                 <div class="product-badge">
@@ -265,10 +266,10 @@
                                                 <div class="manufacturer-name">
                                                     <a href="${contextPath}/chi-tiet/${p.id}">${p.category.cateName}</a>
                                                 </div>
-                                                <h5 class="product-name"><a href="${contextPath}/chi-tiet/${p.id}">${p.productName}</a></h5>
+                                                <h5 class="product-name"><a href="${contextPath}/chi-tiet/${p.id}/${p.categoryId}">${p.productName}</a></h5>
                                                 <div class="price-box">
-                                                    <span class="price-regular">$${p.price}</span>
-                                                    <span class="price-old"><del>$${p.priceOld}</del></span>
+                                                    <span class="price-regular">$<fmt:formatNumber value="${p.price}"/></span>
+                                                    <span class="price-old"><del>$<fmt:formatNumber value="${p.priceOld}"/></del></span>
                                                 </div>
                                                 <p>${p.description}</p>
                                             </div>

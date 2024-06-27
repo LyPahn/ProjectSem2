@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
 <div id="top" class="sa-app__body">
     <div class="mx-xxl-3 px-4 px-sm-5">
@@ -57,7 +58,7 @@
                                     </div>
                                 </td>
                                 <td><a href="" class="text-reset">${u.phone}</a></td>
-                                <td>${u.created_at}</td>
+                                <td><fmt:formatDate value="${u.created_at}" pattern="dd/MM/yyy"/> </td>
                                 <td>
                                     <c:choose>
                                         <c:when test="${u.role}">

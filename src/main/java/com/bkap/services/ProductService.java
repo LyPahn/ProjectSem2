@@ -9,6 +9,7 @@ import java.rmi.Remote;
 import java.util.List;
 
 public interface ProductService extends GenericService<Product , String> {
+    List<Product> findByCategory(Integer categoryId);
     public List<Product> findbycreateDate();
     public List<Product> findbyStatus();
     Page<Product> findProductsByCategoryId(Integer categoryId, int page, int size, Sort sort);

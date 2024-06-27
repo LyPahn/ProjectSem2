@@ -2,6 +2,7 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <main>
     <!-- breadcrumb area start -->
     <div class="breadcrumb-area">
@@ -65,14 +66,13 @@
                                         </div>
                                     </div>
                                     <div class="price-box">
-                                        <span class="price-regular">$${product.price}</span>
-                                        <span class="price-old"><del>$${product.priceOld}</del></span>
+                                        <span class="price-regular">$<fmt:formatNumber value="${product.price}"/> </span>
+                                        <span class="price-old"><del>$<fmt:formatNumber value="${product.price}"/></del></span>
                                     </div>
                                     <div class="availability">
                                         <i class="fa fa-check-circle"></i>
                                         <span>${product.quantity} in stock</span>
                                     </div>
-                                    <h1>${sessionScope.id}</h1>
                                     <p class="pro-desc">${product.description}</p>
                                     <form:form method="get" action="${contextPath}/addtocart/${product.id}" modelAttribute="cartItem">
 <%--                                        <form:hidden path="cartId}" value="${sessionScope.cart.id}"/>--%>

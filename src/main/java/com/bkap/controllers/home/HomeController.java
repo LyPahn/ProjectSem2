@@ -44,7 +44,7 @@ public class HomeController {
     @GetMapping({"/", "trang-chu"})
     public String index(Model model) {
         model.addAttribute("categories", categoryService.findByStatusIsTrue());
-        model.addAttribute("products", productService.findbyStatus());
+        model.addAttribute("products", productService.findbycreateDate());
         model.addAttribute("brands", brandService.findByStatusIsTrue());
         model.addAttribute("page", "index");
         return "home";
@@ -129,11 +129,11 @@ public class HomeController {
                 break;
             case "price_asc":
                 sorting = Sort.by("price").ascending();
-                ;
+
                 break;
             case "price_desc":
                 sorting = Sort.by("price").descending();
-                ;
+
                 break;
         }
         Page<Product> productPage = productService.search(min, max, page, size, sorting);
@@ -284,9 +284,9 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("chi-tiet/{id}")
-    public String productDetail(Model model, @PathVariable("id") String id) {
-        model.addAttribute("pros", productService.findbyStatus());
+    @GetMapping("chi-tiet/{id}/{categoryId}")
+    public String productDetail(Model model, @PathVariable("id") String id , @PathVariable Integer categoryId) {
+        model.addAttribute("pros", productService.findByCategory(categoryId));
         model.addAttribute("product", productService.getById(id));
         model.addAttribute("wishlist", new Wishlist());
         model.addAttribute("cartItem", new CartItem());
@@ -373,7 +373,25 @@ public class HomeController {
     }
 
     @PostMapping("resetpassword")
-    public String resetpassword(@ModelAttribute User resetpassword, HttpServletRequest req, Model model) {
+    public String resetpassword(@RequestParam("currentPassword") String currentPassword , @RequestParam("password") String password , @RequestParam("confirmPassword") String confirmPassword, HttpServletRequest req, Model model) {
+        Integer id = (Integer) req.getSession().getAttribute("id");
+        var user = userService.findUserById(id);
+        String passMd5 = Cipher.GenerateMD5(currentPassword);
+        if(passMd5.equals(user.getPassword())) {
+            if (confirmPassword.equals(password)) {
+                user.setPassword(Cipher.GenerateMD5(password));
+            }else{
+                model.addAttribute("msg" , "Mật khẩu mới không khớp");
+                model.addAttribute("page" , "myaccount");
+                return "home";
+            }
+        }else{
+            model.addAttribute("msg1" , "Mật khẩu cũ không chính xác");
+            model.addAttribute("page" , "myaccount");
+            return "home";
+        }
+        userService.update(user);
+
 
         return "";
     }

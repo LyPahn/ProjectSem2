@@ -106,27 +106,30 @@
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade" id="download" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <form:form action="${contextPath}/resetpassword" method="post" modelAttribute="resetpassword">
+                                                <form action="${contextPath}/resetpassword" method="post">
                                                     <fieldset>
                                                         <legend>Password change</legend>
                                                         <div class="single-input-item">
                                                             <label for="current-pwd" class="required">Current
                                                                 Password</label>
-                                                            <input type="password" id="current-pwd" placeholder="Current Password" path="password"/>
+                                                            <input type="password" id="current-pwd" placeholder="Current Password" name="currentPassword"/>
+                                                            <span style="color:red">${msg1}</span>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
                                                                     <label for="new-pwd" class="required">New
                                                                         Password</label>
-                                                                    <input type="password" id="new-pwd" placeholder="New Password" path="password"/>
+                                                                    <input type="password" id="new-pwd" placeholder="New Password" name="password"/>
+                                                                    <span style="color:red">${msg}</span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
                                                                     <label for="confirm-pwd" class="required">Confirm
                                                                         Password</label>
-                                                                    <input type="password" id="confirm-pwd" placeholder="Confirm Password" path="password"/>
+                                                                    <input type="password" id="confirm-pwd" placeholder="Confirm Password" name="confirmPassword"/>
+                                                                    <span style="color:red">${msg}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -134,7 +137,7 @@
                                                     <div class="single-input-item">
                                                         <button class="btn btn-sqr" type="submit">Save Changes</button>
                                                     </div>
-                                                </form:form>
+                                                </form>
                                             </div>
                                         </div>
                                         <!-- Single Tab Content End -->
