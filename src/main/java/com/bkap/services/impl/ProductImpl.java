@@ -59,13 +59,15 @@ public class ProductImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findProductsByCategoryId(Integer categoryId) {
-        return productRepository.findProductsByCategoryId(categoryId);
+    public Page<Product> findProductsByCategoryId(Integer categoryId, int page, int size, Sort sort) {
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return productRepository.findProductsByCategoryId(categoryId, pageable);
     }
 
     @Override
-    public List<Product> findProductsByBrandId(Integer brandId) {
-        return productRepository.findProductsByBrandId(brandId);
+    public Page<Product> findProductsByBrandId(Integer brandId, int page, int size, Sort sort) {
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return productRepository.findProductsByBrandId(brandId, pageable);
     }
 
     @Override
@@ -75,12 +77,14 @@ public class ProductImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> search(String keyword, Pageable pageable) {
+    public Page<Product> search(String keyword, int page, int size, Sort sort) {
+        Pageable pageable = PageRequest.of(page, size, sort);
         return productRepository.findByProductNameContainingIgnoreCase(keyword, pageable);
     }
 
     @Override
-    public Page<Product> search(double min, double max, Pageable pageable) {
+    public Page<Product> search(double min, double max, int page, int size, Sort sort) {
+        Pageable pageable = PageRequest.of(page, size, sort);
         return productRepository.findByPriceBetween(min, max, pageable);
     }
 }

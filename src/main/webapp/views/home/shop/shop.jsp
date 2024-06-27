@@ -39,7 +39,7 @@
                                                     <c:when test="${c.id == cateid}">
                                                         <li>
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
+                                                                <input type="radio" name="radio" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
                                                                 <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
                                                             </div>
                                                         </li>
@@ -47,7 +47,7 @@
                                                     <c:otherwise>
                                                         <li>
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="cate${c.id}" value="${c.id}">
+                                                                <input type="radio" name="radio" class="custom-control-input" id="cate${c.id}" value="${c.id}">
                                                                 <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
                                                             </div>
                                                         </li>
@@ -92,7 +92,7 @@
                                                 <c:when test="${b.id == brandid}">
                                                     <li>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="brand${b.id}" checked value="${b.id}">
+                                                            <input type="radio" name="radio" class="custom-control-input" id="brand${b.id}" checked value="${b.id}">
                                                             <label class="custom-control-label" for="brand${b.id}">${b.brandName} (${b.productCount})</label>
                                                         </div>
                                                     </li>
@@ -100,7 +100,7 @@
                                                 <c:otherwise>
                                                     <li>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="brand${b.id}"  value="${b.id}">
+                                                            <input type="radio" name="radio" class="custom-control-input" id="brand${b.id}"  value="${b.id}">
                                                             <label class="custom-control-label" for="brand${b.id}">${b.brandName} (${b.productCount})</label>
                                                         </div>
                                                     </li>
@@ -323,7 +323,7 @@
 <script>
     function filterCategories() {
         var form = document.getElementById('filterFormCategory');
-        var checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+        var checkboxes = form.querySelectorAll('input[type="radio"]:checked');
         var categoryIds = [];
 
         checkboxes.forEach(function(checkbox) {
@@ -331,7 +331,7 @@
         });
 
         if (categoryIds.length > 0) {
-            var url = 'shop-categories/' + categoryIds.join(',');
+            var url = '${contextPath}/shop-categories/' + categoryIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one category.");
@@ -342,7 +342,7 @@
 
     function filterBrands() {
         var form = document.getElementById('filterFormBrand');
-        var checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+        var checkboxes = form.querySelectorAll('input[type="radio"]:checked');
         var brandIds = [];
 
         checkboxes.forEach(function(checkbox) {
@@ -350,7 +350,7 @@
         });
 
         if (brandIds.length > 0) {
-            var url = 'shop-brands/' + brandIds.join(',');
+            var url = '${contextPath}/shop-brands/' + brandIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one brand.");

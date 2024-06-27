@@ -39,7 +39,7 @@
                                                 <c:when test="${c.id == cateid}">
                                                     <li>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
+                                                            <input type="radio" name="radio" class="custom-control-input" id="cate${c.id}" checked value="${c.id}">
                                                             <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
                                                         </div>
                                                     </li>
@@ -47,7 +47,7 @@
                                                 <c:otherwise>
                                                     <li>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cate${c.id}" value="${c.id}">
+                                                            <input type="radio" name="radio" class="custom-control-input" id="cate${c.id}" value="${c.id}">
                                                             <label class="custom-control-label" for="cate${c.id}">${c.cateName} (${c.productCount})</label>
                                                         </div>
                                                     </li>
@@ -68,10 +68,10 @@
                                 <div class="price-range-wrap">
                                     <div class="price-range" data-min="1" data-max="1000"></div>
                                     <div class="range-slider">
-                                        <form action="#" class="d-flex align-items-center justify-content-between">
+                                        <form action="${contextPath}/searchPrice" class="d-flex align-items-center justify-content-between">
                                             <div class="price-input">
-                                                <label for="amount">Price: </label>
-                                                <input type="text" id="amount">
+                                                Min:$<input type="text" id="amount1" name="min">
+                                                Max:$<input type="text" id="amount2" name="max">
                                             </div>
                                             <button class="filter-btn">filter</button>
                                         </form>
@@ -92,7 +92,7 @@
                                                 <c:when test="${b.id == brandid}">
                                                     <li>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="brand${b.id}" checked value="${b.id}">
+                                                            <input type="radio" name="radio" class="custom-control-input" id="brand${b.id}" checked value="${b.id}">
                                                             <label class="custom-control-label" for="brand${b.id}">${b.brandName} (${b.productCount})</label>
                                                         </div>
                                                     </li>
@@ -100,7 +100,7 @@
                                                 <c:otherwise>
                                                     <li>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="brand${b.id}"  value="${b.id}">
+                                                            <input type="radio" name="radio" class="custom-control-input" id="brand${b.id}"  value="${b.id}">
                                                             <label class="custom-control-label" for="brand${b.id}">${b.brandName} (${b.productCount})</label>
                                                         </div>
                                                     </li>
@@ -181,7 +181,7 @@
                                     <div class="top-bar-right">
                                         <div class="product-short">
                                             <p>Sort By : </p>
-                                            <form id="submitForm" action="${contextPath}/shop" method="get" onchange="submitSortForm()">
+                                            <form id="submitForm" action="${contextPath}/shop-categories/${id}" method="get" onchange="submitSortForm()">
                                                 <select class="nice-select" name="sort">
                                                     <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Relevance</option>
                                                     <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Name (A - Z)</option>
@@ -199,7 +199,7 @@
 
                         <!-- product item list wrapper start -->
                         <div class="shop-product-wrap grid-view row mbn-30">
-                            <c:forEach var="p" items="${proCate}">
+                            <c:forEach var="p" items="${products.content}">
                                 <!-- product single item start -->
                                 <div class="col-md-4 col-sm-6">
                                     <!-- product grid start -->
@@ -285,11 +285,32 @@
                         <!-- start pagination area -->
                         <div class="paginatoin-area text-center">
                             <ul class="pagination-box">
-                                <li><a class="previous" href="#"><i class="pe-7s-angle-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a class="next" href="#"><i class="pe-7s-angle-right"></i></a></li>
+                                <c:choose>
+                                    <c:when test="${not products.first}">
+                                        <li><a class="previous" href="?page=${products.number - 1}&size=${products.size}&sort=${sort}"><i class="pe-7s-angle-left"></i></a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a class="previous" ><i class="pe-7s-angle-left"></i></a></li>
+                                    </c:otherwise>
+                                </c:choose>
+                                <c:forEach begin="0" end="${products.totalPages - 1}" step="1" varStatus="status">
+                                    <c:choose>
+                                        <c:when test="${status.index == products.number}">
+                                            <li class="active"><a href="#">${status.index + 1}</a></li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="#"><a href="?page=${status.index}&size=${products.size}&sort=${sort}">${status.index + 1}</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                                <c:choose>
+                                    <c:when test="${not products.last}">
+                                        <li><a class="next" href="?page=${products.number + 1}&size=${products.size}&sort=${sort}"><i class="pe-7s-angle-right"></i></a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a class="next"><i class="pe-7s-angle-right"></i></a></li>
+                                    </c:otherwise>
+                                </c:choose>
                             </ul>
                         </div>
                         <!-- end pagination area -->
@@ -304,7 +325,7 @@
 <script>
     function filterCategories() {
         var form = document.getElementById('filterFormCategory');
-        var checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+        var checkboxes = form.querySelectorAll('input[type="radio"]:checked');
         var categoryIds = [];
 
         checkboxes.forEach(function(checkbox) {
@@ -312,7 +333,7 @@
         });
 
         if (categoryIds.length > 0) {
-            var url = 'shop-categories/' + categoryIds.join(',');
+            var url = '${contextPath}/shop-categories/' + categoryIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one category.");
@@ -324,7 +345,7 @@
 <script>
     function filterBrands() {
         var form = document.getElementById('filterFormBrand');
-        var checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+        var checkboxes = form.querySelectorAll('input[type="radio"]:checked');
         var bnandIds = [];
 
         checkboxes.forEach(function(checkbox) {
@@ -332,7 +353,7 @@
         });
 
         if (bnandIds.length > 0) {
-            var url = 'shop-brands/' + bnandIds.join(',');
+            var url = '${contextPath}/shop-brands/' + bnandIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one brand.");
@@ -340,4 +361,18 @@
 
         return false; // Prevent form submission
     }
+</script>
+<script type="text/javascript">
+    function submitPageSize() {
+        document.getElementById('submitForm').submit();
+    }
+
+    function submitSortForm() {
+        document.getElementById('submitForm').submit();
+    }
+
+    function submitSearchForm() {
+        document.getElementById('searchForm').submit();
+    }
+
 </script>

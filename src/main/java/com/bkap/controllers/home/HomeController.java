@@ -71,60 +71,20 @@ public class HomeController {
         }
         Page<Product> productPage = productService.findAll(page, size, sorting);
         model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("products", productService.getAll());
         model.addAttribute("brands", brandService.getAll());
         model.addAttribute("products", productPage);
         model.addAttribute("currentPage", page);
         model.addAttribute("pageSize", size);
         model.addAttribute("sort", sort);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("totalItems", productPage.getTotalElements());
         model.addAttribute("page", "shop/shop");
         return "home";
     }
 
     @GetMapping("search-name")
-    public String search(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "12") int size, @RequestParam(defaultValue = "") String keyword, Model model) {
-
-        //Paginate
-        Pageable pageable = PageRequest.of(page, size);
-
-        //search and paginate
-        Page<Product> productPage = productService.search(keyword, pageable);
-
-        model.addAttribute("products", productPage);
-        model.addAttribute("categories", categoryService.getAll());
-        model.addAttribute("brands", brandService.getAll());
-        model.addAttribute("currentPage", page);
-        model.addAttribute("size", size);
-        model.addAttribute("totalPages", productPage.getTotalPages());
-        model.addAttribute("totalItems", productPage.getTotalElements());
-        model.addAttribute("keyword", keyword);
-        model.addAttribute("page", "shop/search-name");
-        return "home";
-    }
-
-    @GetMapping("searchPrice")
-    public String searchPrice(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "12") int size, @RequestParam(defaultValue = "") double min, @RequestParam(defaultValue = "") double max, Model model) {
-
-        //Phân trang
-        Pageable pageable = PageRequest.of(page, size);
-
-        //search and paginate
-        Page<Product> productPage = productService.search(min, max, pageable);
-
-        model.addAttribute("products", productPage);
-        model.addAttribute("categories", categoryService.getAll());
-        model.addAttribute("brands", brandService.getAll());
-        model.addAttribute("currentPage", page);
-        model.addAttribute("size", size);
-        model.addAttribute("min", min);
-        model.addAttribute("max", max);
-        model.addAttribute("totalPages", productPage.getTotalPages());
-        model.addAttribute("totalItems", productPage.getTotalElements());
-        model.addAttribute("page", "shop/search-price");
-        return "home";
-    }
-
-    @GetMapping("shop-categories/{id}")
-    public String shopcategories(Model model, @PathVariable int id, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "12") int size, @RequestParam(defaultValue = "default", required = false) String sort) {
+    public String search(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "12") int size, @RequestParam(defaultValue = "default", required = false) String sort, @RequestParam(defaultValue = "") String keyword, Model model) {
         Sort sorting = Sort.unsorted();
         switch (sort) {
             case "name_asc":
@@ -142,21 +102,119 @@ public class HomeController {
                 ;
                 break;
         }
-        Page<Product> productPage = productService.findAll(page, size, sorting);
-        model.addAttribute("categories", categoryService.getAll());
-        model.addAttribute("proCate", productService.findProductsByCategoryId(id));
+        Page<Product> productPage = productService.search(keyword, page, size, sorting);
+
         model.addAttribute("products", productPage);
+        model.addAttribute("categories", categoryService.getAll());
         model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("pageSize", size);
+        model.addAttribute("sort", sort);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("totalItems", productPage.getTotalElements());
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", "shop/search-name");
+        return "home";
+    }
+
+    @GetMapping("searchPrice")
+    public String searchPrice(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "12") int size, @RequestParam(defaultValue = "default", required = false) String sort, @RequestParam(defaultValue = "") double min, @RequestParam(defaultValue = "") double max, Model model) {
+        Sort sorting = Sort.unsorted();
+        switch (sort) {
+            case "name_asc":
+                sorting = Sort.by("productName").ascending();
+                break;
+            case "name_desc":
+                sorting = Sort.by("productName").descending();
+                break;
+            case "price_asc":
+                sorting = Sort.by("price").ascending();
+                ;
+                break;
+            case "price_desc":
+                sorting = Sort.by("price").descending();
+                ;
+                break;
+        }
+        Page<Product> productPage = productService.search(min, max, page, size, sorting);
+
+        model.addAttribute("products", productPage);
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("pageSize", size);
+        model.addAttribute("sort", sort);
+        model.addAttribute("min", min);
+        model.addAttribute("max", max);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("totalItems", productPage.getTotalElements());
+        model.addAttribute("page", "shop/search-price");
+        return "home";
+    }
+
+    @GetMapping("shop-categories/{id}")
+    public String shopcategories(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "12") int size, @RequestParam(defaultValue = "default", required = false) String sort, @PathVariable int id, Model model) {
+        Sort sorting = Sort.unsorted();
+        switch (sort) {
+            case "name_asc":
+                sorting = Sort.by("productName").ascending();
+                break;
+            case "name_desc":
+                sorting = Sort.by("productName").descending();
+                break;
+            case "price_asc":
+                sorting = Sort.by("price").ascending();
+                ;
+                break;
+            case "price_desc":
+                sorting = Sort.by("price").descending();
+                ;
+                break;
+        }
+        Page<Product> productPage = productService.findProductsByCategoryId(id, page, size, sorting);
+
+        model.addAttribute("products", productPage);
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("pageSize", size);
+        model.addAttribute("sort", sort);
+        model.addAttribute("id", id);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("totalItems", productPage.getTotalElements());
         model.addAttribute("page", "shop/shop-categories");
         return "home";
     }
 
     @GetMapping("shop-brands/{id}")
-    public String shopbrands(Model model, @PathVariable int id) {
+    public String shopbrands(Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "12") int size, @RequestParam(defaultValue = "default", required = false) String sort, @PathVariable int id) {
+        Sort sorting = Sort.unsorted();
+        switch (sort) {
+            case "name_asc":
+                sorting = Sort.by("productName").ascending();
+                break;
+            case "name_desc":
+                sorting = Sort.by("productName").descending();
+                break;
+            case "price_asc":
+                sorting = Sort.by("price").ascending();
+                ;
+                break;
+            case "price_desc":
+                sorting = Sort.by("price").descending();
+                ;
+                break;
+        }
+        Page<Product> productPage = productService.findProductsByBrandId(id, page, size, sorting);
+        model.addAttribute("products", productPage);
         model.addAttribute("categories", categoryService.getAll());
-        model.addAttribute("proBrand", productService.findProductsByBrandId(id));
-        model.addAttribute("products", productService.findbyStatus());
         model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("pageSize", size);
+        model.addAttribute("sort", sort);
+        model.addAttribute("id", id);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("totalItems", productPage.getTotalElements());
         model.addAttribute("page", "shop/shop-brands");
         return "home";
     }

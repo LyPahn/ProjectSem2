@@ -179,7 +179,7 @@
                                     <div class="top-bar-right">
                                         <div class="product-short">
                                             <p>Sort By : </p>
-                                            <form id="submitForm" action="${contextPath}/shop" method="get" onchange="submitSortForm()">
+                                            <form id="submitForm" action="${contextPath}/searchPrice?min=${min}&max=${max}&" method="get" onchange="submitSortForm()">
                                                 <select class="nice-select" name="sort">
                                                     <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Relevance</option>
                                                     <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Name (A - Z)</option>
@@ -285,7 +285,7 @@
                             <ul class="pagination-box">
                                 <c:choose>
                                     <c:when test="${not products.first}">
-                                        <li><a class="previous" href="?page=${products.number - 1}&size=${products.size}&sort=${sort}"><i class="pe-7s-angle-left"></i></a></li>
+                                        <li><a class="previous" href="?page=${products.number - 1}&size=${products.size}&min=${min}&max=${max}"><i class="pe-7s-angle-left"></i></a></li>
                                     </c:when>
                                     <c:otherwise>
                                         <li><a class="previous" ><i class="pe-7s-angle-left"></i></a></li>
@@ -297,13 +297,13 @@
                                             <li class="active"><a href="#">${status.index + 1}</a></li>
                                         </c:when>
                                         <c:otherwise>
-                                            <li class="#"><a href="?page=${status.index}&size=${products.size}&sort=${sort}">${status.index + 1}</a></li>
+                                            <li class="#"><a href="?page=${status.index}&size=${products.size}&min=${min}&max=${max}">${status.index + 1}</a></li>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
                                 <c:choose>
                                     <c:when test="${not products.last}">
-                                        <li><a class="next" href="?page=${products.number + 1}&size=${products.size}&sort=${sort}"><i class="pe-7s-angle-right"></i></a></li>
+                                        <li><a class="next" href="?page=${products.number + 1}&size=${products.size}&min=${min}&max=${max}"><i class="pe-7s-angle-right"></i></a></li>
                                     </c:when>
                                     <c:otherwise>
                                         <li><a class="next"><i class="pe-7s-angle-right"></i></a></li>
@@ -357,9 +357,6 @@
         }
 
         return false; // Prevent form submission
-    }
-    function submitSortForm(){
-        document.getElementById('submitForm').submit();
     }
 </script>
 <script type="text/javascript">

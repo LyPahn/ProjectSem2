@@ -15,8 +15,8 @@ public interface ProductRepository extends JpaRepository<Product, String> {
     public List<Product> findByStatusTrue();
     Integer countProductByCategoryIdAndStatusIsTrue(Integer categoryId);
     Integer countProductByBrandIdAndStatusIsTrue(Integer brandId);
-    List<Product> findProductsByCategoryId(Integer categoryId);
-    List<Product> findProductsByBrandId(Integer brandId);
+    Page<Product> findProductsByCategoryId(Integer categoryId, Pageable pageable);
+    Page<Product> findProductsByBrandId(Integer brandId, Pageable pageable);
     Page<Product> findAll(Pageable pageable);
     Page<Product> findByProductNameContainingIgnoreCase(String keyword, Pageable pageable);
     @Query("select p from Product p where p.price >= :min and p.price <= :max order by p.price ASC ")

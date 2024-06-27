@@ -7,7 +7,7 @@
             <div class="py-5">
                 <div class="row g-4 align-items-center">
                     <div class="col">
-                        <h1 class="h3 m-0">Jessica Moore</h1>
+                        <h1 class="h3 m-0">${user.username}</h1>
                     </div>
                 </div>
             </div>
@@ -66,12 +66,12 @@
                             <div class="table-responsive">
                                 <table class="sa-table text-nowrap">
                                     <tbody>
-                                    <c:forEach>
+                                    <c:forEach var="o" items="${order}">
                                         <tr>
-                                            <td><a href="app-order.html">#80294</a></td>
-                                            <td>Today at 6:10 pm</td>
-                                            <td>Pending</td>
-                                            <td>$320.00</td>
+                                            <td><a href="app-order.html">#${o.id}</a></td>
+                                            <td>${o.orderDate}</td>
+                                            <td>${o.orderStatusId.status}</td>
+                                            <td>$${o.price}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -90,9 +90,8 @@
                             <div class="sa-divider"></div>
                             <div class="px-5 py-3 my-2 d-flex align-items-center justify-content-between">
                                 <div>
-                                    <div>Jessica Moore</div>
-                                    <div class="text-muted fs-exact-14 mt-1">Random Federation 115302,
-                                        Moscow ul. Varshavskaya, 15-2-178</div>
+                                    <div>${user.username}</div>
+                                    <div class="text-muted fs-exact-14 mt-1">${user.address}</div>
                                 </div>
                                 <div>
                                     <div class="dropdown"><button class="btn btn-sa-muted btn-sm"
@@ -106,38 +105,6 @@
                                     </svg></button>
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="address-context-menu-0">
-                                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                                            <li><a class="dropdown-item" href="#">Duplicate</a></li>
-                                            <li><a class="dropdown-item" href="#">Add tag</a></li>
-                                            <li><a class="dropdown-item" href="#">Remove tag</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider" />
-                                            </li>
-                                            <li><a class="dropdown-item text-danger" href="#">Delete</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sa-divider"></div>
-                            <div class="px-5 py-3 my-2 d-flex align-items-center justify-content-between">
-                                <div>
-                                    <div>Neptune Saturnov</div>
-                                    <div class="text-muted fs-exact-14 mt-1">Earth 4b4f53, MarsGrad Sun
-                                        Orbit, 43.3241-85.239</div>
-                                </div>
-                                <div>
-                                    <div class="dropdown"><button class="btn btn-sa-muted btn-sm"
-                                                                  type="button" id="address-context-menu-1"
-                                                                  data-bs-toggle="dropdown" aria-expanded="false"
-                                                                  aria-label="More"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                                         width="3" height="13" fill="currentColor">
-                                        <path
-                                                d="M1.5,8C0.7,8,0,7.3,0,6.5S0.7,5,1.5,5S3,5.7,3,6.5S2.3,8,1.5,8z M1.5,3C0.7,3,0,2.3,0,1.5S0.7,0,1.5,0 S3,0.7,3,1.5S2.3,3,1.5,3z M1.5,10C2.3,10,3,10.7,3,11.5S2.3,13,1.5,13S0,12.3,0,11.5S0.7,10,1.5,10z">
-                                        </path>
-                                    </svg></button>
-                                        <ul class="dropdown-menu dropdown-menu-end"
-                                            aria-labelledby="address-context-menu-1">
                                             <li><a class="dropdown-item" href="#">Edit</a></li>
                                             <li><a class="dropdown-item" href="#">Duplicate</a></li>
                                             <li><a class="dropdown-item" href="#">Add tag</a></li>
