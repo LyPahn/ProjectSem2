@@ -50,10 +50,12 @@
                                 <div class="d-flex fs-6">
 <%--                                    <div class="badge badge-sa-danger">${o.orderStatusId.status}</div>--%>
 <%--                                    <form id="submitForm" action="${contextPath}/admin/order/update/${o.id}" method="post" onchange="submitSearchForm()">--%>
+                                        <input id="orderStatusId" type="hidden" name="orderStatusId" value="${o.orderStatusId.id}">
                                         <select name="status" onchange="updateCart(${o.id} , this.value)">
+
                                             <c:forEach items="${orderStatus}" var="os">
-                                                <h1>${o.id}</h1>
-                                                <option value="${os.id}" <c:if test="${os.id == orders.orderStatusId}">selected</c:if><${os.status}</option>
+                                            <h1>${o.orderStatusId.id}</h1>
+                                                <option value="${os.id}" <c:if test="${os.id == o.orderStatusId.id}">selected</c:if> >${os.status}</option>
                                             </c:forEach>
                                         </select>
 <%--                                    </form>--%>

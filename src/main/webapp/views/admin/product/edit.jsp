@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="row g-4">
                                     <div class="col"><label for="form-product/old-price" class="form-label">Quantity</label>
-                                        <form:input type="number" class="form-control" id="form-product/old-price" path="quantity" value="${product.size}"/>
+                                        <form:input type="number" class="form-control" id="form-product/old-price" path="quantity" value="${product.quantity}"/>
                                     </div>
                                 </div>
                             </div>

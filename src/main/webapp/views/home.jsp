@@ -184,34 +184,73 @@
                                         </c:otherwise>
                                     </c:choose>
                                     <li>
-                                        <a href="${contextPath}/wishlist">
-                                            <i class="pe-7s-like"></i>
-                                            <div class="notification">
-                                                <c:choose>
-                                                    <c:when test="${sessionScope.id == null}">
-                                                        0
-                                                    </c:when>
-                                                    <c:otherwise >
-                                                        ${countWishlist}
-                                                    </c:otherwise>
-                                                </c:choose>
-                                               </div>
-                                        </a>
+                                        <c:choose>
+                                            <c:when test="${sessionScope.id == null}">
+                                                <a href="${contextPath}/dang-nhap">
+                                                    <i class="pe-7s-like"></i>
+                                                    <div class="notification">
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.id == null}">
+                                                                0
+                                                            </c:when>
+                                                            <c:otherwise >
+                                                                ${countWishlist}
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </a>
+                                            </c:when>
+                                            <c:otherwise >
+                                                <a href="${contextPath}/wishlist">
+                                                    <i class="pe-7s-like"></i>
+                                                    <div class="notification">
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.id == null}">
+                                                                0
+                                                            </c:when>
+                                                            <c:otherwise >
+                                                                ${countWishlist}
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </a>
+                                            </c:otherwise>
+                                        </c:choose>
+
                                     </li>
                                     <li>
-                                        <a href="${contextPath}/cart">
-                                            <i class="pe-7s-shopbag"></i>
-                                            <div class="notification">
-                                                <c:choose>
-                                                    <c:when test="${sessionScope.id == null}">
-                                                        0
-                                                    </c:when>
-                                                    <c:otherwise >
-                                                        ${countCartItem}
-                                                    </c:otherwise>
-                                                </c:choose>
-                                                </div>
-                                        </a>
+                                        <c:choose>
+                                            <c:when test="${sessionScope.id == null}">
+                                                <a href="${contextPath}/dang-nhap">
+                                                    <i class="pe-7s-shopbag"></i>
+                                                    <div class="notification">
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.id == null}">
+                                                                0
+                                                            </c:when>
+                                                            <c:otherwise >
+                                                                ${countCartItem}
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </a>
+                                            </c:when>
+                                            <c:otherwise >
+                                                <a href="${contextPath}/cart">
+                                                    <i class="pe-7s-shopbag"></i>
+                                                    <div class="notification">
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.id == null}">
+                                                                0
+                                                            </c:when>
+                                                            <c:otherwise >
+                                                                ${countCartItem}
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </a>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </li>
                                 </ul>
                             </div>
