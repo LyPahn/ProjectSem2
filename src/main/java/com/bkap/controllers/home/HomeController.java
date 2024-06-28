@@ -46,6 +46,8 @@ public class HomeController {
         model.addAttribute("categories", categoryService.findByStatusIsTrue());
         model.addAttribute("products", productService.findbycreateDate());
         model.addAttribute("brands", brandService.findByStatusIsTrue());
+        model.addAttribute("cartItem", new CartItem());
+        model.addAttribute("wishlist", new Wishlist());
         model.addAttribute("page", "index");
         return "home";
     }
@@ -62,11 +64,10 @@ public class HomeController {
                 break;
             case "price_asc":
                 sorting = Sort.by("price").ascending();
-                ;
                 break;
             case "price_desc":
                 sorting = Sort.by("price").descending();
-                ;
+
                 break;
         }
         Page<Product> productPage = productService.findAll(page, size, sorting);
@@ -79,6 +80,8 @@ public class HomeController {
         model.addAttribute("sort", sort);
         model.addAttribute("totalPages", productPage.getTotalPages());
         model.addAttribute("totalItems", productPage.getTotalElements());
+        model.addAttribute("cartItem", new CartItem());
+        model.addAttribute("wishlist", new Wishlist());
         model.addAttribute("page", "shop/shop");
         return "home";
     }
@@ -113,6 +116,8 @@ public class HomeController {
         model.addAttribute("totalPages", productPage.getTotalPages());
         model.addAttribute("totalItems", productPage.getTotalElements());
         model.addAttribute("keyword", keyword);
+        model.addAttribute("cartItem", new CartItem());
+        model.addAttribute("wishlist", new Wishlist());
         model.addAttribute("page", "shop/search-name");
         return "home";
     }
@@ -148,6 +153,8 @@ public class HomeController {
         model.addAttribute("max", max);
         model.addAttribute("totalPages", productPage.getTotalPages());
         model.addAttribute("totalItems", productPage.getTotalElements());
+        model.addAttribute("cartItem", new CartItem());
+        model.addAttribute("wishlist", new Wishlist());
         model.addAttribute("page", "shop/search-price");
         return "home";
     }
@@ -182,6 +189,8 @@ public class HomeController {
         model.addAttribute("id", id);
         model.addAttribute("totalPages", productPage.getTotalPages());
         model.addAttribute("totalItems", productPage.getTotalElements());
+        model.addAttribute("cartItem", new CartItem());
+        model.addAttribute("wishlist", new Wishlist());
         model.addAttribute("page", "shop/shop-categories");
         return "home";
     }
@@ -215,6 +224,8 @@ public class HomeController {
         model.addAttribute("id", id);
         model.addAttribute("totalPages", productPage.getTotalPages());
         model.addAttribute("totalItems", productPage.getTotalElements());
+        model.addAttribute("cartItem", new CartItem());
+        model.addAttribute("wishlist", new Wishlist());
         model.addAttribute("page", "shop/shop-brands");
         return "home";
     }
@@ -415,13 +426,13 @@ public class HomeController {
     public String addwishlist(Model model, @ModelAttribute Wishlist wishlist) {
         model.addAttribute("wishlist", wishlist);
         wishlistService.save(wishlist);
-        return "redirect:/";
+        return "redirect:/wishlist";
     }
 
     @GetMapping("delete-wishlist/{id}")
     public String deleteWishlist(Model model, @PathVariable int id) {
         wishlistService.delete(wishlistService.getById(id));
-        return "redirect:/";
+        return "redirect:/wishlist";
     }
 
     @GetMapping("addtocart/{proId}")
@@ -437,7 +448,7 @@ public class HomeController {
             return "redirect:/";
         }
         cartItemService.save(cartItem);
-        return "redirect:/";
+        return "redirect:/cart";
     }
 
     @GetMapping("cart")
@@ -457,7 +468,7 @@ public class HomeController {
     @GetMapping("delete-cart/{id}")
     public String deleteCart(Model model, @PathVariable int id) {
         cartItemService.delete(cartItemService.getById(id));
-        return "redirect:/";
+        return "redirect:/cart";
     }
 
     @GetMapping("updateCart/{proId}/{quantity}")

@@ -6,6 +6,7 @@ import com.bkap.entities.OrderStatus;
 import com.bkap.services.OrderItemService;
 import com.bkap.services.OrderService;
 import com.bkap.services.OrderStatusService;
+import com.bkap.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ public class AdminOrderController {
     private final OrderService orderService;
     private final OrderItemService orderItemService;
     private final OrderStatusService orderStatusService;
+    private final UserService userService;
 
     @GetMapping("")
     public String index(Model model) {
@@ -48,5 +50,14 @@ public class AdminOrderController {
         model.addAttribute("page", "order/index");
         return "admin";
 
+    }
+
+    @GetMapping("detail/{id}")
+    public String detail(@PathVariable int id, Model model) {
+        model.addAttribute("order", orderService.getById(id));
+        model.addAttribute("orderItem", orderItemService.findByOrderId(id));
+//        model.addAttribute("user", userService.);
+        model.addAttribute("page" , "order/detail");
+        return "admin";
     }
 }

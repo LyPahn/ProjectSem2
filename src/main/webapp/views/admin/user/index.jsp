@@ -52,7 +52,7 @@
                                                 <img src="${contextPath}/resources/images/${u.image}" width="40" height="40" alt="" />
                                             </div>
                                         </a>
-                                        <div><a href="app-customer.html" class="text-reset">${u.firstName} ${u.lastName}</a>
+                                        <div><a href="${contextPath}/admin/user/detail-user/${u.id}" class="text-reset">${u.firstName} ${u.lastName}</a>
                                             <div class="text-muted mt-n1">${u.email}</div>
                                         </div>
                                     </div>

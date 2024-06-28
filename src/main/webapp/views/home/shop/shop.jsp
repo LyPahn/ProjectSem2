@@ -216,12 +216,27 @@
                                                     </div>
                                                 </div>
                                                 <div class="button-group">
-                                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                                    <form:form method="post" action="${contextPath}/addwishlist" modelAttribute="wishlist">
+                                                        <form:hidden path="productId" value="${p.id}" />
+                                                        <form:hidden path="userId" value="${sessionScope.id}" />
+                                                        <button><a data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a></button>
+                                                    </form:form>
                                                     <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
                                                 </div>
                                                 <div class="cart-hover">
-                                                    <button class="btn btn-cart">add to cart</button>
+                                                    <form:form method="get" action="${contextPath}/addtocart/${p.id}" modelAttribute="cartItem">
+                                                        <form:hidden path="quantity" value = "1" />
+                                                        <c:choose>
+                                                            <c:when test="${p.size == true}">
+                                                                <form:hidden value="1" path="size" />
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <form:hidden path="size" value="0"/>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <button class="btn btn-cart">add to cart</button>
+                                                    </form:form>
                                                 </div>
                                             </figure>
                                             <div class="product-caption text-center">
@@ -232,8 +247,8 @@
                                                     <a href="${contextPath}/chi-tiet/${p.id}/${p.categoryId}">${p.productName}</a>
                                                 </h6>
                                                 <div class="price-box">
-                                                    <span class="price-regular">$<fmt:formatNumber value="${p.priceOld}"/></span>
-                                                    <span class="price-old"><del>$<fmt:formatNumber value="${p.price}"/></del></span>
+                                                    <span class="price-regular">$<fmt:formatNumber value="${p.price}"/></span>
+                                                    <span class="price-old"><del>$<fmt:formatNumber value="${p.priceOld}"/></del></span>
                                                 </div>
                                             </div>
                                         </div>

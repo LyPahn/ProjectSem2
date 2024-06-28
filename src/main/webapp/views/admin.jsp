@@ -44,7 +44,7 @@
     <!-- sa-app__sidebar -->
     <div class="sa-app__sidebar">
         <div class="sa-sidebar">
-            <div class="sa-sidebar__header"><a class="sa-sidebar__logo" href="index.html"><!-- logo -->
+            <div class="sa-sidebar__header"><a class="sa-sidebar__logo" href="${contextPath}/admin"><!-- logo -->
                 <div class="sa-sidebar-logo"><svg xmlns="http://www.w3.org/2000/svg" width="120px"
                                                   height="20px">
                     <path
@@ -117,10 +117,6 @@
                                                                      class="sa-nav__link"><span
                                             class="sa-nav__menu-item-padding"></span><span
                                             class="sa-nav__title">Customers List</span></a></li>
-                                    <li class="sa-nav__menu-item"><a href="app-customer.html"
-                                                                     class="sa-nav__link"><span
-                                            class="sa-nav__menu-item-padding"></span><span
-                                            class="sa-nav__title">Customer</span></a></li>
                                 </ul>
                             </li>
                             <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
@@ -143,10 +139,6 @@
                                                                      class="sa-nav__link"><span
                                             class="sa-nav__menu-item-padding"></span><span
                                             class="sa-nav__title">Orders List</span></a></li>
-                                    <li class="sa-nav__menu-item"><a href="app-order.html"
-                                                                     class="sa-nav__link"><span
-                                            class="sa-nav__menu-item-padding"></span><span
-                                            class="sa-nav__title">Order Details</span></a></li>
                                 </ul>
                             </li>
                             <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"

@@ -180,7 +180,7 @@
                                     <div class="top-bar-right">
                                         <div class="product-short">
                                             <p>Sort By : </p>
-                                            <form id="submitForm" action="${contextPath}/searchPrice?min=${min}&max=${max}&" method="get" onchange="submitSortForm()">
+                                            <form id="submitForm" action="${contextPath}/searchPrice" method="get" onchange="submitSortForm()">
                                                 <select class="nice-select" name="sort">
                                                     <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Relevance</option>
                                                     <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Name (A - Z)</option>
@@ -216,12 +216,27 @@
                                                 </div>
                                             </div>
                                             <div class="button-group">
-                                                <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                                <form:form method="post" action="${contextPath}/addwishlist" modelAttribute="wishlist">
+                                                    <form:hidden path="productId" value="${p.id}" />
+                                                    <form:hidden path="userId" value="${sessionScope.id}" />
+                                                    <button><a data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a></button>
+                                                </form:form>
                                                 <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
                                             </div>
                                             <div class="cart-hover">
-                                                <button class="btn btn-cart">add to cart</button>
+                                                <form:form method="get" action="${contextPath}/addtocart/${p.id}" modelAttribute="cartItem">
+                                                    <form:hidden path="quantity" value = "1" />
+                                                    <c:choose>
+                                                        <c:when test="${p.size == true}">
+                                                            <form:hidden value="1" path="size" />
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <form:hidden path="size" value="0"/>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <button class="btn btn-cart">add to cart</button>
+                                                </form:form>
                                             </div>
                                         </figure>
                                         <div class="product-caption text-center">

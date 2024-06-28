@@ -44,7 +44,7 @@
                         <tr>
                             <td><input type="checkbox" class="form-check-input m-0 fs-exact-16 d-block"
                                        aria-label="..." /></td>
-                            <td><a href="app-order.html" class="text-reset">${o.id}</a></td>
+                            <td><a href="${contextPath}/admin/order/detail/${o.id}" class="text-reset">#${o.id}</a></td>
                             <td><fmt:formatDate value="${o.orderDate}" pattern="dd/MM/yyyy"/> </td>
                             <td><a href="app-customer.html" class="text-reset">${o.user.username}</a></td>
                             <td>
@@ -79,7 +79,7 @@
                                 </svg></button>
                                     <ul class="dropdown-menu dropdown-menu-end"
                                         aria-labelledby="order-context-menu-0">
-                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="${contextPath}/admin/order/detail/${o.id}">Detail</a></li>
                                         <li>
                                             <hr class="dropdown-divider" />
                                         </li>

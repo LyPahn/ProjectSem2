@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
+<c:set var="total" value="0"/>
 <div id="top" class="sa-app__body">
     <div class="mx-sm-2 px-2 px-sm-3 px-xxl-4 pb-6">
         <div class="container container--max--xl">
@@ -61,12 +62,12 @@
                             <div
                                     class="card-body px-5 py-4 d-flex align-items-center justify-content-between">
                                 <h2 class="mb-0 fs-exact-18 me-4">Orders</h2>
-                                <div class="text-muted fs-exact-14 text-end">Total spent $34,980.34</div>
                             </div>
                             <div class="table-responsive">
                                 <table class="sa-table text-nowrap">
                                     <tbody>
                                     <c:forEach var="o" items="${order}">
+                                        <c:set var="total" value="${total+o.price}"/>
                                         <tr>
                                             <td><a href="app-order.html">#${o.id}</a></td>
                                             <td>${o.orderDate}</td>
@@ -78,14 +79,32 @@
                                 </table>
                             </div>
                             <div class="sa-divider"></div>
-                            <div class="px-5 py-4 text-center"><a href="app-orders-list.html">View all 7
-                                orders</a></div>
+                            <div class="px-5 py-4 text-center">Total spent $${total}</div>
+                        </div>
+                        <div class="card mt-5">
+                            <div
+                                    class="card-body px-5 py-4 d-flex align-items-center justify-content-between">
+                                <h2 class="mb-0 fs-exact-18 me-4">Wishlist</h2>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="sa-table text-nowrap">
+                                    <tbody>
+                                    <c:forEach var="w" items="${wishlist}" varStatus="loop">
+                                        <tr>
+                                            <td><a href="#">#${loop.count}</a></td>
+                                            <td>${w.product.productName}</td>
+                                            <td>${w.product.status}</td>
+                                            <td>$${w.product.price}</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="card mt-5">
                             <div
                                     class="card-body px-5 py-4 d-flex align-items-center justify-content-between">
                                 <h2 class="mb-0 fs-exact-18 me-4">Addresses</h2>
-                                <div class="text-muted fs-exact-14"><a href="#">New address</a></div>
                             </div>
                             <div class="sa-divider"></div>
                             <div class="px-5 py-3 my-2 d-flex align-items-center justify-content-between">
