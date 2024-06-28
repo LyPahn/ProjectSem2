@@ -6,4 +6,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService extends GenericService<User , Integer> {
     public User getUser(String username);
+    public User findUserById(Integer id);
 }

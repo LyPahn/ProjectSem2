@@ -63,6 +63,35 @@
                                         </div>
                                     </c:otherwise>
                                 </c:choose>
+                                <div class="mb-5">
+                                    <h2 class="mb-0 fs-exact-18">Size</h2>
+                                </div>
+                                <c:choose>
+                                    <c:when test="${product.size}">
+                                        <div class="mb-4">
+                                            <label class="form-check">
+                                                <form:radiobutton class="form-check-input" path="size" checked="" value="true" />
+                                                <span class="form-check-label">Show</span>
+                                            </label>
+                                            <label class="form-check">
+                                                <form:radiobutton class="form-check-input" path="size" value="false"/>
+                                                <span class="form-check-label">Hidden</span>
+                                            </label>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="mb-4">
+                                            <label class="form-check">
+                                                <form:radiobutton class="form-check-input" path="size" value="true" />
+                                                <span class="form-check-label">Show</span>
+                                            </label>
+                                            <label class="form-check">
+                                                <form:radiobutton class="form-check-input" path="size" checked="" value="false"/>
+                                                <span class="form-check-label">Hidden</span>
+                                            </label>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
                                 <div class="mb-4">
                                     <label class="form-label">Description</label>
                                     <form:textarea id="editor" class="" rows="8" path="description" value="${product.description}"/>
@@ -90,11 +119,8 @@
                                     <h2 class="mb-0 fs-exact-18">Size-Quantity</h2>
                                 </div>
                                 <div class="row g-4">
-                                    <div class="col"><label for="form-product/price" class="form-label">Size</label>
-                                        <form:input type="number" class="form-control" id="form-product/price" path="size" value="${product.size}"/>
-                                    </div>
                                     <div class="col"><label for="form-product/old-price" class="form-label">Quantity</label>
-                                        <form:input type="number" class="form-control" id="form-product/old-price" path="quantity" value="${product.size}"/>
+                                        <form:input type="number" class="form-control" id="form-product/old-price" path="quantity" value="${product.quantity}"/>
                                     </div>
                                 </div>
                             </div>

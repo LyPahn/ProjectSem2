@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-scompiler-id="0">
@@ -43,7 +44,7 @@
     <!-- sa-app__sidebar -->
     <div class="sa-app__sidebar">
         <div class="sa-sidebar">
-            <div class="sa-sidebar__header"><a class="sa-sidebar__logo" href="index.html"><!-- logo -->
+            <div class="sa-sidebar__header"><a class="sa-sidebar__logo" href="${contextPath}/admin"><!-- logo -->
                 <div class="sa-sidebar-logo"><svg xmlns="http://www.w3.org/2000/svg" width="120px"
                                                   height="20px">
                     <path
@@ -116,10 +117,6 @@
                                                                      class="sa-nav__link"><span
                                             class="sa-nav__menu-item-padding"></span><span
                                             class="sa-nav__title">Customers List</span></a></li>
-                                    <li class="sa-nav__menu-item"><a href="app-customer.html"
-                                                                     class="sa-nav__link"><span
-                                            class="sa-nav__menu-item-padding"></span><span
-                                            class="sa-nav__title">Customer</span></a></li>
                                 </ul>
                             </li>
                             <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
@@ -138,14 +135,10 @@
                                                 </path>
                                             </svg></span></a>
                                 <ul class="sa-nav__menu sa-nav__menu--sub" data-sa-collapse-content="">
-                                    <li class="sa-nav__menu-item"><a href="app-orders-list.html"
+                                    <li class="sa-nav__menu-item"><a href="${contextPath}/admin/order"
                                                                      class="sa-nav__link"><span
                                             class="sa-nav__menu-item-padding"></span><span
                                             class="sa-nav__title">Orders List</span></a></li>
-                                    <li class="sa-nav__menu-item"><a href="app-order.html"
-                                                                     class="sa-nav__link"><span
-                                            class="sa-nav__menu-item-padding"></span><span
-                                            class="sa-nav__title">Order Details</span></a></li>
                                 </ul>
                             </li>
                             <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
@@ -311,7 +304,7 @@
                 </svg></button></div>
                 <div class="sa-toolbar__item dropdown"><button class="sa-toolbar__button" type="button"
                                                                id="dropdownMenuButton3" data-bs-toggle="dropdown" data-bs-reference="parent"
-                                                               data-bs-offset="0,1" aria-expanded="false"><img src="${contextPath}/resources/admin/vendor/flag-icons/24/DE.png"
+                                                               data-bs-offset="0,1" aria-expanded="false"><img src="${contextPath}/resources/admin/vendor/flag-icons/24/GB.png"
                                                                                                                class="sa-language-icon" alt="" /></button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton3">
                         <li><a class="dropdown-item d-flex align-items-center" href="#"><img

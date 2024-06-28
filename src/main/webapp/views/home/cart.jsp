@@ -1,111 +1,148 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <c:set var="total" value="0" />
- <main class="main-wrapper">
+<main>
+    <!-- breadcrumb area start -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="shop.html">shop</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">cart</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb area end -->
 
-        <!-- Start Cart Area  -->
-        <div class="axil-product-cart-area axil-section-gap">
-            <div class="container">
-                <div class="axil-product-cart-wrap">
-                    <div class="product-table-heading">
-                        <h4 class="title">Your Cart</h4>
-                        <a href="#" class="cart-clear">Clear Shoping Cart</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table axil-product-table axil-cart-table mb--40">
-                            <thead>
+    <!-- cart main wrapper start -->
+    <div class="cart-main-wrapper section-padding">
+        <div class="container">
+            <div class="section-bg-color">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Cart Table Area -->
+                        <div class="cart-table table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
                                 <tr>
-                                    <th scope="col" class="product-remove"></th>
-                                    
-                                    <th scope="col" class="product-title">Tên sản phẩm</th>
-                                    <th scope="col" class="product-price">Giá</th>
-                                    <th scope="col" class="product-quantity">Số lượng</th>
-                                    <th scope="col" class="product-subtotal">Thành tiền</th>
+                                    <th class="pro-thumbnail">Thumbnail</th>
+                                    <th class="pro-title">Product</th>
+                                    <th class="pro-price">Price</th>
+                                    <th class="pro-quantity">Quantity</th>
+                                    <th class="pro-subtotal">Total</th>
+                                    <th class="pro-remove">Remove</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                            	<c:forEach items="${carts}" var="c">
-                            		<tr>
-                                    <td class="product-remove"><a href="" class="remove-wishlist" onclick="removeItem('${c.productId}')"><i class="fal fa-times"></i></a></td>
-                                    <td class="product-title"><a href="single-product.html">${c.productId}</a></td>
-                                    <td class="product-price" data-title="Price"><span class="currency-symbol">$</span><fmt:formatNumber value="${c.price}"/></td>
-                                    <td class="product-quantity" data-title="Qty">
-                                        <div class="pro-qty">
-                                            <input type="number" class="quantity-input" value="${c.quantity}" onchange="updateCart('${c.productId}',this.value)">
-                                        </div>
-                                    </td>
-                                    <c:set var="total" value="${total+c.price*c.quantity}" />
-                                    <td class="product-subtotal" data-title="Subtotal"><fmt:formatNumber value="${c.price*c.quantity}" type="currency"/></td>
-                                </tr>
-                                <c:set var="total" value="${total+b.price*b.quantity}" />
-                            	</c:forEach>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="cart-update-btn-area">
-                        <div class="input-group product-cupon">
-                            <input placeholder="Enter coupon code" type="text">
-                            <div class="product-cupon-btn">
-                                <button type="submit" class="axil-btn btn-outline">Apply</button>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="c" items="${cartItem}">
+                                        <tr>
+                                            <td class="pro-thumbnail"><a href="${contextPath}/chi-tiet/${c.product.id}"><img class="img-fluid" src="${contextPath}/resources/images/${c.product.image}" alt="Product" /></a></td>
+                                            <td class="pro-title"><a href="${contextPath}/chi-tiet/${c.product.id}">${c.product.productName}</a></td>
+                                            <td class="pro-price"><span>${c.product.price}</span></td>
+                                            <td class="pro-quantity">
+
+                                                    <input type="hidden" name="id" value="${c.product.id}">
+                                                  <input type="hidden" name="productId" value="${c.product.id}">
+                                                    <div class="pro-qty">
+                                                        <button class="dec qtybtn decrease" id="dec-quantity" >-</button>
+                                                        <input type="hidden" class="proId" value="${c.product.id}">
+                                                        <input name="quantity" class="quantity" type="number"   min="1" value="${c.quantity}" readonly>
+                                                        <button class="inc qtybtn increase" id="inc-quantity" >+</button>
+                                                    </div>
+
+                                            </td>
+                                            <c:set var="total" value="${total+c.product.price*c.quantity}" />
+                                            <td class="pro-subtotal"><span>${c.product.price*c.quantity}</span></td>
+                                            <td class="pro-remove"><a href="${contextPath}/delete-cart/${c.id}"><i class="fa fa-trash-o"></i></a></td>
+                                        </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Cart Update Option -->
+                        <div class="cart-update-option d-block d-md-flex justify-content-between">
+                            <div class="apply-coupon-wrapper">
+                                <form action="#" method="post" class=" d-block d-md-flex">
+                                    <input type="text" placeholder="Enter Your Coupon Code" required />
+                                    <button class="btn btn-sqr">Apply Coupon</button>
+                                </form>
                             </div>
                         </div>
-                        <div class="update-btn">
-                            <a href=""  class="axil-btn btn-outline">Update Cart</a>
-                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 offset-xl-7 offset-lg-5">
-                            <div class="axil-order-summery mt--80">
-                                <h5 class="title mb--20">Order Summary</h5>
-                                <div class="summery-table-wrap">
-                                    <table class="table summery-table mb--30">
-                                        <tbody>
-                                        	
-                                            <tr class="order-subtotal">
-                                                <td>Tổng tiền:</td>
-                                                <td><fmt:formatNumber value="${total}" type="currency"/>$</td>
-                                            </tr>
-                                            <tr class="order-shipping">
-                                                <td>Shipping</td>
-                                                <td>
-                                                    <div class="input-group">
-                                                        <input type="radio" id="radio1" name="shipping" checked>
-                                                        <label for="radio1">Free Shippping</label>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input type="radio" id="radio2" name="shipping">
-                                                        <label for="radio2">Local: $35.00</label>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input type="radio" id="radio3" name="shipping">
-                                                        <label for="radio3">Flat rate: $12.00</label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="order-tax">
-                                                <td>State Tax</td>
-                                                <td>$8.00</td>
-                                            </tr>
-                                            <tr class="order-total">
-                                                <td>Total</td>
-                                                <td class="order-total-amount">$125.00</td>
-                                            </tr>
-                                        </tbody>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 ml-auto">
+                        <!-- Cart Calculation Area -->
+                        <div class="cart-calculator-wrapper">
+                            <div class="cart-calculate-items">
+                                <h6>Cart Totals</h6>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tr class="total">
+                                            <td>Total</td>
+                                            <td class="total-amount"><fmt:formatNumber value="${total}" type="currency"/></td>
+                                        </tr>
                                     </table>
                                 </div>
-                                <a href="checkout.html" class="axil-btn btn-bg-primary checkout-btn">Process to Checkout</a>
                             </div>
+                            <a href="${contextPath}/order" class="btn btn-sqr d-block">Proceed Checkout</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Cart Area  -->
+    </div>
+    <!-- cart main wrapper end -->
+</main>
+<script>
+    function updateCart(id , quantity) {
+        $.get("/updateCart/" + id + "/" + quantity, function() {
+            window.location.reload();
+            // document.getElementById('submitForm').submit();
+        });
+    }
 
-    </main><body>
 
-</body>
-</html>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Lấy tất cả các nút tăng và giảm số lượng sản phẩm
+        const increaseButtons = document.querySelectorAll('.increase');
+        const decreaseButtons = document.querySelectorAll('.decrease');
+
+        // Thêm sự kiện click cho từng nút tăng
+        increaseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const product = button.parentElement;
+                const quantityElement = product.querySelector('.quantity');
+                const proId = product.querySelector('.proId').value;
+                let currentQuantity = parseInt(quantityElement.value);
+                quantityElement.value = currentQuantity + 1;
+                updateCart(proId,quantityElement.value);
+            });
+        });
+
+        // Thêm sự kiện click cho từng nút giảm
+        decreaseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const product = button.parentElement;
+                const quantityElement = product.querySelector('.quantity');
+                let currentQuantity = parseInt(quantityElement.value);
+                if (currentQuantity > 1) {
+                    quantityElement.value = currentQuantity - 1;
+                    const proId = product.querySelector('.proId').value;
+                    updateCart(proId,quantityElement.value);
+                }
+            });
+        });
+    });
+</script>

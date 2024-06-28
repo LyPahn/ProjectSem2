@@ -40,7 +40,7 @@
     <form method="post" action="">
         <div class="card-body p-sm-5 m-sm-3 flex-grow-0">
             <h1 class="mb-0 fs-3">Sign In</h1>
-            <div class="fs-exact-14 text-muted mt-2 pt-1 mb-5 pb-2">Log in to your account to continue.</div>
+            <div class="fs-exact-14  mt-2 pt-1 mb-5 pb-2 text-danger">${msg}</div>
             <div class="mb-4">
                 <label class="form-label">Email Address</label>
                 <input type="text" class="form-control form-control-lg" name="username"/></div>

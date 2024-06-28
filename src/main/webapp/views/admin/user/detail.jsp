@@ -1,13 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
+<c:set var="total" value="0"/>
 <div id="top" class="sa-app__body">
     <div class="mx-sm-2 px-2 px-sm-3 px-xxl-4 pb-6">
         <div class="container container--max--xl">
             <div class="py-5">
                 <div class="row g-4 align-items-center">
                     <div class="col">
-                        <h1 class="h3 m-0">Jessica Moore</h1>
+                        <h1 class="h3 m-0">${user.username}</h1>
                     </div>
                 </div>
             </div>
@@ -32,15 +33,6 @@
                                 </div>
                                 <div class="sa-divider my-5"></div>
                                 <div class="w-100">
-                                    <dl class="list-unstyled m-0">
-                                        <dt class="fs-exact-14 fw-medium">Last Order</dt>
-                                        <dd class="fs-exact-13 text-muted mb-0 mt-1">7 days ago – <a
-                                                href="app-order.html">#80294</a></dd>
-                                    </dl>
-                                    <dl class="list-unstyled m-0 mt-4">
-                                        <dt class="fs-exact-14 fw-medium">Average Order Value</dt>
-                                        <dd class="fs-exact-13 text-muted mb-0 mt-1">$574.00</dd>
-                                    </dl>
                                     <dl class="list-unstyled m-0 mt-4">
                                         <dt class="fs-exact-14 fw-medium">Registered</dt>
                                         <dd class="fs-exact-13 text-muted mb-0 mt-1">2 months ago</dd>
@@ -70,59 +62,55 @@
                             <div
                                     class="card-body px-5 py-4 d-flex align-items-center justify-content-between">
                                 <h2 class="mb-0 fs-exact-18 me-4">Orders</h2>
-                                <div class="text-muted fs-exact-14 text-end">Total spent $34,980.34 on 7
-                                    orders</div>
                             </div>
                             <div class="table-responsive">
                                 <table class="sa-table text-nowrap">
                                     <tbody>
-                                    <tr>
-                                        <td><a href="app-order.html">#80294</a></td>
-                                        <td>Today at 6:10 pm</td>
-                                        <td>Pending</td>
-                                        <td>4 items</td>
-                                        <td>$320.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="app-order.html">#63736</a></td>
-                                        <td>May 15, 2019</td>
-                                        <td>Completed</td>
-                                        <td>7 items</td>
-                                        <td>$2,574.31</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="app-order.html">#63501</a></td>
-                                        <td>January 7, 2019</td>
-                                        <td>Completed</td>
-                                        <td>1 items</td>
-                                        <td>$34.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="app-order.html">#40278</a></td>
-                                        <td>October 19, 2018</td>
-                                        <td>Completed</td>
-                                        <td>2 items</td>
-                                        <td>$704.00</td>
-                                    </tr>
+                                    <c:forEach var="o" items="${order}">
+                                        <c:set var="total" value="${total+o.price}"/>
+                                        <tr>
+                                            <td><a href="app-order.html">#${o.id}</a></td>
+                                            <td>${o.orderDate}</td>
+                                            <td>${o.orderStatusId.status}</td>
+                                            <td>$${o.price}</td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="sa-divider"></div>
-                            <div class="px-5 py-4 text-center"><a href="app-orders-list.html">View all 7
-                                orders</a></div>
+                            <div class="px-5 py-4 text-center">Total spent $${total}</div>
+                        </div>
+                        <div class="card mt-5">
+                            <div
+                                    class="card-body px-5 py-4 d-flex align-items-center justify-content-between">
+                                <h2 class="mb-0 fs-exact-18 me-4">Wishlist</h2>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="sa-table text-nowrap">
+                                    <tbody>
+                                    <c:forEach var="w" items="${wishlist}" varStatus="loop">
+                                        <tr>
+                                            <td><a href="#">#${loop.count}</a></td>
+                                            <td>${w.product.productName}</td>
+                                            <td>${w.product.status}</td>
+                                            <td>$${w.product.price}</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="card mt-5">
                             <div
                                     class="card-body px-5 py-4 d-flex align-items-center justify-content-between">
                                 <h2 class="mb-0 fs-exact-18 me-4">Addresses</h2>
-                                <div class="text-muted fs-exact-14"><a href="#">New address</a></div>
                             </div>
                             <div class="sa-divider"></div>
                             <div class="px-5 py-3 my-2 d-flex align-items-center justify-content-between">
                                 <div>
-                                    <div>Jessica Moore</div>
-                                    <div class="text-muted fs-exact-14 mt-1">Random Federation 115302,
-                                        Moscow ul. Varshavskaya, 15-2-178</div>
+                                    <div>${user.username}</div>
+                                    <div class="text-muted fs-exact-14 mt-1">${user.address}</div>
                                 </div>
                                 <div>
                                     <div class="dropdown"><button class="btn btn-sa-muted btn-sm"
@@ -136,38 +124,6 @@
                                     </svg></button>
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="address-context-menu-0">
-                                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                                            <li><a class="dropdown-item" href="#">Duplicate</a></li>
-                                            <li><a class="dropdown-item" href="#">Add tag</a></li>
-                                            <li><a class="dropdown-item" href="#">Remove tag</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider" />
-                                            </li>
-                                            <li><a class="dropdown-item text-danger" href="#">Delete</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sa-divider"></div>
-                            <div class="px-5 py-3 my-2 d-flex align-items-center justify-content-between">
-                                <div>
-                                    <div>Neptune Saturnov</div>
-                                    <div class="text-muted fs-exact-14 mt-1">Earth 4b4f53, MarsGrad Sun
-                                        Orbit, 43.3241-85.239</div>
-                                </div>
-                                <div>
-                                    <div class="dropdown"><button class="btn btn-sa-muted btn-sm"
-                                                                  type="button" id="address-context-menu-1"
-                                                                  data-bs-toggle="dropdown" aria-expanded="false"
-                                                                  aria-label="More"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                                         width="3" height="13" fill="currentColor">
-                                        <path
-                                                d="M1.5,8C0.7,8,0,7.3,0,6.5S0.7,5,1.5,5S3,5.7,3,6.5S2.3,8,1.5,8z M1.5,3C0.7,3,0,2.3,0,1.5S0.7,0,1.5,0 S3,0.7,3,1.5S2.3,3,1.5,3z M1.5,10C2.3,10,3,10.7,3,11.5S2.3,13,1.5,13S0,12.3,0,11.5S0.7,10,1.5,10z">
-                                        </path>
-                                    </svg></button>
-                                        <ul class="dropdown-menu dropdown-menu-end"
-                                            aria-labelledby="address-context-menu-1">
                                             <li><a class="dropdown-item" href="#">Edit</a></li>
                                             <li><a class="dropdown-item" href="#">Duplicate</a></li>
                                             <li><a class="dropdown-item" href="#">Add tag</a></li>

@@ -1,457 +1,250 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!-- Start Breadcrumb Area  -->
-        <div class="axil-breadcrumb-area">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-8">
-                        <div class="inner">
-                            <ul class="axil-breadcrumb">
-                                <li class="axil-breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="separator"></li>
-                                <li class="axil-breadcrumb-item active" aria-current="page">Blogs</li>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<main>
+    <!-- breadcrumb area start -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">blog left sidebar</li>
                             </ul>
-                            <h1 class="title">Blog Grid</h1>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-4">
-                        <div class="inner">
-                            <div class="bradcrumb-thumb">
-                                <img src="${contextPath}/home/assets/images/product/product-45.png" alt="Image">
-                            </div>
-                        </div>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Breadcrumb Area  -->
-        <!-- Start Blog Area  -->
-        <div class="axil-blog-area axil-section-gap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="row g-5">
-                            <div class="col-md-6">
-                                <div class="content-blog blog-grid">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/blog/blog-10.png" alt="Blog Images">
-                                            </a>
-                                            <div class="blog-category">
-                                                <a href="#">Digital Art's</a>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="blog-details.html">Keeping yourself safe when buying NFTs on eTrade</a></h5>
+    </div>
+    <!-- breadcrumb area end -->
 
-                                            <div class="read-more-btn">
-                                                <a class="axil-btn right-icon" href="blog-details.html">Read More <i class="fal fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="content-blog blog-grid">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/blog/blog-11.png" alt="Blog Images">
-                                            </a>
-                                            <div class="blog-category">
-                                                <a href="#">Photography</a>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="blog-details.html">Important updates for listing and delisting your NFTs</a></h5>
-
-                                            <div class="read-more-btn">
-                                                <a class="axil-btn right-icon" href="blog-details.html">Read More <i class="fal fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="content-blog blog-grid">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/blog/blog-12.png" alt="Blog Images">
-                                            </a>
-                                            <div class="blog-category">
-                                                <a href="#">Music</a>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="blog-details.html">10 tips for avoiding scams and staying safe on the decentralized web</a></h5>
-
-                                            <div class="read-more-btn">
-                                                <a class="axil-btn right-icon" href="blog-details.html">Read More <i class="fal fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="content-blog blog-grid">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/blog/blog-10.png" alt="Blog Images">
-                                            </a>
-                                            <div class="blog-category">
-                                                <a href="#">Sports</a>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="blog-details.html">Keeping yourself safe when buying NFTs on eTrade</a></h5>
-
-                                            <div class="read-more-btn">
-                                                <a class="axil-btn right-icon" href="blog-details.html">Read More <i class="fal fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="content-blog blog-grid">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/blog/blog-11.png" alt="Blog Images">
-                                            </a>
-                                            <div class="blog-category">
-                                                <a href="#">Virtual Studio</a>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="blog-details.html">Important updates for listing and delisting your NFTs</a></h5>
-
-                                            <div class="read-more-btn">
-                                                <a class="axil-btn right-icon" href="blog-details.html">Read More <i class="fal fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="content-blog blog-grid">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/blog/blog-12.png" alt="Blog Images">
-                                            </a>
-                                            <div class="blog-category">
-                                                <a href="#">Utility</a>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="blog-details.html">10 tips for avoiding scams and staying safe on the decentralized web</a></h5>
-
-                                            <div class="read-more-btn">
-                                                <a class="axil-btn right-icon" href="blog-details.html">Read More <i class="fal fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="content-blog blog-grid">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/blog/blog-10.png" alt="Blog Images">
-                                            </a>
-                                            <div class="blog-category">
-                                                <a href="#">Sketch</a>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="blog-details.html">Keeping yourself safe when buying NFTs on eTrade</a></h5>
-
-                                            <div class="read-more-btn">
-                                                <a class="axil-btn right-icon" href="blog-details.html">Read More <i class="fal fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="content-blog blog-grid">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/blog/blog-11.png" alt="Blog Images">
-                                            </a>
-                                            <div class="blog-category">
-                                                <a href="#">Digital Art's</a>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="blog-details.html">Important updates for listing and delisting your NFTs</a></h5>
-
-                                            <div class="read-more-btn">
-                                                <a class="axil-btn right-icon" href="blog-details.html">Read More <i class="fal fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="content-blog blog-grid">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/blog/blog-10.png" alt="Blog Images">
-                                            </a>
-                                            <div class="blog-category">
-                                                <a href="#">Digital Art's</a>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="blog-details.html">Keeping yourself safe when buying NFTs on eTrade</a></h5>
-
-                                            <div class="read-more-btn">
-                                                <a class="axil-btn right-icon" href="blog-details.html">Read More <i class="fal fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="content-blog blog-grid">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/blog/blog-11.png" alt="Blog Images">
-                                            </a>
-                                            <div class="blog-category">
-                                                <a href="#">Photography</a>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="blog-details.html">Important updates for listing and delisting your NFTs</a></h5>
-
-                                            <div class="read-more-btn">
-                                                <a class="axil-btn right-icon" href="blog-details.html">Read More <i class="fal fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-pagination">
-                            <nav class="navigation pagination" aria-label="Products">
-                                <ul class="page-numbers">
-                                    <li><span aria-current="page" class="page-numbers current">1</span></li>
-                                    <li><a class="page-numbers" href="#">2</a></li>
-                                    <li><a class="page-numbers" href="#">3</a></li>
-                                    <li><a class="page-numbers" href="#">4</a></li>
-                                    <li><a class="page-numbers" href="#">5</a></li>
-                                    <li><a class="next page-numbers" href="#"><i class="fal fa-arrow-right"></i></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <!-- Start Sidebar Area  -->
-                        <aside class="axil-sidebar-area">
-
-                            <!-- Start Single Widget  -->
-                            <div class="axil-single-widget mt--40">
-                                <h6 class="widget-title">Latest Posts</h6>
-
-                                <!-- Start Single Post List  -->
-                                <div class="content-blog post-list-view mb--20">
-                                    <div class="thumbnail">
-                                        <a href="blog-details.html">
-                                            <img src="${contextPath}/home/assets/images/blog/blog-04.png" alt="Blog Images">
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="title"><a href="blog-details.html">Dubai’s FRAME Offers its Take on the</a></h6>
-                                        <div class="axil-post-meta">
-                                            <div class="post-meta-content">
-                                                <ul class="post-meta-list">
-                                                    <li>Mar 27, 2022</li>
-                                                    <li>300k Views</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Post List  -->
-
-                                <!-- Start Single Post List  -->
-                                <div class="content-blog post-list-view mb--20">
-                                    <div class="thumbnail">
-                                        <a href="blog-details.html">
-                                            <img src="${contextPath}/home/assets/images/blog/blog-05.png" alt="Blog Images">
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="title"><a href="blog-details.html">Apple presents App Best of 2020 winners</a></h6>
-                                        <div class="axil-post-meta">
-                                            <div class="post-meta-content">
-                                                <ul class="post-meta-list">
-                                                    <li>Mar 20, 2022</li>
-                                                    <li>300k Views</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Post List  -->
-
-                                <!-- Start Single Post List  -->
-                                <div class="content-blog post-list-view">
-                                    <div class="thumbnail">
-                                        <a href="blog-details.html">
-                                            <img src="${contextPath}/home/assets/images/blog/blog-06.png" alt="Blog Images">
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="title"><a href="blog-details.html">Gallaudet University innovation in education</a></h6>
-                                        <div class="axil-post-meta">
-                                            <div class="post-meta-content">
-                                                <ul class="post-meta-list">
-                                                    <li>Mar 15, 2022</li>
-                                                    <li>300k Views</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Post List  -->
-
-                            </div>
-                            <!-- End Single Widget  -->
-                            <!-- Start Single Widget  -->
-                            <div class="axil-single-widget mt--40">
-                                <h6 class="widget-title">Recent Viewed Products</h6>
-                                <ul class="product_list_widget recent-viewed-product">
-                                    <!-- Start Single product_list  -->
-                                    <li>
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/product/product-12.jpg" alt="Blog Images">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-details.html">Men's Fashion Tshirt</a></h6>
-                                            <div class="product-meta-content">
-                                                <span class="woocommerce-Price-amount amount">
-                            <del>$30</del>
-                            $20
-                        </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <!-- End Single product_list  -->
-                                    <!-- Start Single product_list  -->
-                                    <li>
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/product/product-10.jpg" alt="Blog Images">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-details.html">Nike Shoes</a></h6>
-                                            <div class="product-meta-content">
-                                                <span class="woocommerce-Price-amount amount">
-                            <del>$200</del>
-                            $150
-                        </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <!-- End Single product_list  -->
-                                    <!-- Start Single product_list  -->
-                                    <li>
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="${contextPath}/home/assets/images/product/product-11.jpg" alt="Blog Images">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-details.html">Addidas Shoes</a></h6>
-                                            <div class="product-meta-content">
-                                                <span class="woocommerce-Price-amount amount">
-                            <del>$300</del>
-                            $200
-                        </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <!-- End Single product_list  -->
-                                </ul>
-
-                            </div>
-                            <!-- End Single Widget  -->
-
-                            <!-- Start Single Widget  -->
-                            <div class="axil-single-widget mt--40 widget_search">
-                                <h6 class="widget-title">Search</h6>
-                                <form class="blog-search" action="#">
-                                    <button class="search-button"><i class="fal fa-search"></i></button>
-                                    <input type="text" placeholder="Search">
+    <!-- blog main wrapper start -->
+    <div class="blog-main-wrapper section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <aside class="blog-sidebar-wrapper">
+                        <div class="blog-sidebar">
+                            <h5 class="title">search</h5>
+                            <div class="sidebar-serch-form">
+                                <form action="#">
+                                    <input type="text" class="search-field" placeholder="search here">
+                                    <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
-                            <!-- End Single Widget  -->
-
-                            <!-- Start Single Widget  -->
-                            <div class="axil-single-widget mt--40 widget_archive">
-                                <h6 class="widget-title">Archives List</h6>
-                                <ul>
-                                    <li><a href="#">January 2020</a></li>
-                                    <li><a href="#">February 2020</a></li>
-                                    <li><a href="#">March 2020</a></li>
-                                    <li><a href="#">April 2020</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Single Widget  -->
-
-                            <!-- Start Single Widget  -->
-                            <div class="axil-single-widget mt--40 widget_archive_dropdown">
-                                <h6 class="widget-title">Archives Dropdown</h6>
-                                <select>
-                                    <option>Select Month</option>
-                                    <option>April 2020 (4)</option>
-                                    <option>May 2020 (4)</option>
-                                    <option>June 2020 (4)</option>
-                                    <option>July 2020 (4)</option>
-                                </select>
-                            </div>
-                            <!-- End Single Widget  -->
-
-                            <!-- Start Single Widget  -->
-                            <div class="axil-single-widget mt--40 widget_tag_cloud">
-                                <h6 class="widget-title">Tags</h6>
-                                <div class="tagcloud">
-                                    <a href="#">Design</a>
-                                    <a href="#">HTML</a>
-                                    <a href="#">Graphic</a>
-                                    <a href="#">Development</a>
-                                    <a href="#">UI/UX Design</a>
-                                    <a href="#">eCommerce</a>
-                                    <a href="#">CSS</a>
-                                    <a href="#">JS</a>
+                        </div> <!-- single sidebar end -->
+                        <div class="blog-sidebar">
+                            <h5 class="title">categories</h5>
+                            <ul class="blog-archive blog-category">
+                                <li><a href="#">Barber (10)</a></li>
+                                <li><a href="#">fashion (08)</a></li>
+                                <li><a href="#">handbag (07)</a></li>
+                                <li><a href="#">Jewelry (14)</a></li>
+                                <li><a href="#">food (10)</a></li>
+                            </ul>
+                        </div> <!-- single sidebar end -->
+                        <div class="blog-sidebar">
+                            <h5 class="title">Blog Archives</h5>
+                            <ul class="blog-archive">
+                                <li><a href="#">January (10)</a></li>
+                                <li><a href="#">February (08)</a></li>
+                                <li><a href="#">March (07)</a></li>
+                                <li><a href="#">April (14)</a></li>
+                                <li><a href="#">May (10)</a></li>
+                            </ul>
+                        </div> <!-- single sidebar end -->
+                        <div class="blog-sidebar">
+                            <h5 class="title">recent post</h5>
+                            <div class="recent-post">
+                                <div class="recent-post-item">
+                                    <figure class="product-thumb">
+                                        <a href="blog-details.html">
+                                            <img src="${contextPath}/resources/home/assets/img/blog/blog-img1.jpg" alt="blog image">
+                                        </a>
+                                    </figure>
+                                    <div class="recent-post-description">
+                                        <div class="product-name">
+                                            <h6><a href="blog-details.html">Auctor gravida enim</a></h6>
+                                            <p>march 10 2019</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recent-post-item">
+                                    <figure class="product-thumb">
+                                        <a href="blog-details.html">
+                                            <img src="${contextPath}/resources/home/assets/img/blog/blog-img2.jpg" alt="blog image">
+                                        </a>
+                                    </figure>
+                                    <div class="recent-post-description">
+                                        <div class="product-name">
+                                            <h6><a href="blog-details.html">gravida auctor dnim</a></h6>
+                                            <p>march 18 2019</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recent-post-item">
+                                    <figure class="product-thumb">
+                                        <a href="blog-details.html">
+                                            <img src="${contextPath}/resources/home/assets/img/blog/blog-img3.jpg" alt="blog image">
+                                        </a>
+                                    </figure>
+                                    <div class="recent-post-description">
+                                        <div class="product-name">
+                                            <h6><a href="blog-details.html">enim auctor gravida</a></h6>
+                                            <p>march 14 2019</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- End Single Widget  -->
+                        </div> <!-- single sidebar end -->
+                        <div class="blog-sidebar">
+                            <h5 class="title">Tags</h5>
+                            <ul class="blog-tags">
+                                <li><a href="#">camera</a></li>
+                                <li><a href="#">computer</a></li>
+                                <li><a href="#">bag</a></li>
+                                <li><a href="#">watch</a></li>
+                                <li><a href="#">smartphone</a></li>
+                                <li><a href="#">shoes</a></li>
+                            </ul>
+                        </div> <!-- single sidebar end -->
+                    </aside>
+                </div>
+                <div class="col-lg-9 order-1 order-lg-2">
+                    <div class="blog-item-wrapper">
+                        <!-- blog item wrapper end -->
+                        <div class="row mbn-30">
+                            <div class="col-md-6">
+                                <!-- blog post item start -->
+                                <div class="blog-post-item mb-30">
+                                    <figure class="blog-thumb">
+                                        <a href="blog-details.html">
+                                            <img src="${contextPath}/resources/home/assets/img/blog/blog-img1.jpg" alt="blog image">
+                                        </a>
+                                    </figure>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <p>10/04/2019 | <a href="#">Corano</a></p>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-details.html">Celebrity Daughter Opens Up About Having Her Eye Color Changed</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <!-- blog post item end -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- blog post item start -->
+                                <div class="blog-post-item mb-30">
+                                    <figure class="blog-thumb">
+                                        <div class="blog-single-slide">
+                                            <a href="blog-details.html">
+                                                <img src="${contextPath}/resources/home/assets/img/blog/blog-img3.jpg" alt="blog image">
+                                            </a>
+                                        </div>
+                                    </figure>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <p>12/04/2019 | <a href="#">Corano</a></p>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-details.html">Lotto Winner Offering Up Money To Any Man That Will Date Her</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <!-- blog post item end -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- blog post item start -->
+                                <div class="blog-post-item mb-30">
+                                    <figure class="blog-thumb ratio ratio-16x9">
+                                        <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/501298839&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>
+                                    </figure>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <p>15/04/2019 | <a href="#">Corano</a></p>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-details.html">Children Left Home Alone For 4 Days In TV series Experiment</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <!-- blog post item end -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- blog post item start -->
+                                <div class="blog-post-item mb-30">
+                                    <figure class="blog-thumb ratio ratio-16x9">
+                                        <iframe src="https://www.youtube.com/embed/4qNHr0W6F0o" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                    </figure>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <p>05/04/2019 | <a href="#">Corano</a></p>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-details.html">People are Willing Lie When Comes Money, According to Research</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <!-- blog post item end -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- blog post item start -->
+                                <div class="blog-post-item mb-30">
+                                    <figure class="blog-thumb">
+                                        <a href="blog-details.html">
+                                            <img src="${contextPath}/resources/home/assets/img/blog/blog-img5.jpg" alt="blog image">
+                                        </a>
+                                    </figure>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <p>02/04/2019 | <a href="#">Corano</a></p>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-details.html">romantic Love Stories Of Hollywood’s Biggest Celebrities</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <!-- blog post item end -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- blog post item start -->
+                                <div class="blog-post-item mb-30">
+                                    <figure class="blog-thumb">
+                                        <a href="blog-details.html">
+                                            <img src="${contextPath}/resources/home/assets/img/blog/blog-img3.jpg" alt="blog image">
+                                        </a>
+                                    </figure>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <p>25/03/2019 | <a href="#">Corano</a></p>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-details.html">Celebrity Daughter Opens Up About Having Her Eye Color Changed</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <!-- blog post item end -->
+                            </div>
+                        </div>
+                        <!-- blog item wrapper end -->
 
-                        </aside>
-                        <!-- End Sidebar Area -->
+                        <!-- start pagination area -->
+                        <div class="paginatoin-area text-center">
+                            <ul class="pagination-box">
+                                <li><a class="previous" href="#"><i class="pe-7s-angle-left"></i></a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a class="next" href="#"><i class="pe-7s-angle-right"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- end pagination area -->
                     </div>
                 </div>
-                <!-- End post-pagination -->
             </div>
-            <!-- End .container -->
         </div>
-        <!-- End Blog Area  --></head>
-<body>
-
-</body>
-</html>
+    </div>
+    <!-- blog main wrapper end -->
+</main>

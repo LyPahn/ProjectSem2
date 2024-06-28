@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div id="top" class="sa-app__body">
     <div class="mx-xxl-3 px-4 px-sm-5">
         <div class="py-5">
@@ -128,6 +129,7 @@
                                 <input type="checkbox" class="form-check-input m-0 fs-exact-16 d-block" aria-label="..." />
                             </th>
                             <th class="min-w-20x">Product</th>
+                            <th>CreateDate</th>
                             <th>Category</th>
                             <th>Stock</th>
                             <th>Price</th>
@@ -162,7 +164,8 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td><a href="app-category.html" class="text-reset">${p.category.cateName}</a></td>
+                                <td><span class="text-reset"><fmt:formatDate value="${p.createDate}" pattern="dd/MM/yyyy"/> </span></td>
+                                <td><span  class="text-reset">${p.category.cateName}</span></td>
                                 <td>
                                     <c:choose>
                                         <c:when test="${p.status}">
@@ -175,8 +178,8 @@
                                 </td>
                                 <td>
                                     <div class="sa-price"><span class="sa-price__symbol">$</span><span
-                                            class="sa-price__integer">${p.price}</span><span
-                                            class="sa-price__decimal">.00</span></div>
+                                            class="sa-price__integer"><fmt:formatNumber value="${p.price}"/> </span><span
+<%--                                            class="sa-price__decimal">.00</span></div>--%>
                                 </td>
                                 <td>
                                     <div class="dropdown"><button class="btn btn-sa-muted btn-sm"

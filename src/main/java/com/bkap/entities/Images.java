@@ -13,6 +13,7 @@ import org.hibernate.annotations.Imported;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "images")
 public class Images {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

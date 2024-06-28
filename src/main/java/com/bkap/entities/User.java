@@ -1,6 +1,9 @@
 package com.bkap.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,17 +25,24 @@ public class User {
     @Column(name = "id")
     private Integer id;
     @Column(name = "username")
+    @NotBlank(message = "UserName không được để trống")
     private String username;
     @Column(name = "password")
+    @NotBlank(message = "Mật khẩu không được để trống")
     private String password;
     @Column(name = "email")
+    @Email(message = "email không đúng định dạng")
+    @NotBlank(message = "email không được trống")
     private String email;
     @Column(name = "firstName" , columnDefinition = "NVARCHAR(50)")
+    @NotBlank(message = "FirstName không được để trống")
     private String firstName;
     @Column(name = "lastName" , columnDefinition = "NVARCHAR(50)")
+    @NotBlank(message = "lastName không được để trống")
     private String lastName;
     @Column(name = "address" , columnDefinition = "NVARCHAR(255)")
     private String address;
+
     @Column(name = "phone")
     private String phone;
     @Column(name = "status")
@@ -47,5 +57,13 @@ public class User {
     private boolean role;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    private List<Cart> carts;
+    private List<Wishlist> wishlists;
+
+    @OneToOne(mappedBy = "user" , cascade = CascadeType.ALL)
+    private Cart  cart;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Order> orders;
+
+    
 }

@@ -1,577 +1,420 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
 <fmt:setLocale value="vi_VN" scope="session"/>
 <!doctype html>
-<html lang="en" dir="ltr" data-scompiler-id="0">
+<html class="no-js" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Trang Sức Cao Cấp PNJ</title>
+    <title>Corano - Jewelry Shop</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="${contextPath}/resources/home/assets/images/pnj-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="${contextPath}/resources/home/assets/img/favicon.ico">
 
     <!-- CSS
-    ============================================ -->
-
+	============================================ -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/font-awesome.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/flaticon/flaticon.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/slick.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/slick-theme.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/jquery-ui.min.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/sal.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/magnific-popup.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/base.css">
-    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/style.min.css">
+    <!-- Pe-icon-7-stroke CSS -->
+    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/pe-icon-7-stroke.css">
+    <!-- Font-awesome CSS -->
+    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/vendor/font-awesome.min.css">
+    <!-- Slick slider css -->
+    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/plugins/slick.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/plugins/animate.css">
+    <!-- Nice Select css -->
+    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/plugins/nice-select.css">
+    <!-- jquery UI css -->
+    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/plugins/jqueryui.min.css">
+    <!-- main style css -->
+    <link rel="stylesheet" href="${contextPath}/resources/home/assets/css/style.css">
 
 </head>
 
-
 <body>
-<a href="#top" class="back-to-top" id="backto-top"><i class="fal fa-arrow-up"></i></a>
-<!-- Start Header -->
-<header class="header axil-header header-style-4">
-    <!-- Start Header Top Area  -->
-    <div class="axil-header-top">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-4 col-12">
-                    <div class="header-top-dropdown dropdown-box-style">
-                        <div class="dropdown">
-                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                USD
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">USD</a></li>
-                                <li><a class="dropdown-item" href="#">AUD</a></li>
-                                <li><a class="dropdown-item" href="#">EUR</a></li>
-                            </ul>
-                        </div>
-                        <div class="dropdown">
-                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                EN
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">EN</a></li>
-                                <li><a class="dropdown-item" href="#">ARB</a></li>
-                                <li><a class="dropdown-item" href="#">SPN</a></li>
-                            </ul>
+<!-- Start Header Area -->
+<header class="header-area header-wide">
+    <!-- main header start -->
+    <div class="main-header d-none d-lg-block">
+        <!-- header top start -->
+        <div class="header-top bdr-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="welcome-message">
+                            <p>Welcome to Corano Jewelry online store</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-5">
-                    <div class="header-brand">
-                        <a href="index.html" class="logo logo-dark">
-                            <img src="${contextPath}/resources/home/assets/images/logo/logo.png" alt="Site Logo">
-                        </a>
-                        <a href="index.html" class="logo logo-light">
-                            <img src="${contextPath}/resources/home/assets/images/logo/logo-light.png" alt="Site Logo">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-7">
-                    <div class="header-action">
-                        <ul class="action-list">
-                            <li class="axil-search">
-                                <div class="card-header">
-                                    <form action="${contextPath}/cua-hang" method="post">
-                                        <div class="input-group  align-items-center">
-                                            <input type="text"  class="form-control" name="name" id="prod-search" placeholder="Write Something....">
-                                            <a type="submit" class="axil-btn btn-bg-primary" style="padding: 12px"><i class="far fa-search" ></i></a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
-                            <li class="wishlist">
-                                <a href="wishlist.html">
-                                    <i class="flaticon-heart"></i>
-                                </a>
-                            </li>
-<%--                            <li class="shopping-cart">--%>
-<%--                                <a href="${contextPath}/gio-hang" class="cart-btn">--%>
-<%--                                    <span class="cart-count" id="basket_total"><jsp:include page="${contextPath}/countItems"></jsp:include></span>--%>
-<%--                                    <i class="flaticon-shopping-cart"></i>--%>
-<%--                                </a>--%>
-<%--                            </li>--%>
-                            <c:choose>
-                                <c:when test="${!empty sessionScope.id }">
-
-                                    <li class="my-account">
-                                        <a href="javascript:void(0)">
-                                            <i class="flaticon-person"></i>
-
-                                        </a>
-
-                                        <div class="my-account-dropdown">
-                                            <ul>
-                                                <li>
-                                                    <img alt="" src="${contextPath }/${picture}" width="40px" style="border-radius: 90%" class="flaticon-person">
-                                                    <p>Xin chào ${fullName}</p>
-
-                                                </li>
-                                                <li>
-                                                    <a href="cai-dat/${id}" class=" btn-bg-primary">Quản lý tài khoản</a>
-                                                </li>
-                                                <li>
-                                                    <a href="logout" class=" btn-bg-primary">Đăng xuất</a>
-                                                </li>
-                                            </ul>
-
-                                            <!-- <div class="reg-footer text-center">No account yet? <a href="sign-up.html" class="btn-link">REGISTER HERE.</a></div>-->
-                                        </div>
-                                    </li>
-                                </c:when>
-
-                                <c:otherwise>
-
-                                    <li class="my-account">
-                                        <a href="javascript:void(0)">
-                                            <i class="flaticon-person"></i>
-                                        </a>
-                                        <div class="my-account-dropdown">
-                                            <ul>
-                                                <li>
-                                                    <a href="dang-nhap" class=" btn-bg-primary">Đăng Nhập</a>
-                                                </li>
-                                                <li>
-                                                    <a href="sign-in.html" class=" btn-bg-primary">Đăng Ký</a>
-                                                </li>
-                                            </ul>
-
-                                            <!-- <div class="reg-footer text-center">No account yet? <a href="sign-up.html" class="btn-link">REGISTER HERE.</a></div>-->
-                                        </div>
-                                    </li>
-                                </c:otherwise>
-                            </c:choose>
-
-                            <li class="axil-mobile-toggle">
-                                <button class="menu-btn mobile-nav-toggler">
-                                    <i class="flaticon-menu-2"></i>
-                                </button>
-                            </li>
-                        </ul>
+                    <div class="col-lg-6 text-right">
+                        <div class="header-top-settings">
+                            <ul class="nav align-items-center justify-content-end">
+                                <li class="curreny-wrap">
+                                    $ Currency
+                                    <i class="fa fa-angle-down"></i>
+                                    <ul class="dropdown-list curreny-list">
+                                        <li><a href="#">$ USD</a></li>
+                                        <li><a href="#">€ EURO</a></li>
+                                    </ul>
+                                </li>
+                                <li class="language">
+                                    <img src="${contextPath}/resources/home/assets/img/icon/en.png" alt="flag"> English
+                                    <i class="fa fa-angle-down"></i>
+                                    <ul class="dropdown-list">
+                                        <li><a href="#"><img src="${contextPath}/resources/home/assets/img/icon/en.png" alt="flag"> english</a>
+                                        </li>
+                                        <li><a href="#"><img src="${contextPath}/resources/home/assets/img/icon/fr.png" alt="flag"> french</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Header Top Area  -->
+        <!-- header top end -->
 
-    <!-- Start Mainmenu Area  -->
-    <div id="axil-sticky-placeholder"></div>
-    <div class="axil-mainmenu">
-        <div class="container">
-            <div class="header-navbar">
-                <div class="header-main-nav">
-                    <!-- Start Mainmanu Nav -->
-                    <nav class="mainmenu-nav">
-                        <button class="mobile-close-btn mobile-nav-toggler"><i class="fas fa-times"></i></button>
-                        <div class="mobile-nav-brand">
-                            <a href="index.html" class="logo">
-                                <img src="${contextPath}/resources/home/assets/images/logo/logo.png" alt="Site Logo">
+        <!-- header middle area start -->
+        <div class="header-main-area sticky">
+            <div class="container">
+                <div class="row align-items-center position-relative">
+
+                    <!-- start logo area -->
+                    <div class="col-lg-2">
+                        <div class="logo">
+                            <a href="${contextPath}/">
+                                <img src="${contextPath}/resources/home/assets/img/logo/logo.png" alt="Brand Logo">
                             </a>
                         </div>
-                        <ul class="mainmenu">
-                            <li class="menu-item">
-                                <a href="${contextPath}/trang-chu">Trang chủ</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="${contextPath}/cua-hang">Cửa hàng</a>
-                            </li>
-                            <li><a href="${contextPath}/gioi-thieu">Giới thiệu</a></li>
-                            <li class="menu-item">
-                                <a href="${contextPath}/bai-viet">Bài viết</a>
-                            </li>
-                            <li><a href="${contextPath}/lien-he">Liên hệ</a></li>
-                        </ul>
-                    </nav>
-                    <!-- End Mainmanu Nav -->
+                    </div>
+                    <!-- start logo area -->
+
+                    <!-- main menu area start -->
+                    <div class="col-lg-6 position-static">
+                        <div class="main-menu-area">
+                            <div class="main-menu">
+                                <!-- main menu navbar start -->
+                                <nav class="desktop-menu">
+                                    <ul>
+                                        <li class="active"><a href="${contextPath}/">Home</a>
+                                        </li>
+                                        <li class="position-static"><a href="${contextpath}/shop">Shop<i
+                                                class="fa fa-angle-down"></i></a>
+                                            <ul class="megamenu dropdown">
+                                                <li class="mega-title"><span>Category</span>
+                                                    <c:forEach var="c" items="${categories}">
+                                                    <ul>
+                                                        <li><a href="${contextPath}/shop-categories/${c.id} ">${c.cateName}</a></li>
+                                                    </ul>
+                                                    </c:forEach>
+                                                </li>
+<%--                                                <li class="mega-title"><span>Category</span>--%>
+<%--                                                    <ul>--%>
+<%--                                                        <li><a href="product-details.html">Vàng</a></li>--%>
+<%--                                                        <li><a href="product-details-affiliate.html">Bạc</a></li>--%>
+<%--                                                        <li><a href="product-details-variable.html">Đá quý</a></li>--%>
+<%--                                                        <li><a href="privacy-policy.html">Kim cương</a></li>--%>
+<%--                                                    </ul>--%>
+<%--                                                </li>--%>
+                                                <li class="megamenu-banners d-none d-lg-block">
+                                                    <a href="product-details.html">
+                                                        <img src="${contextPath}/resources/home/assets/img/banner/img2-static-menu.jpg" alt="">
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        </li>
+                                        <li><a href="${contextPath}/blog">Blog</a>
+                                        </li>
+                                        <li><a href="${contextPath}/contact-us">Contact us</a></li>
+                                    </ul>
+                                </nav>
+                                <!-- main menu navbar end -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- main menu area end -->
+
+                    <!-- mini cart area start -->
+                    <div class="col-lg-4">
+                        <div
+                                class="header-right d-flex align-items-center justify-content-xl-between justify-content-lg-end">
+                            <div class="header-search-container">
+                                <button class="search-trigger d-xl-none d-lg-block"><i
+                                        class="pe-7s-search"></i></button>
+                                <form class="header-search-box d-lg-none d-xl-block" action="${contextPath}/search-name">
+                                    <input name="keyword" type="text" placeholder="Search entire store hire"
+                                           class="header-search-field">
+                                    <button class="header-search-btn" onclick="submitSearchForm()"><i class="pe-7s-search"></i></button>
+                                </form>
+                            </div>
+                            <div class="header-configure-area">
+                                <ul class="nav justify-content-end">
+                                    <c:choose>
+                                        <c:when test="${!empty sessionScope.fullName}">
+                                            <li class="user-hover">
+                                                <a href="#">
+                                                    <i class="pe-7s-user"></i>
+                                                </a>
+                                                <ul class="dropdown-list">
+                                                    <li>${sessionScope.fullName}</li><br>
+                                                    <li><a href="${contextPath}/my-account" >my account</a></li>
+                                                    <li><a href="${contextPath}/logout">Logout</a></li>
+
+                                                </ul>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="user-hover">
+                                                <a href="#">
+                                                    <i class="pe-7s-user"></i>
+                                                </a>
+                                                <ul class="dropdown-list">
+                                                    <li><a href="${contextPath}/dang-nhap">login</a></li>
+                                                    <li><a href="${contextPath}/register">register</a></li>
+                                                </ul>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <li>
+                                        <c:choose>
+                                            <c:when test="${sessionScope.id == null}">
+                                                <a href="${contextPath}/dang-nhap">
+                                                    <i class="pe-7s-like"></i>
+                                                    <div class="notification">
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.id == null}">
+                                                                0
+                                                            </c:when>
+                                                            <c:otherwise >
+                                                                ${countWishlist}
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </a>
+                                            </c:when>
+                                            <c:otherwise >
+                                                <a href="${contextPath}/wishlist">
+                                                    <i class="pe-7s-like"></i>
+                                                    <div class="notification">
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.id == null}">
+                                                                0
+                                                            </c:when>
+                                                            <c:otherwise >
+                                                                ${countWishlist}
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </a>
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                    </li>
+                                    <li>
+                                        <c:choose>
+                                            <c:when test="${sessionScope.id == null}">
+                                                <a href="${contextPath}/dang-nhap">
+                                                    <i class="pe-7s-shopbag"></i>
+                                                    <div class="notification">
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.id == null}">
+                                                                0
+                                                            </c:when>
+                                                            <c:otherwise >
+                                                                ${countCartItem}
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </a>
+                                            </c:when>
+                                            <c:otherwise >
+                                                <a href="${contextPath}/cart">
+                                                    <i class="pe-7s-shopbag"></i>
+                                                    <div class="notification">
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.id == null}">
+                                                                0
+                                                            </c:when>
+                                                            <c:otherwise >
+                                                                ${countCartItem}
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </a>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- mini cart area end -->
+
                 </div>
             </div>
         </div>
+        <!-- header middle area end -->
     </div>
-    <!-- End Mainmenu Area  -->
+    <!-- main header start -->
 </header>
+<!-- end Header Area -->
 
-<main class="main-wrapper">
+
+<%--<main>--%>
+
     <c:if test="${!empty page}">
         <jsp:include page="home/${page}.jsp"></jsp:include>
     </c:if>
+<%--</main>--%>
 
-    <!-- Start Axil Newsletter Area  -->
-    <div class="axil-newsletter-area axil-section-gap pt--0">
-        <div class="container">
-            <div class="etrade-newsletter-wrapper bg_image bg_image--11">
-                <div class="newsletter-content">
-                    <h2 class="title mb--40 mb_sm--30">Nhận thông tin mới nhất</h2>
-                    <div class="input-group newsletter-form">
-                        <div class="position-relative newsletter-inner mb--15">
-                            <input placeholder="example@gmail.com" type="text">
-                        </div>
-                        <button type="submit" class="axil-btn mb--15">Subscribe</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End .container -->
-    </div>
-    <!-- End Axil Newsletter Area  -->
-</main>
-
-
-<div class="service-area">
-    <div class="container">
-        <div class="row row-cols-xl-4 row-cols-sm-2 row-cols-1 row--20">
-            <div class="col">
-                <div class="service-box service-style-2">
-                    <div class="icon">
-                        <img src="${contextPath}/resources/home/assets/images/icons/service1.png" alt="Service">
-                    </div>
-                    <div class="content">
-                        <h6 class="title">Giao hàng nhanh & an toàn</h6>
-                        <p>Nói về dịch vụ của bạn.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="service-box service-style-2">
-                    <div class="icon">
-                        <img src="${contextPath}/resources/home/assets/images/icons/service2.png" alt="Service">
-                    </div>
-                    <div class="content">
-                        <h6 class="title">Bảo đảm hoàn tiền</h6>
-                        <p>Trong vào 10 ngày.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="service-box service-style-2">
-                    <div class="icon">
-                        <img src="${contextPath}/resources/home/assets/images/icons/service3.png" alt="Service">
-                    </div>
-                    <div class="content">
-                        <h6 class="title">Chính sách hoàn trả 24h</h6>
-                        <p>Dẽ dàng.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="service-box service-style-2">
-                    <div class="icon">
-                        <img src="${contextPath}/resources/home/assets/images/icons/service4.png" alt="Service">
-                    </div>
-                    <div class="content">
-                        <h6 class="title">Hỗ trợ chuyên nghiệp</h6>
-                        <p>Hỗ trợ 24/7.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Scroll to top start -->
+<div class="scroll-top not-visible">
+    <i class="fa fa-angle-up"></i>
 </div>
-<!-- Start Footer Area  -->
-<footer class="axil-footer-area footer-style-2">
-    <!-- Start Footer Top Area  -->
-    <div class="footer-top separator-top">
+<!-- Scroll to Top End -->
+
+<!-- footer area start -->
+<footer class="footer-widget-area">
+    <div class="footer-top section-padding">
         <div class="container">
             <div class="row">
-                <!-- Start Single Widget  -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="axil-footer-widget">
-                        <h5 class="widget-title">Hỗ trợ</h5>
-                        <div class="inner">
-                            <p>685 Market Street, <br>
-                                Las Vegas, LA 95820, <br>
-                                United States.
-                            </p>
-                            <ul class="support-list-item">
-                                <li><a href="mailto:example@domain.com"><i class="fal fa-envelope-open"></i> example@domain.com</a></li>
-                                <li><a href="tel:(+01)850-315-5862"><i class="fal fa-phone-alt"></i> (+01) 850-315-5862</a></li>
-                                <!-- <li><i class="fal fa-map-marker-alt"></i> 685 Market Street,  <br> Las Vegas, LA 95820, <br> United States.</li> -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Widget  -->
-                <!-- Start Single Widget  -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="axil-footer-widget">
-                        <h5 class="widget-title">Tài khoản</h5>
-                        <div class="inner">
-                            <ul>
-                                <li><a href="my-account.html">Tài khoản của tôi</a></li>
-                                <li><a href="sign-up.html">Đăng nhập / Đăng ký</a></li>
-                                <li><a href="cart.html">Giỏ hàng</a></li>
-                                <li><a href="wishlist.html">Yêu thích</a></li>
-                                <li><a href="shop.html">Cửa hàng</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Widget  -->
-                <!-- Start Single Widget  -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="axil-footer-widget">
-                        <h5 class="widget-title">Truy cập nhanh</h5>
-                        <div class="inner">
-                            <ul>
-                                <li><a href="privacy-policy.html">Chính sách bảo mật</a></li>
-                                <li><a href="terms-of-service.html">Điều khoản dịch vụ</a></li>
-                                <li><a href="#">Câu hỏi thường gặp</a></li>
-                                <li><a href="contact.html">Liên hệ</a></li>
-                                <li><a href="contact.html">Giới thiệu</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Widget  -->
-                <!-- Start Single Widget  -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="axil-footer-widget">
-                        <h5 class="widget-title">Tải ứng dụng</h5>
-                        <div class="inner">
-                            <span>Tiết kiệm 3$ với App & Người mới</span>
-                            <div class="download-btn-group">
-                                <div class="qr-code">
-                                    <img src="${contextPath}/resources/home/assets/images/others/qr.png" alt="Axilthemes">
-                                </div>
-                                <div class="app-link">
-                                    <a href="#">
-                                        <img src="${contextPath}/resources/home/assets/images/others/app-store.png" alt="App Store">
-                                    </a>
-                                    <a href="#">
-                                        <img src="${contextPath}/resources/home/assets/images/others/play-store.png" alt="Play Store">
-                                    </a>
-                                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="widget-item">
+                        <div class="widget-title">
+                            <div class="widget-logo">
+                                <a href="index.html">
+                                    <img src="${contextPath}/resources/home/assets/img/logo/logo.png" alt="brand logo">
+                                </a>
                             </div>
                         </div>
+                        <div class="widget-body">
+                            <p>We are a team of designers and developers that create high quality wordpress,
+                                shopify, Opencart </p>
+                        </div>
                     </div>
                 </div>
-                <!-- End Single Widget  -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="widget-item">
+                        <h6 class="widget-title">Contact Us</h6>
+                        <div class="widget-body">
+                            <address class="contact-block">
+                                <ul>
+                                    <li><i class="pe-7s-home"></i> 4710-4890 Breckinridge USA</li>
+                                    <li><i class="pe-7s-mail"></i> <a
+                                            href="mailto:demo@plazathemes.com">demo@yourdomain.com </a></li>
+                                    <li><i class="pe-7s-call"></i> <a href="tel:(012)800456789987">(012) 800 456
+                                        789-987</a></li>
+                                </ul>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="widget-item">
+                        <h6 class="widget-title">Information</h6>
+                        <div class="widget-body">
+                            <ul class="info-list">
+                                <li><a href="#">about us</a></li>
+                                <li><a href="#">Delivery Information</a></li>
+                                <li><a href="#">privet policy</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">contact us</a></li>
+                                <li><a href="#">site map</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="widget-item">
+                        <h6 class="widget-title">Follow Us</h6>
+                        <div class="widget-body social-link">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center mt-20">
+                <div class="col-md-6">
+                    <div class="newsletter-wrapper">
+                        <h6 class="widget-title-text">Signup for newsletter</h6>
+                        <form class="newsletter-inner" id="mc-form">
+                            <input type="email" class="news-field" id="mc-email" autocomplete="off"
+                                   placeholder="Enter your email address">
+                            <button class="news-btn" id="mc-submit">Subscribe</button>
+                        </form>
+                        <!-- mail-chimp-alerts Start -->
+                        <div class="mailchimp-alerts">
+                            <div class="mailchimp-submitting"></div><!-- mail-chimp-submitting end -->
+                            <div class="mailchimp-success"></div><!-- mail-chimp-success end -->
+                            <div class="mailchimp-error"></div><!-- mail-chimp-error end -->
+                        </div>
+                        <!-- mail-chimp-alerts end -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="footer-payment">
+                        <img src="${contextPath}/resources/home/assets/img/payment.png" alt="payment method">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Footer Top Area  -->
-    <!-- Start Copyright Area  -->
-    <div class="copyright-area copyright-default separator-top">
+    <div class="footer-bottom">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-4">
-                    <div class="social-share">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-12">
-                    <div class="copyright-left d-flex flex-wrap justify-content-center">
-                        <ul class="quick-link">
-                            <li>© 2023. All rights reserved by <a target="_blank" href="https://axilthemes.com/">Axilthemes</a>.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-12">
-                    <div class="copyright-right d-flex flex-wrap justify-content-xl-end justify-content-center align-items-center">
-                        <span class="card-text">Accept For</span>
-                        <ul class="payment-icons-bottom quick-link">
-                            <li><img src="${contextPath}/resources/home/assets/images/icons/cart/cart-1.png" alt="paypal cart"></li>
-                            <li><img src="${contextPath}/resources/home/assets/images/icons/cart/cart-2.png" alt="paypal cart"></li>
-                            <li><img src="${contextPath}/resources/home/assets/images/icons/cart/cart-5.png" alt="paypal cart"></li>
-                        </ul>
+            <div class="row">
+                <div class="col-12">
+                    <div class="copyright-text text-center">
+                        <p>&copy; 2022 <b>Corano</b> Made with <i class="fa fa-heart text-danger"></i> by <a
+                                href="https://hasthemes.com/"><b>HasThemes</b></a></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Copyright Area  -->
 </footer>
-<!-- End Footer Area  -->
+<!-- footer area end -->
 
-<!-- Product Quick View Modal Start -->
-<div class="modal fade quick-view-product" id="quick-view-modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="far fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div class="single-product-thumb">
-                    <div class="row">
-                        <div class="col-lg-7 mb--40">
-                            <div class="row">
-                                <div class="col-lg-10 order-lg-2">
-                                    <div class="single-product-thumbnail product-large-thumbnail axil-product thumbnail-badge zoom-gallery">
-                                        <div class="thumbnail">
-                                            <img src="${contextPath}/resources/home/assets/images/product/product-big-01.png" alt="Product Images">
-                                            <div class="label-block label-right">
-                                                <div class="product-badget">20% OFF</div>
-                                            </div>
-                                            <div class="product-quick-view position-view">
-                                                <a href="${contextPath}/resources/home/assets/images/product/product-big-01.png" class="popup-zoom">
-                                                    <i class="far fa-search-plus"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="thumbnail">
-                                            <img src="${contextPath}/resources/home/assets/images/product/product-big-02.png" alt="Product Images">
-                                            <div class="label-block label-right">
-                                                <div class="product-badget">20% OFF</div>
-                                            </div>
-                                            <div class="product-quick-view position-view">
-                                                <a href="${contextPath}/resources/home/assets/images/product/product-big-02.png" class="popup-zoom">
-                                                    <i class="far fa-search-plus"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="thumbnail">
-                                            <img src="${contextPath}/resources/home/assets/images/product/product-big-03.png" alt="Product Images">
-                                            <div class="label-block label-right">
-                                                <div class="product-badget">20% OFF</div>
-                                            </div>
-                                            <div class="product-quick-view position-view">
-                                                <a href="${contextPath}/resources/home/assets/images/product/product-big-03.png" class="popup-zoom">
-                                                    <i class="far fa-search-plus"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 order-lg-1">
-                                    <div class="product-small-thumb small-thumb-wrapper">
-                                        <div class="small-thumb-img">
-                                            <img src="${contextPath}/resources/home/assets/images/product/product-thumb/thumb-08.png" alt="thumb image">
-                                        </div>
-                                        <div class="small-thumb-img">
-                                            <img src="${contextPath}/resources/home/assets/images/product/product-thumb/thumb-07.png" alt="thumb image">
-                                        </div>
-                                        <div class="small-thumb-img">
-                                            <img src="${contextPath}/resources/home/assets/images/product/product-thumb/thumb-09.png" alt="thumb image">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 mb--40">
-                            <div class="single-product-content">
-                                <div class="inner">
-                                    <div class="product-rating">
-                                        <div class="star-rating">
-                                            <img src="${contextPath}/resources/home/assets/images/icons/rate.png" alt="Rate Images">
-                                        </div>
-                                        <div class="review-link">
-                                            <a href="#">(<span>1</span> customer reviews)</a>
-                                        </div>
-                                    </div>
-                                    <h3 class="product-title">Serif Coffee Table</h3>
-                                    <span class="price-amount">$155.00 - $255.00</span>
-                                    <ul class="product-meta">
-                                        <li><i class="fal fa-check"></i>In stock</li>
-                                        <li><i class="fal fa-check"></i>Free delivery available</li>
-                                        <li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>
-                                    </ul>
-                                    <p class="description">In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.</p>
-
-                                    <div class="product-variations-wrapper">
-
-                                        <!-- Start Product Variation  -->
-                                        <div class="product-variation">
-                                            <h6 class="title">Colors:</h6>
-                                            <div class="color-variant-wrapper">
-                                                <ul class="color-variant mt--0">
-                                                    <li class="color-extra-01 active"><span><span class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-02"><span><span class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-03"><span><span class="color"></span></span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- End Product Variation  -->
-
-                                        <!-- Start Product Variation  -->
-                                        <div class="product-variation">
-                                            <h6 class="title">Size:</h6>
-                                            <ul class="range-variant">
-                                                <li>xs</li>
-                                                <li>s</li>
-                                                <li>m</li>
-                                                <li>l</li>
-                                                <li>xl</li>
-                                            </ul>
-                                        </div>
-                                        <!-- End Product Variation  -->
-
-                                    </div>
-
-                                    <!-- Start Product Action Wrapper  -->
-                                    <div class="product-action-wrapper d-flex-center">
-                                        <!-- Start Quentity Action  -->
-                                        <div class="pro-qty"><input type="text" value="1"></div>
-                                        <!-- End Quentity Action  -->
-
-                                        <!-- Start Product Action  -->
-                                        <ul class="product-action d-flex-center mb--0">
-                                            <li class="add-to-cart"><a href="cart.html" class="axil-btn btn-bg-primary">Add to Cart</a></li>
-                                            <li class="wishlist"><a href="wishlist.html" class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a></li>
-                                        </ul>
-                                        <!-- End Product Action  -->
-
-                                    </div>
-                                    <!-- End Product Action Wrapper  -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Product Quick View Modal End -->
-
-<!-- Header Search Modal End -->
-
-
-
-
-
+<!-- JS
 ============================================ -->
-<!-- Modernizer JS -->
-<script src="${contextPath}/resources/home/assets/js/vendor/modernizr.min.js"></script>
-<!-- jQuery JS -->
-<script src="${contextPath}/resources/home/assets/js/vendor/jquery.js"></script>
-<!-- Bootstrap JS -->
-<script src="${contextPath}/resources/home/assets/js/vendor/popper.min.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/bootstrap.min.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/slick.min.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/js.cookie.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/jquery.style.switcher.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/jquery-ui.min.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/jquery.ui.touch-punch.min.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/jquery.countdown.min.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/sal.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/jquery.magnific-popup.min.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/imagesloaded.pkgd.min.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/isotope.pkgd.min.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/counterup.js"></script>
-<script src="${contextPath}/resources/home/assets/js/vendor/waypoints.min.js"></script>
 
+<!-- Modernizer JS -->
+<script src="${contextPath}/resources/home/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<!-- jQuery JS -->
+<script src="${contextPath}/resources/home/assets/js/vendor/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="${contextPath}/resources/home/assets/js/vendor/bootstrap.bundle.min.js"></script>
+<!-- slick Slider JS -->
+<script src="${contextPath}/resources/home/assets/js/plugins/slick.min.js"></script>
+<!-- Countdown JS -->
+<script src="${contextPath}/resources/home/assets/js/plugins/countdown.min.js"></script>
+<!-- Nice Select JS -->
+<script src="${contextPath}/resources/home/assets/js/plugins/nice-select.min.js"></script>
+<!-- jquery UI JS -->
+<script src="${contextPath}/resources/home/assets/js/plugins/jqueryui.min.js"></script>
+<!-- Image zoom JS -->
+<script src="${contextPath}/resources/home/assets/js/plugins/image-zoom.min.js"></script>
+<!-- Images loaded JS -->
+<script src="${contextPath}/resources/home/assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+<!-- mail-chimp active js -->
+<script src="${contextPath}/resources/home/assets/js/plugins/ajaxchimp.js"></script>
+<!-- contact form dynamic js -->
+<script src="${contextPath}/resources/home/assets/js/plugins/ajax-mail.js"></script>
+<!-- google map api -->
+<%--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfmCVTjRI007pC1Yk2o2d_EhgkjTsFVN8"></script>--%>
+<!-- google map active js -->
+<script src="${contextPath}/resources/home/assets/js/plugins/google-map.js"></script>
 <!-- Main JS -->
 <script src="${contextPath}/resources/home/assets/js/main.js"></script>
-<script>
-    var path='${pageContext.servletContext.contextPath}';
-</script>
-<script type="text/javascript" src="${contextPath}/resources/home/assets/js/home.js"></script>
-
 </body>
 </html>

@@ -1,11 +1,15 @@
 package com.bkap.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import java.util.Date;
 import java.util.List;
@@ -22,6 +26,7 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "brandName", columnDefinition = "NVARCHAR(50)")
+    @NotBlank(message = "Tên nhãn hàng không được để trống")
     private String brandName;
     @Column(name = "image")
     private String image;
@@ -31,6 +36,8 @@ public class Brand {
     private Date created_at;
     @Column(name = "status")
     private boolean status;
+    @Transient
+    private int productCount;
 
     @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
     private List<Product> products;

@@ -1,7 +1,9 @@
 package com.bkap.controllers.admin;
 
 import com.bkap.entities.User;
+import com.bkap.services.OrderService;
 import com.bkap.services.UserService;
+import com.bkap.services.WishlistService;
 import com.bkap.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,8 @@ import java.io.File;
 @RequestMapping("/admin/user")
 public class UserController {
     private final UserService userService;
+    private final OrderService orderService;
+    private final WishlistService wishlistService;
 
     @GetMapping("")
     public String index(Model model) {
@@ -64,6 +68,8 @@ public class UserController {
     @GetMapping("detail-user/{id}")
     public String detailUser(@PathVariable int id, Model model) {
         model.addAttribute("user", userService.getById(id));
+        model.addAttribute("order", orderService.findByUserId(id));
+        model.addAttribute("wishlist", wishlistService.findWishlistsByUserId(id));
         model.addAttribute("page", "user/detail");
         return "admin";
     }

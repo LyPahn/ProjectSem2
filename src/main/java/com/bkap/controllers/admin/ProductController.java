@@ -11,10 +11,12 @@ import com.bkap.services.ProductService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -47,10 +49,16 @@ public class ProductController {
     }
 
     @PostMapping("save")
-    public String save(@ModelAttribute Product product, Model model,
+    public String save(@Valid @ModelAttribute Product product , BindingResult bindingResult, Model model,
                        @RequestParam("file") MultipartFile file,
                        HttpServletRequest req, @RequestParam("files") MultipartFile[] files
                       ) {
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("product", product);
+            model.addAttribute("page" , "product/add");
+
+            return "admin";
+        }
         if(file != null && !file.isEmpty()) {
             String uploadRootPath = req.getServletContext().getRealPath("resources/images");
             File f = new File(uploadRootPath);

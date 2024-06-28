@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
 <div id="top" class="sa-app__body">
     <div class="mx-xxl-3 px-4 px-sm-5">
@@ -51,13 +52,13 @@
                                                 <img src="${contextPath}/resources/images/${u.image}" width="40" height="40" alt="" />
                                             </div>
                                         </a>
-                                        <div><a href="app-customer.html" class="text-reset">${u.firstName} ${u.lastName}</a>
+                                        <div><a href="${contextPath}/admin/user/detail-user/${u.id}" class="text-reset">${u.firstName} ${u.lastName}</a>
                                             <div class="text-muted mt-n1">${u.email}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td><a href="" class="text-reset">${u.phone}</a></td>
-                                <td>${u.created_at}</td>
+                                <td><fmt:formatDate value="${u.created_at}" pattern="dd/MM/yyy"/> </td>
                                 <td>
                                     <c:choose>
                                         <c:when test="${u.role}">
@@ -80,7 +81,7 @@
                                     </svg></button>
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="product-context-menu-0">
-                                            <li><a class="dropdown-item" href="">Detail</a></li>
+                                            <li><a class="dropdown-item" href="${contextPath}/admin/user/detail-user/${u.id}">Detail</a></li>
                                             <li><a class="dropdown-item" href="">Reset Password</a></li>
                                             <li>
                                                 <hr class="dropdown-divider" />
