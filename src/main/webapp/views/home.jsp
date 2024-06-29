@@ -110,19 +110,11 @@
                                             <ul class="megamenu dropdown">
                                                 <li class="mega-title"><span>Category</span>
                                                     <c:forEach var="c" items="${categories}">
-                                                    <ul>
-                                                        <li><a href="${contextPath}/shop-categories/${c.id} ">${c.cateName}</a></li>
-                                                    </ul>
+                                                        <ul>
+                                                            <li><a href="${contextPath}/shop-categories/${c.id}">${c.cateName}</a></li>
+                                                        </ul>
                                                     </c:forEach>
                                                 </li>
-<%--                                                <li class="mega-title"><span>Category</span>--%>
-<%--                                                    <ul>--%>
-<%--                                                        <li><a href="product-details.html">Vàng</a></li>--%>
-<%--                                                        <li><a href="product-details-affiliate.html">Bạc</a></li>--%>
-<%--                                                        <li><a href="product-details-variable.html">Đá quý</a></li>--%>
-<%--                                                        <li><a href="privacy-policy.html">Kim cương</a></li>--%>
-<%--                                                    </ul>--%>
-<%--                                                </li>--%>
                                                 <li class="megamenu-banners d-none d-lg-block">
                                                     <a href="product-details.html">
                                                         <img src="${contextPath}/resources/home/assets/img/banner/img2-static-menu.jpg" alt="">

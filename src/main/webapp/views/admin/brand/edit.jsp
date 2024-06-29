@@ -29,7 +29,6 @@
                                     <label for="form-category/name" class="form-label">Name</label>
                                     <form:input type="text" class="form-control" id="form-category/name"  path="brandName"/>
                                 </div>
-                            </div>
                             <div class="mb-5">
                                 <h2 class="mb-0 fs-exact-18">Status</h2>
                             </div>
@@ -59,6 +58,7 @@
                                     </div>
                                 </c:otherwise>
                             </c:choose>
+                            </div>
                         </div>
                     </div>
                     <div class="sa-entity-layout__sidebar">
