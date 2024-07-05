@@ -487,4 +487,10 @@ public class HomeController {
         model.addAttribute("page", "order-detail");
         return "home";
     }
+
+    @GetMapping("successful")
+    public String successful(Model model) {
+        model.addAttribute("page", "successful");
+        return "home";
+    }
 }

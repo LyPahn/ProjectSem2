@@ -76,7 +76,7 @@ public class OrderController {
 
         cartService.clearCart(userId);
 
-        return "redirect:/";
+        return "redirect:/successful";
     }
 
 
